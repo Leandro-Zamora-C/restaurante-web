@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>El Tío Silva & Brostería El Shopa</title>
+</head>
+<body class="bg-gray-950 text-gray-100 font-sans min-h-screen pb-12">
+
+    <!-- Header / Selector de Marca -->
+    <header class="bg-black/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-800 shadow-2xl">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🔥</span>
+                <h1 class="text-xl font-extrabold tracking-wide text-white">Sabor & Tradición</h1>
+            </div>
+            
+            <!-- Botones Switch -->
+            <div class="flex bg-gray-900 p-1.5 rounded-xl border border-gray-800">
+                <button onclick="cambiarMenu('tio-silva')" id="btn-silva" class="px-4 py-2 rounded-lg text-sm font-bold bg-amber-500 text-black shadow-lg transition-all flex items-center gap-2">
+                    🐔 El Tío Silva
+                </button>
+                <button onclick="cambiarMenu('el-shopa')" id="btn-shopa" class="px-4 py-2 rounded-lg text-sm font-bold text-gray-400 hover:text-white transition-all flex items-center gap-2">
+                    👑 Brostería El Shopa
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="max-w-6xl mx-auto px-4 pt-6">
+
+        <!-- ================= SECCIÓN: EL TÍO SILVA ================= -->
+        <section id="menu-tio-silva" class="block space-y-8">
+            
+            <!-- Banner / Header de Marca -->
+            <div class="bg-gradient-to-r from-amber-600 via-orange-600 to-red-700 p-6 rounded-2xl shadow-xl border border-amber-500/30 text-white flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-4">
+                    <img src="logo-silva.jpeg" alt="Logo El Tío Silva" class="w-20 h-20 rounded-full object-cover border-2 border-amber-300/40 shadow-lg">
+                    <div>
+                        <h2 class="text-3xl font-black tracking-tight">EL TÍO SILVA</h2>
+                        <p class="text-amber-100 text-sm mt-1">Los mejores salteados, platos criollos y caldos reconfortantes.</p>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <span class="bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10">Yape / Plin</span>
+                    <span class="bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10">Efectivo</span>
+                </div>
+            </div>
+
+            <!-- Platos Principales -->
+            <div>
+                <h3 class="text-2xl font-black text-amber-400 mb-6 border-b border-amber-500/30 pb-2 flex items-center gap-2">
+                    <span>🍲</span> Platos Principales
+                </h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/50 transition shadow-lg flex flex-col justify-between">
+                        <img src="lomo-pobre.jpg" alt="Lomo Saltado a lo Pobre" class="w-full h-48 object-cover">
+                        <div class="p-4 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Lomo Saltado a lo Pobre</h4>
+                                <p class="text-xs text-gray-400 mt-1">Carne salteada, papas, arroz, huevo frito y plátano.</p>
+                            </div>
+                            <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
+                                <span class="text-amber-400 font-black text-xl">S/ 19.00</span>
+                                <button onclick="pedirWhatsApp('El Tío Silva - Lomo Saltado a lo Pobre', '19.00')" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/50 transition shadow-lg flex flex-col justify-between">
+                        <img src="lomo-saltado.jpg" alt="Lomo Saltado" class="w-full h-48 object-cover">
+                        <div class="p-4 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Lomo Saltado (Carne)</h4>
+                                <p class="text-xs text-gray-400 mt-1">Jugosos trozos de carne fritos con cebolla y tomate.</p>
+                            </div>
+                            <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
+                                <span class="text-amber-400 font-black text-xl">S/ 15.00</span>
+                                <button onclick="pedirWhatsApp('El Tío Silva - Lomo Saltado (Carne)', '15.00')" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/50 transition shadow-lg flex flex-col justify-between">
+                        <img src="tallarin-saltado.jpg" alt="Tallarín Saltado" class="w-full h-48 object-cover">
+                        <div class="p-4 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Tallarín Saltado (Carne)</h4>
+                                <p class="text-xs text-gray-400 mt-1">Fideos salteados al wok con verduras y carne.</p>
+                            </div>
+                            <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
+                                <span class="text-amber-400 font-black text-xl">S/ 15.00</span>
+                                <button onclick="pedirWhatsApp('El Tío Silva - Tallarín Saltado (Carne)', '15.00')" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/50 transition shadow-lg flex flex-col justify-between">
+                        <img src="chaufa.jpg" alt="Chaufa" class="w-full h-48 object-cover">
+                        <div class="p-4 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Chaufa</h4>
+                                <p class="text-xs text-gray-400 mt-1">Arroz chaufa con trozos de carne y cebollita china.</p>
+                            </div>
+                            <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
+                                <span class="text-amber-400 font-black text-xl">S/ 13.00</span>
+                                <button onclick="pedirWhatsApp('El Tío Silva - Chaufa', '13.00')" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/50 transition shadow-lg flex flex-col justify-between">
+                        <img src="caldo-gallina.jpg" alt="Caldo de Gallina" class="w-full h-48 object-cover">
+                        <div class="p-4 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Caldo de Gallina</h4>
+                                <p class="text-xs text-gray-400 mt-1">Caldo reconfortante con fideos, presa y huevo.</p>
+                            </div>
+                            <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
+                                <span class="text-amber-400 font-black text-xl">S/ 11.00</span>
+                                <button onclick="pedirWhatsApp('El Tío Silva - Caldo de Gallina', '11.00')" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/50 transition shadow-lg flex flex-col justify-between">
+                        <img src="bisteck-pobre.jpg" alt="Bisteck a lo Pobre" class="w-full h-48 object-cover">
+                        <div class="p-4 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Bisteck a lo Pobre</h4>
+                                <p class="text-xs text-gray-400 mt-1">Bisteck jugoso con papas, arroz, huevo y plátano.</p>
+                            </div>
+                            <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
+                                <span class="text-amber-400 font-black text-xl">S/ 17.00</span>
+                                <button onclick="pedirWhatsApp('El Tío Silva - Bisteck a lo Pobre', '17.00')" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Extras de El Tío Silva -->
+            <div>
+                <h3 class="text-2xl font-black text-amber-400 mb-6 border-b border-amber-500/30 pb-2 flex items-center gap-2">
+                    <span>🔥</span> Extras
+                </h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold text-white">Aeropuerto de Pollo</h4>
+                            <span class="text-amber-400 font-bold block mt-1">S/ 14.00</span>
+                        </div>
+                        <button onclick="pedirWhatsApp('El Tío Silva - Aeropuerto de Pollo', '14.00')" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Consultar</button>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold text-white">Aeropuerto de Carne</h4>
+                            <span class="text-amber-400 font-bold block mt-1">S/ 15.00</span>
+                        </div>
+                        <button onclick="pedirWhatsApp('El Tío Silva - Aeropuerto de Carne', '15.00')" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Consultar</button>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold text-white">Pollo Saltado</h4>
+                            <span class="text-amber-400 font-bold block mt-1">S/ 14.00</span>
+                        </div>
+                        <button onclick="pedirWhatsApp('El Tío Silva - Pollo Saltado', '14.00')" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Consultar</button>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold text-white">Churrasco a lo Pobre</h4>
+                            <span class="text-amber-400 font-bold block mt-1">S/ 17.00</span>
+                        </div>
+                        <button onclick="pedirWhatsApp('El Tío Silva - Churrasco a lo Pobre', '17.00')" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Consultar</button>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold text-white">Chuleta a lo Pobre</h4>
+                            <span class="text-amber-400 font-bold block mt-1">S/ 17.00</span>
+                        </div>
+                        <button onclick="pedirWhatsApp('El Tío Silva - Chuleta a lo Pobre', '17.00')" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Consultar</button>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold text-white">Pechuga Dorada</h4>
+                            <span class="text-amber-400 font-bold block mt-1">S/ 17.00</span>
+                        </div>
+                        <button onclick="pedirWhatsApp('El Tío Silva - Pechuga Dorada', '17.00')" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Consultar</button>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold text-white">Pechuga a lo Pobre</h4>
+                            <span class="text-amber-400 font-bold block mt-1">S/ 20.00</span>
+                        </div>
+                        <button onclick="pedirWhatsApp('El Tío Silva - Pechuga a lo Pobre', '20.00')" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Consultar</button>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold text-white">Tallarín Saltado de Pollo</h4>
+                            <span class="text-amber-400 font-bold block mt-1">S/ 14.00</span>
+                        </div>
+                        <button onclick="pedirWhatsApp('El Tío Silva - Tallarín Saltado de Pollo', '14.00')" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Consultar</button>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold text-white">Milanesa a lo Pobre</h4>
+                            <span class="text-amber-400 font-bold block mt-1">S/ 15.00</span>
+                        </div>
+                        <button onclick="pedirWhatsApp('El Tío Silva - Milanesa a lo Pobre', '15.00')" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Consultar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bebidas -->
+            <div>
+                <h3 class="text-2xl font-black text-amber-400 mb-6 border-b border-amber-500/30 pb-2 flex items-center gap-2">
+                    <span>🥤</span> Bebidas
+                </h3>
+                <div class="grid sm:grid-cols-3 gap-6">
+                    <div class="bg-gray-900 p-5 rounded-2xl border border-gray-800 flex flex-col justify-between items-center text-center">
+                        <span class="text-4xl mb-2">🥤</span>
+                        <h4 class="font-bold text-white">Chicha Morada (1 Vaso)</h4>
+                        <span class="text-amber-400 font-black text-xl my-2">S/ 2.50</span>
+                        <button onclick="pedirWhatsApp('El Tío Silva - Chicha Morada (1 Vaso)', '2.50')" class="w-full bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                    </div>
+                    <div class="bg-gray-900 p-5 rounded-2xl border border-gray-800 flex flex-col justify-between items-center text-center">
+                        <span class="text-4xl mb-2">🏺</span>
+                        <h4 class="font-bold text-white">Chicha Morada (1/2 Litro)</h4>
+                        <span class="text-amber-400 font-black text-xl my-2">S/ 7.00</span>
+                        <button onclick="pedirWhatsApp('El Tío Silva - Chicha Morada (1/2 Litro)', '7.00')" class="w-full bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                    </div>
+                    <div class="bg-gray-900 p-5 rounded-2xl border border-gray-800 flex flex-col justify-between items-center text-center">
+                        <span class="text-4xl mb-2">🍹</span>
+                        <h4 class="font-bold text-white">Chicha Morada (1 Litro)</h4>
+                        <span class="text-amber-400 font-black text-xl my-2">S/ 10.00</span>
+                        <button onclick="pedirWhatsApp('El Tío Silva - Chicha Morada (1 Litro)', '10.00')" class="w-full bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= SECCIÓN: BROSTERÍA EL SHOPA ================= -->
+        <section id="menu-el-shopa" class="hidden space-y-8">
+            
+            <!-- Banner / Header de Marca -->
+            <div class="bg-gradient-to-r from-red-700 via-red-800 to-orange-700 p-6 rounded-2xl shadow-xl border border-red-500/30 text-white flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-4">
+                    <img src="logo-shopa.jpeg" alt="Logo Brostería El Shopa" class="w-20 h-20 rounded-full object-cover border-2 border-red-300/40 shadow-lg">
+                    <div>
+                        <h2 class="text-3xl font-black tracking-tight">BROSTERÍA EL SHOPA</h2>
+                        <p class="text-red-100 text-sm mt-1">El mejor pollo broaster, salchipapas, hamburguesas, alitas y combos.</p>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <span class="bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10">Yape / Plin</span>
+                    <span class="bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10">Interbank</span>
+                    <span class="bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10">Agora</span>
+                </div>
+            </div>
+
+            <!-- Platos Principales (Modales) -->
+            <div>
+                <h3 class="text-2xl font-black text-red-400 mb-6 border-b border-red-500/30 pb-2 flex items-center gap-2">
+                    <span>👑</span> Especialidades
+                </h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Tarjeta 1: Pollo Broaster -->
+                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 transition shadow-lg flex flex-col justify-between">
+                        <img src="pollo broaster.jpg" alt="Pollo Broaster" class="w-full h-48 object-cover">
+                        <div class="p-4 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Pollo Broaster</h4>
+                                <p class="text-xs text-gray-400 mt-1">Crujiente pollo broaster (Alita, Encuentro, Pierna, Pecho).</p>
+                            </div>
+                            <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
+                                <span class="text-red-400 font-black text-xl">Desde S/ 10.00</span>
+                                <button onclick="abrirModal('modal-broaster')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 2: Salchibroaster -->
+                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 transition shadow-lg flex flex-col justify-between">
+                        <img src="salchibroaster.jpg" alt="Salchibroaster" class="w-full h-48 object-cover">
+                        <div class="p-4 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Salchibroaster</h4>
+                                <p class="text-xs text-gray-400 mt-1">Salchipapa abundante + pieza de pollo broaster a elección.</p>
+                            </div>
+                            <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
+                                <span class="text-red-400 font-black text-xl">Desde S/ 13.00</span>
+                                <button onclick="abrirModal('modal-salchibroaster')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 3: Hamburguesas -->
+                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 transition shadow-lg flex flex-col justify-between">
+                        <img src="hamburguesa.jpg" alt="Hamburguesas" class="w-full h-48 object-cover">
+                        <div class="p-4 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Hamburguesas</h4>
+                                <p class="text-xs text-gray-400 mt-1">Clásicas, Caseras, Royal, A lo Pobre y Mixta.</p>
+                            </div>
+                            <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
+                                <span class="text-red-400 font-black text-xl">Desde S/ 7.00</span>
+                                <button onclick="abrirModal('modal-hamburguesas')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 4: Salchipapas -->
+                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 transition shadow-lg flex flex-col justify-between">
+                        <img src="salchipapas.png" alt="Salchipapas" class="w-full h-48 object-cover">
+                        <div class="p-4 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Salchipapas</h4>
+                                <p class="text-xs text-gray-400 mt-1">Clásica, Especial (Huevo + Chorizo) y A lo Pobre.</p>
+                            </div>
+                            <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
+                                <span class="text-red-400 font-black text-xl">Desde S/ 9.00</span>
+                                <button onclick="abrirModal('modal-salchipapas')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 5: Alitas BBQ / Acevichadas -->
+                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 transition shadow-lg flex flex-col justify-between">
+                        <img src="combo de alitas.jpeg" alt="Alitas BBQ y Acevichadas" class="w-full h-48 object-cover">
+                        <div class="p-4 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Alitas BBQ / Acevichadas</h4>
+                                <p class="text-xs text-gray-400 mt-1">Porciones individuales y combos de alitas con gaseosa.</p>
+                            </div>
+                            <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
+                                <span class="text-red-400 font-black text-xl">Desde S/ 16.00</span>
+                                <button onclick="abrirModal('modal-alitas')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 6: Combos El Shopa -->
+                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-amber-500/40 hover:border-amber-400 transition shadow-lg flex flex-col justify-between">
+                        <div class="bg-gradient-to-br from-red-600 to-amber-600 h-48 flex flex-col justify-center items-center text-center p-4">
+                            <span class="text-5xl mb-2">⭐</span>
+                            <span class="bg-black/40 text-amber-300 text-xs font-black px-3 py-1 rounded-full uppercase border border-amber-300/30">Promociones</span>
+                        </div>
+                        <div class="p-4 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Combos El Shopa</h4>
+                                <p class="text-xs text-gray-400 mt-1">Combos 1, 2, 3 (Familiares) y Combo Alitas Mix 2.0.</p>
+                            </div>
+                            <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
+                                <span class="text-amber-400 font-black text-xl">Desde S/ 23.00</span>
+                                <button onclick="abrirModal('modal-combos')" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Bebidas El Shopa -->
+            <div>
+                <h3 class="text-2xl font-black text-red-400 mb-6 border-b border-red-500/30 pb-2">🥤 Bebidas</h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                        <div>
+                            <span class="text-white font-bold block text-sm">Inka / Coca (Vidrio)</span>
+                            <span class="text-red-400 font-black">S/ 2.50</span>
+                        </div>
+                        <button onclick="pedirWhatsApp('El Shopa - Gaseosa Personal', '2.50')" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Consultar</button>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                        <div>
+                            <span class="text-white font-bold block text-sm">Gordita</span>
+                            <span class="text-red-400 font-black">S/ 4.50</span>
+                        </div>
+                        <button onclick="pedirWhatsApp('El Shopa - Gordita', '4.50')" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Consultar</button>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                        <div>
+                            <span class="text-white font-bold block text-sm">Gaseosa 1 Litro</span>
+                            <span class="text-red-400 font-black">S/ 6.00</span>
+                        </div>
+                        <button onclick="pedirWhatsApp('El Shopa - Gaseosa 1L', '6.00')" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Consultar</button>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                        <div>
+                            <span class="text-white font-bold block text-sm">Café / Infusiones</span>
+                            <span class="text-red-400 font-black">S/ 3.00</span>
+                        </div>
+                        <button onclick="pedirWhatsApp('El Shopa - Café o Infusión', '3.00')" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Consultar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ================= VENTANAS EMERGENTES (MODALES) ================= -->
+
+    <!-- Modal 1: Pollo Broaster -->
+    <div id="modal-broaster" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
+        <div class="bg-gray-900 border border-red-500/50 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
+            <button onclick="cerrarModal('modal-broaster')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">✕</button>
+            <h3 class="text-2xl font-black text-red-400 mb-4 border-b border-gray-800 pb-2">🍗 Opciones de Pollo Broaster</h3>
+            <div class="space-y-3">
+                <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
+                    <span class="font-bold text-white">Alita Broaster</span>
+                    <button onclick="pedirWhatsApp('Broaster Alita', '10.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 10.00 - Pedir</button>
+                </div>
+                <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
+                    <span class="font-bold text-white">Encuentro Broaster</span>
+                    <button onclick="pedirWhatsApp('Broaster Encuentro', '11.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 11.00 - Pedir</button>
+                </div>
+                <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
+                    <span class="font-bold text-white">Pierna Broaster</span>
+                    <button onclick="pedirWhatsApp('Broaster Pierna', '11.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 11.00 - Pedir</button>
+                </div>
+                <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
+                    <span class="font-bold text-white">Pecho Broaster</span>
+                    <button onclick="pedirWhatsApp('Broaster Pecho', '12.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 12.00 - Pedir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Salchibroaster -->
+    <div id="modal-salchibroaster" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
+        <div class="bg-gray-900 border border-red-500/50 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
+            <button onclick="cerrarModal('modal-salchibroaster')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">✕</button>
+            <h3 class="text-2xl font-black text-red-400 mb-4 border-b border-gray-800 pb-2">🍟 Opciones de Salchibroaster</h3>
+            <div class="space-y-3">
+                <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
+                    <span class="font-bold text-white">Salchibroaster Alita</span>
+                    <button onclick="pedirWhatsApp('Salchibroaster Alita', '13.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 13.00 - Pedir</button>
+                </div>
+                <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
+                    <span class="font-bold text-white">Salchibroaster Encuentro</span>
+                    <button onclick="pedirWhatsApp('Salchibroaster Encuentro', '14.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 14.00 - Pedir</button>
+                </div>
+                <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
+                    <span class="font-bold text-white">Salchibroaster Pierna</span>
+                    <button onclick="pedirWhatsApp('Salchibroaster Pierna', '14.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 14.00 - Pedir</button>
+                </div>
+                <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
+                    <span class="font-bold text-white">Salchibroaster Pecho</span>
+                    <button onclick="pedirWhatsApp('Salchibroaster Pecho', '15.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 15.00 - Pedir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Hamburguesas -->
+    <div id="modal-hamburguesas" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
+        <div class="bg-gray-900 border border-red-500/50 rounded-2xl max-w-md w-full p-6 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="cerrarModal('modal-hamburguesas')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">✕</button>
+            <h3 class="text-2xl font-black text-red-400 mb-4 border-b border-gray-800 pb-2">🍔 Opciones de Hamburguesas</h3>
+            <div class="space-y-3">
+                <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
+                    <span class="font-bold text-white text-sm">Clásica (Carne o Pollo)</span>
+                    <button onclick="pedirWhatsApp('Hamburguesa Clásica', '7.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 7.00 - Pedir</button>
+                </div>
+                <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
+                    <span class="font-bold text-white text-sm">Clásica Casera</span>
+                    <button onclick="pedirWhatsApp('Hamburguesa Clásica Casera', '10.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 10.00 - Pedir</button>
+                </div>
+                <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
+                    <span class="font-bold text-white text-sm">Royal (Huevo + Queso)</span>
+                    <button onclick="pedirWhatsApp('Hamburguesa Royal', '11.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 11.00 - Pedir</button>
+                </div>
+                <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
+                    <span class="font-bold text-white text-sm">Royale Casera (Carne + Queso + Huevo)</span>
+                    <button onclick="pedirWhatsApp('Hamburguesa Royale Casera', '15.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 15.00 - Pedir</button>
+                </div>
+                <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
+                    <span class="font-bold text-white text-sm">A lo Pobre (Huevo + Plátano)</span>
+                    <button onclick="pedirWhatsApp('Hamburguesa A lo Pobre', '13.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 13.00 - Pedir</button>
+                </div>
+                <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
+                    <span class="font-bold text-white text-sm">A lo Pobre Casera</span>
+                    <button onclick="pedirWhatsApp('Hamburguesa A lo Pobre Casera', '17.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 17.00 - Pedir</button>
+                </div>
+                <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
+                    <span class="font-bold text-white text-sm">Mixta (Huevo + Chorizo)</span>
+                    <button onclick="pedirWhatsApp('Hamburguesa Mixta', '13.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 13.00 - Pedir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4: Salchipapas -->
+    <div id="modal-salchipapas" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
+        <div class="bg-gray-900 border border-red-500/50 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
+            <button onclick="cerrarModal('modal-salchipapas')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">✕</button>
+            <h3 class="text-2xl font-black text-red-400 mb-4 border-b border-gray-800 pb-2">🍟 Opciones de Salchipapas</h3>
+            <div class="space-y-3">
+                <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
+                    <span class="font-bold text-white">Salchipapa Clásica</span>
+                    <button onclick="pedirWhatsApp('Salchipapa Clásica', '9.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 9.00 - Pedir</button>
+                </div>
+                <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
+                    <span class="font-bold text-white">Salchipapa Especial (Huevo + Chorizo)</span>
+                    <button onclick="pedirWhatsApp('Salchipapa Especial', '14.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 14.00 - Pedir</button>
+                </div>
+                <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
+                    <span class="font-bold text-white">Salchipapa A lo Pobre (Huevo + Plátano)</span>
+                    <button onclick="pedirWhatsApp('Salchipapa A lo Pobre', '14.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 14.00 - Pedir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 5: Alitas -->
+    <div id="modal-alitas" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
+        <div class="bg-gray-900 border border-red-500/50 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
+            <button onclick="cerrarModal('modal-alitas')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">✕</button>
+            <h3 class="text-2xl font-black text-red-400 mb-4 border-b border-gray-800 pb-2">🍗 Opciones de Alitas</h3>
+            <div class="space-y-3">
+                <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
+                    <span class="font-bold text-white">Alitas BBQ (6 piezas)</span>
+                    <button onclick="pedirWhatsApp('Alitas BBQ 6 piezas', '16.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 16.00 - Pedir</button>
+                </div>
+                <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
+                    <span class="font-bold text-white">Alitas Acevichadas (6 piezas)</span>
+                    <button onclick="pedirWhatsApp('Alitas Acevichadas 6 piezas', '16.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 16.00 - Pedir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 6: Combos El Shopa -->
+    <div id="modal-combos" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
+        <div class="bg-gray-900 border border-amber-500/50 rounded-2xl max-w-md w-full p-6 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="cerrarModal('modal-combos')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">✕</button>
+            <h3 class="text-2xl font-black text-amber-400 mb-4 border-b border-gray-800 pb-2">⭐ Combos El Shopa</h3>
+            <div class="space-y-4">
+                <div class="bg-gray-800/80 p-3.5 rounded-xl border border-gray-700">
+                    <h4 class="font-bold text-white">Combo 1</h4>
+                    <p class="text-xs text-gray-400 mb-2">2 Piernas Broster + 1 Gordita ó Pepsi Yumbo</p>
+                    <button onclick="pedirWhatsApp('Combo 1 El Shopa', '23.00')" class="w-full bg-red-600 text-white text-xs py-2 rounded-lg font-bold">S/ 23.00 - Pedir</button>
+                </div>
+                <div class="bg-gray-800/80 p-3.5 rounded-xl border border-gray-700">
+                    <h4 class="font-bold text-white">Combo 2</h4>
+                    <p class="text-xs text-gray-400 mb-2">2 Encuentros Broster + 1 Gordita ó Pepsi Yumbo</p>
+                    <button onclick="pedirWhatsApp('Combo 2 El Shopa', '24.00')" class="w-full bg-red-600 text-white text-xs py-2 rounded-lg font-bold">S/ 24.00 - Pedir</button>
+                </div>
+                <div class="bg-gray-800/80 p-3.5 rounded-xl border border-amber-500/40">
+                    <h4 class="font-bold text-white">Combo 3 (Familiar)</h4>
+                    <p class="text-xs text-gray-400 mb-2">2 Piernas + 2 Pechos + 1 Alita + 1 Gaseosa 1 Litro</p>
+                    <button onclick="pedirWhatsApp('Combo 3 Familiar El Shopa', '55.00')" class="w-full bg-amber-500 text-black text-xs py-2 rounded-lg font-bold">S/ 55.00 - Pedir</button>
+                </div>
+                <div class="bg-gray-800/80 p-3.5 rounded-xl border border-gray-700">
+                    <h4 class="font-bold text-white">Combo Alitas Mix 2.0</h4>
+                    <p class="text-xs text-gray-400 mb-2">Alitas BBQ + Alitas Acevichadas + Inka Cola 1L</p>
+                    <button onclick="pedirWhatsApp('Combo Alitas Mix 2.0', '34.00')" class="w-full bg-red-600 text-white text-xs py-2 rounded-lg font-bold">S/ 34.00 - Pedir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Lógica Interactiva (JavaScript) -->
+    <script>
+        function cambiarMenu(local) {
+            const menuSilva = document.getElementById('menu-tio-silva');
+            const menuShopa = document.getElementById('menu-el-shopa');
+            const btnSilva = document.getElementById('btn-silva');
+            const btnShopa = document.getElementById('btn-shopa');
+
+            if (local === 'tio-silva') {
+                menuSilva.classList.remove('hidden');
+                menuShopa.classList.add('hidden');
+                btnSilva.className = "px-4 py-2 rounded-lg text-sm font-bold bg-amber-500 text-black shadow-lg transition-all flex items-center gap-2";
+                btnShopa.className = "px-4 py-2 rounded-lg text-sm font-bold text-gray-400 hover:text-white transition-all flex items-center gap-2";
+            } else {
+                menuShopa.classList.remove('hidden');
+                menuSilva.classList.add('hidden');
+                btnShopa.className = "px-4 py-2 rounded-lg text-sm font-bold bg-red-600 text-white shadow-lg transition-all flex items-center gap-2";
+                btnSilva.className = "px-4 py-2 rounded-lg text-sm font-bold text-gray-400 hover:text-white transition-all flex items-center gap-2";
+            }
+        }
+
+        function abrirModal(idModal) {
+            document.getElementById(idModal).classList.remove('hidden');
+        }
+
+        function cerrarModal(idModal) {
+            document.getElementById(idModal).classList.add('hidden');
+        }
+
+        function pedirWhatsApp(nombrePlato, precio) {
+            const telefono = "51942539346";
+            const mensaje = encodeURIComponent(`¡Hola! Quisiera consultar la disponibilidad de: *${nombrePlato}* (S/ ${precio})`);
+            window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');
+        }
+    </script>
+</body>
+</html>
