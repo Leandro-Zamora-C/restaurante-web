@@ -6,24 +6,29 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>El Tío Silva & Brostería El Shopa</title>
 </head>
-<body class="bg-gray-950 text-gray-100 font-sans min-h-screen pb-12">
+<body class="bg-gray-950 text-gray-100 font-sans min-h-screen pb-24">
 
-    <!-- Header / Selector de Marca -->
-    <header class="bg-black/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-800 shadow-2xl">
+    <!-- Header / Selector de Marca con Señalización -->
+    <header class="bg-black/90 backdrop-blur-md sticky top-0 z-40 border-b border-gray-800 shadow-2xl">
         <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
             <div class="flex items-center gap-3">
                 <span class="text-2xl">🔥</span>
                 <h1 class="text-xl font-extrabold tracking-wide text-white">Sabor & Tradición</h1>
             </div>
             
-            <!-- Botones Switch -->
-            <div class="flex bg-gray-900 p-1.5 rounded-xl border border-gray-800">
-                <button onclick="cambiarMenu('tio-silva')" id="btn-silva" class="px-4 py-2 rounded-lg text-sm font-bold bg-amber-500 text-black shadow-lg transition-all flex items-center gap-2">
-                    🐔 El Tío Silva
-                </button>
-                <button onclick="cambiarMenu('el-shopa')" id="btn-shopa" class="px-4 py-2 rounded-lg text-sm font-bold text-gray-400 hover:text-white transition-all flex items-center gap-2">
-                    👑 Brostería El Shopa
-                </button>
+            <!-- Indicador de Navegación + Botones Switch -->
+            <div class="flex flex-col items-center sm:items-end gap-1">
+                <span class="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1 animate-pulse">
+                    👇 Selecciona la carta a ver aquí:
+                </span>
+                <div class="flex bg-gray-900 p-1.5 rounded-xl border-2 border-amber-500/50 shadow-lg">
+                    <button onclick="cambiarMenu('tio-silva')" id="btn-silva" class="px-4 py-2 rounded-lg text-xs font-black bg-amber-500 text-black shadow-md transition-all">
+                        🐔 EL TÍO SILVA
+                    </button>
+                    <button onclick="cambiarMenu('el-shopa')" id="btn-shopa" class="px-4 py-2 rounded-lg text-xs font-black text-gray-400 hover:text-white transition-all">
+                        👑 BROSTERÍA EL SHOPA
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -32,7 +37,7 @@
     <main class="max-w-6xl mx-auto px-4 pt-6">
 
         <!-- ================= SECCIÓN: EL TÍO SILVA ================= -->
-        <section id="menu-tio-silva" class="block space-y-8">
+        <section id="menu-tio-silva" class="block space-y-6">
             
             <!-- Banner / Header de Marca -->
             <div class="bg-gradient-to-r from-amber-600 via-orange-600 to-red-700 p-6 rounded-2xl shadow-xl border border-amber-500/30 text-white flex flex-col md:flex-row justify-between items-center gap-6">
@@ -46,6 +51,14 @@
                 <div class="flex gap-2">
                     <span class="bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10">Yape / Plin</span>
                     <span class="bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10">Efectivo</span>
+                </div>
+            </div>
+
+            <!-- Avisos e Información Importante -->
+            <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 flex flex-col sm:flex-row justify-between items-center gap-3 text-center sm:text-left">
+                <div class="text-xs sm:text-sm text-amber-200 space-y-1">
+                    <p>📌 <strong>Nota:</strong> Los precios mostrados son referenciales en mesa. Consultar por WhatsApp los precios para llevar.</p>
+                    <p>🛵 <strong>Servicio Delivery:</strong> Delivery de pedidos Consultar por WhatsApp al momento de realizar su pedido.</p>
                 </div>
             </div>
 
@@ -65,7 +78,9 @@
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-amber-400 font-black text-xl">S/ 19.00</span>
-                                <button onclick="pedirWhatsApp('El Tío Silva - Lomo Saltado a lo Pobre', '19.00')" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                                <button onclick="agregarAlCarrito('Lomo Saltado a lo Pobre (El Tío Silva)', 19.00)" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1">
+                                    🛒 Agregar +
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -79,7 +94,9 @@
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-amber-400 font-black text-xl">S/ 15.00</span>
-                                <button onclick="pedirWhatsApp('El Tío Silva - Lomo Saltado (Carne)', '15.00')" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                                <button onclick="agregarAlCarrito('Lomo Saltado Carne (El Tío Silva)', 15.00)" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1">
+                                    🛒 Agregar +
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -93,7 +110,9 @@
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-amber-400 font-black text-xl">S/ 15.00</span>
-                                <button onclick="pedirWhatsApp('El Tío Silva - Tallarín Saltado (Carne)', '15.00')" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                                <button onclick="agregarAlCarrito('Tallarín Saltado Carne (El Tío Silva)', 15.00)" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1">
+                                    🛒 Agregar +
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -103,11 +122,13 @@
                         <div class="p-4 flex-1 flex flex-col justify-between">
                             <div>
                                 <h4 class="font-bold text-white text-lg">Chaufa</h4>
-                                <p class="text-xs text-gray-400 mt-1">Arroz chaufa con trozos de carne y cebollita china.</p>
+                                <p class="text-xs text-gray-400 mt-1">Arroz chaufa con trozos de pollo y cebollita china.</p>
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-amber-400 font-black text-xl">S/ 13.00</span>
-                                <button onclick="pedirWhatsApp('El Tío Silva - Chaufa', '13.00')" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                                <button onclick="agregarAlCarrito('Chaufa (El Tío Silva)', 13.00)" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1">
+                                    🛒 Agregar +
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -121,7 +142,9 @@
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-amber-400 font-black text-xl">S/ 11.00</span>
-                                <button onclick="pedirWhatsApp('El Tío Silva - Caldo de Gallina', '11.00')" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                                <button onclick="agregarAlCarrito('Caldo de Gallina (El Tío Silva)', 11.00)" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1">
+                                    🛒 Agregar +
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -135,7 +158,9 @@
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-amber-400 font-black text-xl">S/ 17.00</span>
-                                <button onclick="pedirWhatsApp('El Tío Silva - Bisteck a lo Pobre', '17.00')" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                                <button onclick="agregarAlCarrito('Bisteck a lo Pobre (El Tío Silva)', 17.00)" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1">
+                                    🛒 Agregar +
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -154,63 +179,63 @@
                             <h4 class="font-bold text-white">Aeropuerto de Pollo</h4>
                             <span class="text-amber-400 font-bold block mt-1">S/ 14.00</span>
                         </div>
-                        <button onclick="pedirWhatsApp('El Tío Silva - Aeropuerto de Pollo', '14.00')" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Consultar</button>
+                        <button onclick="agregarAlCarrito('Aeropuerto de Pollo (El Tío Silva)', 14.00)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
                     <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
                         <div>
                             <h4 class="font-bold text-white">Aeropuerto de Carne</h4>
                             <span class="text-amber-400 font-bold block mt-1">S/ 15.00</span>
                         </div>
-                        <button onclick="pedirWhatsApp('El Tío Silva - Aeropuerto de Carne', '15.00')" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Consultar</button>
+                        <button onclick="agregarAlCarrito('Aeropuerto de Carne (El Tío Silva)', 15.00)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
                     <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
                         <div>
                             <h4 class="font-bold text-white">Pollo Saltado</h4>
                             <span class="text-amber-400 font-bold block mt-1">S/ 14.00</span>
                         </div>
-                        <button onclick="pedirWhatsApp('El Tío Silva - Pollo Saltado', '14.00')" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Consultar</button>
+                        <button onclick="agregarAlCarrito('Pollo Saltado (El Tío Silva)', 14.00)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
                     <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
                         <div>
                             <h4 class="font-bold text-white">Churrasco a lo Pobre</h4>
                             <span class="text-amber-400 font-bold block mt-1">S/ 17.00</span>
                         </div>
-                        <button onclick="pedirWhatsApp('El Tío Silva - Churrasco a lo Pobre', '17.00')" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Consultar</button>
+                        <button onclick="agregarAlCarrito('Churrasco a lo Pobre (El Tío Silva)', 17.00)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
                     <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
                         <div>
                             <h4 class="font-bold text-white">Chuleta a lo Pobre</h4>
                             <span class="text-amber-400 font-bold block mt-1">S/ 17.00</span>
                         </div>
-                        <button onclick="pedirWhatsApp('El Tío Silva - Chuleta a lo Pobre', '17.00')" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Consultar</button>
+                        <button onclick="agregarAlCarrito('Chuleta a lo Pobre (El Tío Silva)', 17.00)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
                     <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
                         <div>
                             <h4 class="font-bold text-white">Pechuga Dorada</h4>
                             <span class="text-amber-400 font-bold block mt-1">S/ 17.00</span>
                         </div>
-                        <button onclick="pedirWhatsApp('El Tío Silva - Pechuga Dorada', '17.00')" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Consultar</button>
+                        <button onclick="agregarAlCarrito('Pechuga Dorada (El Tío Silva)', 17.00)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
                     <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
                         <div>
                             <h4 class="font-bold text-white">Pechuga a lo Pobre</h4>
                             <span class="text-amber-400 font-bold block mt-1">S/ 20.00</span>
                         </div>
-                        <button onclick="pedirWhatsApp('El Tío Silva - Pechuga a lo Pobre', '20.00')" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Consultar</button>
+                        <button onclick="agregarAlCarrito('Pechuga a lo Pobre (El Tío Silva)', 20.00)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
                     <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
                         <div>
                             <h4 class="font-bold text-white">Tallarín Saltado de Pollo</h4>
                             <span class="text-amber-400 font-bold block mt-1">S/ 14.00</span>
                         </div>
-                        <button onclick="pedirWhatsApp('El Tío Silva - Tallarín Saltado de Pollo', '14.00')" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Consultar</button>
+                        <button onclick="agregarAlCarrito('Tallarín Saltado Pollo (El Tío Silva)', 14.00)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
                     <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
                         <div>
                             <h4 class="font-bold text-white">Milanesa a lo Pobre</h4>
                             <span class="text-amber-400 font-bold block mt-1">S/ 15.00</span>
                         </div>
-                        <button onclick="pedirWhatsApp('El Tío Silva - Milanesa a lo Pobre', '15.00')" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Consultar</button>
+                        <button onclick="agregarAlCarrito('Milanesa a lo Pobre (El Tío Silva)', 15.00)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
                 </div>
             </div>
@@ -225,19 +250,19 @@
                         <span class="text-4xl mb-2">🥤</span>
                         <h4 class="font-bold text-white">Chicha Morada (1 Vaso)</h4>
                         <span class="text-amber-400 font-black text-xl my-2">S/ 2.50</span>
-                        <button onclick="pedirWhatsApp('El Tío Silva - Chicha Morada (1 Vaso)', '2.50')" class="w-full bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                        <button onclick="agregarAlCarrito('Chicha Morada Vaso (El Tío Silva)', 2.50)" class="w-full bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 py-2 rounded-xl text-xs font-bold transition">Agregar +</button>
                     </div>
                     <div class="bg-gray-900 p-5 rounded-2xl border border-gray-800 flex flex-col justify-between items-center text-center">
                         <span class="text-4xl mb-2">🏺</span>
                         <h4 class="font-bold text-white">Chicha Morada (1/2 Litro)</h4>
                         <span class="text-amber-400 font-black text-xl my-2">S/ 7.00</span>
-                        <button onclick="pedirWhatsApp('El Tío Silva - Chicha Morada (1/2 Litro)', '7.00')" class="w-full bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                        <button onclick="agregarAlCarrito('Chicha Morada 1/2L (El Tío Silva)', 7.00)" class="w-full bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 py-2 rounded-xl text-xs font-bold transition">Agregar +</button>
                     </div>
                     <div class="bg-gray-900 p-5 rounded-2xl border border-gray-800 flex flex-col justify-between items-center text-center">
                         <span class="text-4xl mb-2">🍹</span>
                         <h4 class="font-bold text-white">Chicha Morada (1 Litro)</h4>
                         <span class="text-amber-400 font-black text-xl my-2">S/ 10.00</span>
-                        <button onclick="pedirWhatsApp('El Tío Silva - Chicha Morada (1 Litro)', '10.00')" class="w-full bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                        <button onclick="agregarAlCarrito('Chicha Morada 1L (El Tío Silva)', 10.00)" class="w-full bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 py-2 rounded-xl text-xs font-bold transition">Agregar +</button>
                     </div>
                 </div>
             </div>
@@ -245,7 +270,7 @@
 
 
         <!-- ================= SECCIÓN: BROSTERÍA EL SHOPA ================= -->
-        <section id="menu-el-shopa" class="hidden space-y-8">
+        <section id="menu-el-shopa" class="hidden space-y-6">
             
             <!-- Banner / Header de Marca -->
             <div class="bg-gradient-to-r from-red-700 via-red-800 to-orange-700 p-6 rounded-2xl shadow-xl border border-red-500/30 text-white flex flex-col md:flex-row justify-between items-center gap-6">
@@ -260,6 +285,14 @@
                     <span class="bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10">Yape / Plin</span>
                     <span class="bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10">Interbank</span>
                     <span class="bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10">Agora</span>
+                </div>
+            </div>
+
+            <!-- Avisos e Información Importante -->
+            <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-4 flex flex-col sm:flex-row justify-between items-center gap-3 text-center sm:text-left">
+                <div class="text-xs sm:text-sm text-red-200 space-y-1">
+                    <p>📌 <strong>Nota:</strong> Los precios mostrados son referenciales en mesa. Consultar por WhatsApp los precios para llevar.</p>
+                    <p>🛵 <strong>Servicio Delivery:</strong> Delivery de pedidos S/ 2.00 adicional.</p>
                 </div>
             </div>
 
@@ -280,7 +313,7 @@
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-red-400 font-black text-xl">Desde S/ 10.00</span>
-                                <button onclick="abrirModal('modal-broaster')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                                <button onclick="abrirModal('modal-broaster')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">Ver Opciones</button>
                             </div>
                         </div>
                     </div>
@@ -295,7 +328,7 @@
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-red-400 font-black text-xl">Desde S/ 13.00</span>
-                                <button onclick="abrirModal('modal-salchibroaster')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                                <button onclick="abrirModal('modal-salchibroaster')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">Ver Opciones</button>
                             </div>
                         </div>
                     </div>
@@ -310,7 +343,7 @@
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-red-400 font-black text-xl">Desde S/ 7.00</span>
-                                <button onclick="abrirModal('modal-hamburguesas')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                                <button onclick="abrirModal('modal-hamburguesas')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">Ver Opciones</button>
                             </div>
                         </div>
                     </div>
@@ -325,7 +358,7 @@
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-red-400 font-black text-xl">Desde S/ 9.00</span>
-                                <button onclick="abrirModal('modal-salchipapas')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                                <button onclick="abrirModal('modal-salchipapas')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">Ver Opciones</button>
                             </div>
                         </div>
                     </div>
@@ -340,7 +373,7 @@
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-red-400 font-black text-xl">Desde S/ 16.00</span>
-                                <button onclick="abrirModal('modal-alitas')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                                <button onclick="abrirModal('modal-alitas')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">Ver Opciones</button>
                             </div>
                         </div>
                     </div>
@@ -358,7 +391,7 @@
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-amber-400 font-black text-xl">Desde S/ 23.00</span>
-                                <button onclick="abrirModal('modal-combos')" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition">Consultar</button>
+                                <button onclick="abrirModal('modal-combos')" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition">Ver Opciones</button>
                             </div>
                         </div>
                     </div>
@@ -375,28 +408,28 @@
                             <span class="text-white font-bold block text-sm">Inka / Coca (Vidrio)</span>
                             <span class="text-red-400 font-black">S/ 2.50</span>
                         </div>
-                        <button onclick="pedirWhatsApp('El Shopa - Gaseosa Personal', '2.50')" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Consultar</button>
+                        <button onclick="agregarAlCarrito('Gaseosa Personal Vidrio (El Shopa)', 2.50)" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Agregar +</button>
                     </div>
                     <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
                         <div>
                             <span class="text-white font-bold block text-sm">Gordita</span>
                             <span class="text-red-400 font-black">S/ 4.50</span>
                         </div>
-                        <button onclick="pedirWhatsApp('El Shopa - Gordita', '4.50')" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Consultar</button>
+                        <button onclick="agregarAlCarrito('Gordita (El Shopa)', 4.50)" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Agregar +</button>
                     </div>
                     <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
                         <div>
                             <span class="text-white font-bold block text-sm">Gaseosa 1 Litro</span>
                             <span class="text-red-400 font-black">S/ 6.00</span>
                         </div>
-                        <button onclick="pedirWhatsApp('El Shopa - Gaseosa 1L', '6.00')" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Consultar</button>
+                        <button onclick="agregarAlCarrito('Gaseosa 1L (El Shopa)', 6.00)" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Agregar +</button>
                     </div>
                     <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
                         <div>
                             <span class="text-white font-bold block text-sm">Café / Infusiones</span>
                             <span class="text-red-400 font-black">S/ 3.00</span>
                         </div>
-                        <button onclick="pedirWhatsApp('El Shopa - Café o Infusión', '3.00')" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Consultar</button>
+                        <button onclick="agregarAlCarrito('Café o Infusión (El Shopa)', 3.00)" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Agregar +</button>
                     </div>
                 </div>
             </div>
@@ -411,23 +444,23 @@
     <div id="modal-broaster" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
         <div class="bg-gray-900 border border-red-500/50 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
             <button onclick="cerrarModal('modal-broaster')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">✕</button>
-            <h3 class="text-2xl font-black text-red-400 mb-4 border-b border-gray-800 pb-2">🍗 Opciones de Pollo Broaster</h3>
+            <h3 class="text-2xl font-black text-red-400 mb-4 border-b border-gray-800 pb-2">🍗 Pollo Broaster</h3>
             <div class="space-y-3">
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Alita Broaster</span>
-                    <button onclick="pedirWhatsApp('Broaster Alita', '10.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 10.00 - Pedir</button>
+                    <button onclick="agregarAlCarrito('Alita Broaster', 10.00); cerrarModal('modal-broaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 10.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Encuentro Broaster</span>
-                    <button onclick="pedirWhatsApp('Broaster Encuentro', '11.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 11.00 - Pedir</button>
+                    <button onclick="agregarAlCarrito('Encuentro Broaster', 11.00); cerrarModal('modal-broaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 11.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Pierna Broaster</span>
-                    <button onclick="pedirWhatsApp('Broaster Pierna', '11.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 11.00 - Pedir</button>
+                    <button onclick="agregarAlCarrito('Pierna Broaster', 11.00); cerrarModal('modal-broaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 11.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Pecho Broaster</span>
-                    <button onclick="pedirWhatsApp('Broaster Pecho', '12.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 12.00 - Pedir</button>
+                    <button onclick="agregarAlCarrito('Pecho Broaster', 12.00); cerrarModal('modal-broaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 12.00 +</button>
                 </div>
             </div>
         </div>
@@ -437,23 +470,23 @@
     <div id="modal-salchibroaster" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
         <div class="bg-gray-900 border border-red-500/50 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
             <button onclick="cerrarModal('modal-salchibroaster')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">✕</button>
-            <h3 class="text-2xl font-black text-red-400 mb-4 border-b border-gray-800 pb-2">🍟 Opciones de Salchibroaster</h3>
+            <h3 class="text-2xl font-black text-red-400 mb-4 border-b border-gray-800 pb-2">🍟 Salchibroaster</h3>
             <div class="space-y-3">
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Salchibroaster Alita</span>
-                    <button onclick="pedirWhatsApp('Salchibroaster Alita', '13.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 13.00 - Pedir</button>
+                    <button onclick="agregarAlCarrito('Salchibroaster Alita', 13.00); cerrarModal('modal-salchibroaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 13.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Salchibroaster Encuentro</span>
-                    <button onclick="pedirWhatsApp('Salchibroaster Encuentro', '14.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 14.00 - Pedir</button>
+                    <button onclick="agregarAlCarrito('Salchibroaster Encuentro', 14.00); cerrarModal('modal-salchibroaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 14.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Salchibroaster Pierna</span>
-                    <button onclick="pedirWhatsApp('Salchibroaster Pierna', '14.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 14.00 - Pedir</button>
+                    <button onclick="agregarAlCarrito('Salchibroaster Pierna', 14.00); cerrarModal('modal-salchibroaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 14.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Salchibroaster Pecho</span>
-                    <button onclick="pedirWhatsApp('Salchibroaster Pecho', '15.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 15.00 - Pedir</button>
+                    <button onclick="agregarAlCarrito('Salchibroaster Pecho', 15.00); cerrarModal('modal-salchibroaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 15.00 +</button>
                 </div>
             </div>
         </div>
@@ -463,35 +496,35 @@
     <div id="modal-hamburguesas" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
         <div class="bg-gray-900 border border-red-500/50 rounded-2xl max-w-md w-full p-6 relative shadow-2xl max-h-[90vh] overflow-y-auto">
             <button onclick="cerrarModal('modal-hamburguesas')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">✕</button>
-            <h3 class="text-2xl font-black text-red-400 mb-4 border-b border-gray-800 pb-2">🍔 Opciones de Hamburguesas</h3>
+            <h3 class="text-2xl font-black text-red-400 mb-4 border-b border-gray-800 pb-2">🍔 Hamburguesas</h3>
             <div class="space-y-3">
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
-                    <span class="font-bold text-white text-sm">Clásica (Carne o Pollo)</span>
-                    <button onclick="pedirWhatsApp('Hamburguesa Clásica', '7.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 7.00 - Pedir</button>
+                    <span class="font-bold text-white text-sm">Clásica (Carne/Pollo)</span>
+                    <button onclick="agregarAlCarrito('Hamburguesa Clásica', 7.00); cerrarModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 7.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white text-sm">Clásica Casera</span>
-                    <button onclick="pedirWhatsApp('Hamburguesa Clásica Casera', '10.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 10.00 - Pedir</button>
+                    <button onclick="agregarAlCarrito('Hamburguesa Clásica Casera', 10.00); cerrarModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 10.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white text-sm">Royal (Huevo + Queso)</span>
-                    <button onclick="pedirWhatsApp('Hamburguesa Royal', '11.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 11.00 - Pedir</button>
+                    <button onclick="agregarAlCarrito('Hamburguesa Royal', 11.00); cerrarModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 11.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
-                    <span class="font-bold text-white text-sm">Royale Casera (Carne + Queso + Huevo)</span>
-                    <button onclick="pedirWhatsApp('Hamburguesa Royale Casera', '15.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 15.00 - Pedir</button>
+                    <span class="font-bold text-white text-sm">Royale Casera</span>
+                    <button onclick="agregarAlCarrito('Hamburguesa Royale Casera', 15.00); cerrarModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 15.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
-                    <span class="font-bold text-white text-sm">A lo Pobre (Huevo + Plátano)</span>
-                    <button onclick="pedirWhatsApp('Hamburguesa A lo Pobre', '13.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 13.00 - Pedir</button>
+                    <span class="font-bold text-white text-sm">A lo Pobre</span>
+                    <button onclick="agregarAlCarrito('Hamburguesa A lo Pobre', 13.00); cerrarModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 13.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white text-sm">A lo Pobre Casera</span>
-                    <button onclick="pedirWhatsApp('Hamburguesa A lo Pobre Casera', '17.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 17.00 - Pedir</button>
+                    <button onclick="agregarAlCarrito('Hamburguesa A lo Pobre Casera', 17.00); cerrarModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 17.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white text-sm">Mixta (Huevo + Chorizo)</span>
-                    <button onclick="pedirWhatsApp('Hamburguesa Mixta', '13.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 13.00 - Pedir</button>
+                    <button onclick="agregarAlCarrito('Hamburguesa Mixta', 13.00); cerrarModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 13.00 +</button>
                 </div>
             </div>
         </div>
@@ -501,19 +534,19 @@
     <div id="modal-salchipapas" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
         <div class="bg-gray-900 border border-red-500/50 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
             <button onclick="cerrarModal('modal-salchipapas')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">✕</button>
-            <h3 class="text-2xl font-black text-red-400 mb-4 border-b border-gray-800 pb-2">🍟 Opciones de Salchipapas</h3>
+            <h3 class="text-2xl font-black text-red-400 mb-4 border-b border-gray-800 pb-2">🍟 Salchipapas</h3>
             <div class="space-y-3">
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Salchipapa Clásica</span>
-                    <button onclick="pedirWhatsApp('Salchipapa Clásica', '9.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 9.00 - Pedir</button>
+                    <button onclick="agregarAlCarrito('Salchipapa Clásica', 9.00); cerrarModal('modal-salchipapas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 9.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
-                    <span class="font-bold text-white">Salchipapa Especial (Huevo + Chorizo)</span>
-                    <button onclick="pedirWhatsApp('Salchipapa Especial', '14.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 14.00 - Pedir</button>
+                    <span class="font-bold text-white">Salchipapa Especial</span>
+                    <button onclick="agregarAlCarrito('Salchipapa Especial', 14.00); cerrarModal('modal-salchipapas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 14.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
-                    <span class="font-bold text-white">Salchipapa A lo Pobre (Huevo + Plátano)</span>
-                    <button onclick="pedirWhatsApp('Salchipapa A lo Pobre', '14.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 14.00 - Pedir</button>
+                    <span class="font-bold text-white">Salchipapa A lo Pobre</span>
+                    <button onclick="agregarAlCarrito('Salchipapa A lo Pobre', 14.00); cerrarModal('modal-salchipapas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 14.00 +</button>
                 </div>
             </div>
         </div>
@@ -523,15 +556,15 @@
     <div id="modal-alitas" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
         <div class="bg-gray-900 border border-red-500/50 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
             <button onclick="cerrarModal('modal-alitas')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">✕</button>
-            <h3 class="text-2xl font-black text-red-400 mb-4 border-b border-gray-800 pb-2">🍗 Opciones de Alitas</h3>
+            <h3 class="text-2xl font-black text-red-400 mb-4 border-b border-gray-800 pb-2">🍗 Alitas</h3>
             <div class="space-y-3">
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Alitas BBQ (6 piezas)</span>
-                    <button onclick="pedirWhatsApp('Alitas BBQ 6 piezas', '16.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 16.00 - Pedir</button>
+                    <button onclick="agregarAlCarrito('Alitas BBQ (6 piezas)', 16.00); cerrarModal('modal-alitas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 16.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Alitas Acevichadas (6 piezas)</span>
-                    <button onclick="pedirWhatsApp('Alitas Acevichadas 6 piezas', '16.00')" class="bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 16.00 - Pedir</button>
+                    <button onclick="agregarAlCarrito('Alitas Acevichadas (6 piezas)', 16.00); cerrarModal('modal-alitas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 16.00 +</button>
                 </div>
             </div>
         </div>
@@ -543,33 +576,99 @@
             <button onclick="cerrarModal('modal-combos')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">✕</button>
             <h3 class="text-2xl font-black text-amber-400 mb-4 border-b border-gray-800 pb-2">⭐ Combos El Shopa</h3>
             <div class="space-y-4">
-                <div class="bg-gray-800/80 p-3.5 rounded-xl border border-gray-700">
-                    <h4 class="font-bold text-white">Combo 1</h4>
-                    <p class="text-xs text-gray-400 mb-2">2 Piernas Broster + 1 Gordita ó Pepsi Yumbo</p>
-                    <button onclick="pedirWhatsApp('Combo 1 El Shopa', '23.00')" class="w-full bg-red-600 text-white text-xs py-2 rounded-lg font-bold">S/ 23.00 - Pedir</button>
+                <div class="bg-gray-800/80 p-3.5 rounded-xl border border-gray-700 flex justify-between items-center">
+                    <div>
+                        <h4 class="font-bold text-white">Combo 1</h4>
+                        <p class="text-xs text-gray-400">2 Piernas Broster + Gordita/Pepsi</p>
+                    </div>
+                    <button onclick="agregarAlCarrito('Combo 1 El Shopa', 23.00); cerrarModal('modal-combos');" class="bg-amber-500 hover:bg-amber-600 text-black text-xs px-3 py-1.5 rounded-lg font-bold">S/ 23.00 +</button>
                 </div>
-                <div class="bg-gray-800/80 p-3.5 rounded-xl border border-gray-700">
-                    <h4 class="font-bold text-white">Combo 2</h4>
-                    <p class="text-xs text-gray-400 mb-2">2 Encuentros Broster + 1 Gordita ó Pepsi Yumbo</p>
-                    <button onclick="pedirWhatsApp('Combo 2 El Shopa', '24.00')" class="w-full bg-red-600 text-white text-xs py-2 rounded-lg font-bold">S/ 24.00 - Pedir</button>
+                <div class="bg-gray-800/80 p-3.5 rounded-xl border border-gray-700 flex justify-between items-center">
+                    <div>
+                        <h4 class="font-bold text-white">Combo 2</h4>
+                        <p class="text-xs text-gray-400">2 Encuentros Broster + Gordita/Pepsi</p>
+                    </div>
+                    <button onclick="agregarAlCarrito('Combo 2 El Shopa', 24.00); cerrarModal('modal-combos');" class="bg-amber-500 hover:bg-amber-600 text-black text-xs px-3 py-1.5 rounded-lg font-bold">S/ 24.00 +</button>
                 </div>
-                <div class="bg-gray-800/80 p-3.5 rounded-xl border border-amber-500/40">
-                    <h4 class="font-bold text-white">Combo 3 (Familiar)</h4>
-                    <p class="text-xs text-gray-400 mb-2">2 Piernas + 2 Pechos + 1 Alita + 1 Gaseosa 1 Litro</p>
-                    <button onclick="pedirWhatsApp('Combo 3 Familiar El Shopa', '55.00')" class="w-full bg-amber-500 text-black text-xs py-2 rounded-lg font-bold">S/ 55.00 - Pedir</button>
+                <div class="bg-gray-800/80 p-3.5 rounded-xl border border-amber-500/40 flex justify-between items-center">
+                    <div>
+                        <h4 class="font-bold text-white">Combo 3 (Familiar)</h4>
+                        <p class="text-xs text-gray-400">2 Piernas + 2 Pechos + 1 Alita + Gaseosa 1L</p>
+                    </div>
+                    <button onclick="agregarAlCarrito('Combo 3 Familiar', 55.00); cerrarModal('modal-combos');" class="bg-amber-500 hover:bg-amber-600 text-black text-xs px-3 py-1.5 rounded-lg font-bold">S/ 55.00 +</button>
                 </div>
-                <div class="bg-gray-800/80 p-3.5 rounded-xl border border-gray-700">
-                    <h4 class="font-bold text-white">Combo Alitas Mix 2.0</h4>
-                    <p class="text-xs text-gray-400 mb-2">Alitas BBQ + Alitas Acevichadas + Inka Cola 1L</p>
-                    <button onclick="pedirWhatsApp('Combo Alitas Mix 2.0', '34.00')" class="w-full bg-red-600 text-white text-xs py-2 rounded-lg font-bold">S/ 34.00 - Pedir</button>
+                <div class="bg-gray-800/80 p-3.5 rounded-xl border border-gray-700 flex justify-between items-center">
+                    <div>
+                        <h4 class="font-bold text-white">Combo Alitas Mix 2.0</h4>
+                        <p class="text-xs text-gray-400">Alitas BBQ + Acevichadas + Inka 1L</p>
+                    </div>
+                    <button onclick="agregarAlCarrito('Combo Alitas Mix 2.0', 34.00); cerrarModal('modal-combos');" class="bg-amber-500 hover:bg-amber-600 text-black text-xs px-3 py-1.5 rounded-lg font-bold">S/ 34.00 +</button>
                 </div>
             </div>
         </div>
     </div>
 
 
-    <!-- Lógica Interactiva (JavaScript) -->
+    <!-- ================= BARRA Y MODAL DEL CARRITO DE COMPRAS ================= -->
+
+    <!-- Botón Flotante del Carrito (Barra Inferior) -->
+    <div id="barra-carrito" class="fixed bottom-0 left-0 right-0 bg-emerald-600 text-white p-4 shadow-2xl z-40 hidden border-t border-emerald-400/30">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🛒</span>
+                <div>
+                    <p class="font-black text-sm sm:text-base"><span id="cant-items">0</span> pedido(s) en tu carrito</p>
+                    <p class="text-xs text-emerald-100">Total aprox: <strong id="total-carrito">S/ 0.00</strong></p>
+                </div>
+            </div>
+            <button onclick="abrirModal('modal-carrito-detalle')" class="bg-black hover:bg-gray-900 text-white font-bold px-4 py-2 rounded-xl text-xs sm:text-sm transition shadow-md">
+                Ver Pedido / Enviar
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal Detalle del Carrito -->
+    <div id="modal-carrito-detalle" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
+        <div class="bg-gray-900 border border-emerald-500/50 rounded-2xl max-w-lg w-full p-6 relative shadow-2xl max-h-[90vh] overflow-y-auto flex flex-col justify-between">
+            <div>
+                <button onclick="cerrarModal('modal-carrito-detalle')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">✕</button>
+                <h3 class="text-2xl font-black text-emerald-400 mb-4 border-b border-gray-800 pb-2 flex items-center gap-2">
+                    <span>🛒</span> Tu Pedido
+                </h3>
+                
+                <div id="lista-items-carrito" class="space-y-3 mb-6 max-h-60 overflow-y-auto pr-1">
+                    <!-- Ítems dinámicos -->
+                </div>
+
+                <div class="border-t border-gray-800 pt-3 space-y-1 text-sm">
+                    <div class="flex justify-between text-gray-300">
+                        <span>Subtotal Platos:</span>
+                        <strong id="subtotal-modal">S/ 0.00</strong>
+                    </div>
+                    <div class="flex justify-between text-gray-400 text-xs">
+                        <span>Delivery (Opcional):</span>
+                        <span>+ S/ 2.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-gray-800 space-y-3">
+                <button onclick="enviarPedidoWhatsApp()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-black font-black py-3 rounded-xl text-sm transition flex justify-center items-center gap-2 shadow-lg">
+                    <span>📲</span> Enviar Pedido a WhatsApp
+                </button>
+                <button onclick="vaciarCarrito()" class="w-full bg-gray-800 hover:bg-gray-700 text-gray-400 py-2 rounded-xl text-xs font-bold transition">
+                    Vaciar Carrito
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= LÓGICA INTERACTIVA (JAVASCRIPT) ================= -->
     <script>
+        // Array para el Carrito de Compras
+        let carrito = [];
+
         function cambiarMenu(local) {
             const menuSilva = document.getElementById('menu-tio-silva');
             const menuShopa = document.getElementById('menu-el-shopa');
@@ -579,13 +678,13 @@
             if (local === 'tio-silva') {
                 menuSilva.classList.remove('hidden');
                 menuShopa.classList.add('hidden');
-                btnSilva.className = "px-4 py-2 rounded-lg text-sm font-bold bg-amber-500 text-black shadow-lg transition-all flex items-center gap-2";
-                btnShopa.className = "px-4 py-2 rounded-lg text-sm font-bold text-gray-400 hover:text-white transition-all flex items-center gap-2";
+                btnSilva.className = "px-4 py-2 rounded-lg text-xs font-black bg-amber-500 text-black shadow-md transition-all";
+                btnShopa.className = "px-4 py-2 rounded-lg text-xs font-black text-gray-400 hover:text-white transition-all";
             } else {
                 menuShopa.classList.remove('hidden');
                 menuSilva.classList.add('hidden');
-                btnShopa.className = "px-4 py-2 rounded-lg text-sm font-bold bg-red-600 text-white shadow-lg transition-all flex items-center gap-2";
-                btnSilva.className = "px-4 py-2 rounded-lg text-sm font-bold text-gray-400 hover:text-white transition-all flex items-center gap-2";
+                btnShopa.className = "px-4 py-2 rounded-lg text-xs font-black bg-red-600 text-white shadow-md transition-all";
+                btnSilva.className = "px-4 py-2 rounded-lg text-xs font-black text-gray-400 hover:text-white transition-all";
             }
         }
 
@@ -597,10 +696,81 @@
             document.getElementById(idModal).classList.add('hidden');
         }
 
-        function pedirWhatsApp(nombrePlato, precio) {
+        function agregarAlCarrito(nombre, precio) {
+            const itemExistente = carrito.find(i => i.nombre === nombre);
+            if (itemExistente) {
+                itemExistente.cantidad += 1;
+            } else {
+                carrito.push({ nombre, precio, cantidad: 1 });
+            }
+            actualizarCarritoUI();
+        }
+
+        function eliminarDelCarrito(nombre) {
+            carrito = carrito.filter(i => i.nombre !== nombre);
+            actualizarCarritoUI();
+        }
+
+        function vaciarCarrito() {
+            carrito = [];
+            actualizarCarritoUI();
+            cerrarModal('modal-carrito-detalle');
+        }
+
+        function actualizarCarritoUI() {
+            const barra = document.getElementById('barra-carrito');
+            const cantItems = document.getElementById('cant-items');
+            const totalCarrito = document.getElementById('total-carrito');
+            const subtotalModal = document.getElementById('subtotal-modal');
+            const listaModal = document.getElementById('lista-items-carrito');
+
+            const totalCantidad = carrito.reduce((acc, i) => acc + i.cantidad, 0);
+            const totalMonto = carrito.reduce((acc, i) => acc + (i.precio * i.cantidad), 0);
+
+            cantItems.innerText = totalCantidad;
+            totalCarrito.innerText = `S/ ${totalMonto.toFixed(2)}`;
+            subtotalModal.innerText = `S/ ${totalMonto.toFixed(2)}`;
+
+            if (totalCantidad > 0) {
+                barra.classList.remove('hidden');
+            } else {
+                barra.classList.add('hidden');
+            }
+
+            // Renderizar Lista en Modal
+            listaModal.innerHTML = '';
+            if (carrito.length === 0) {
+                listaModal.innerHTML = `<p class="text-gray-500 text-center text-xs py-4">El carrito está vacío.</p>`;
+            } else {
+                carrito.forEach(item => {
+                    listaModal.innerHTML += `
+                        <div class="flex justify-between items-center bg-gray-800 p-3 rounded-xl border border-gray-700 text-xs">
+                            <div>
+                                <p class="font-bold text-white">${item.nombre}</p>
+                                <p class="text-gray-400">Cant: ${item.cantidad} x S/ ${item.precio.toFixed(2)} = <strong class="text-emerald-400">S/ ${(item.precio * item.cantidad).toFixed(2)}</strong></p>
+                            </div>
+                            <button onclick="eliminarDelCarrito('${item.nombre}')" class="text-red-400 hover:text-red-300 font-bold px-2 py-1">✕</button>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function enviarPedidoWhatsApp() {
+            if (carrito.length === 0) return;
+
             const telefono = "51942539346";
-            const mensaje = encodeURIComponent(`¡Hola! Quisiera consultar la disponibilidad de: *${nombrePlato}* (S/ ${precio})`);
-            window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');
+            let mensaje = "¡Hola! Quisiera realizar el siguiente pedido:\n\n";
+
+            carrito.forEach(item => {
+                mensaje += `• ${item.cantidad}x ${item.nombre} - S/ ${(item.precio * item.cantidad).toFixed(2)}\n`;
+            });
+
+            const totalMonto = carrito.reduce((acc, i) => acc + (i.precio * i.cantidad), 0);
+            mensaje += `\n*Total estimado:* S/ ${totalMonto.toFixed(2)}`;
+            mensaje += `\n*(Consultar si requiere delivery +S/2.00 o es para llevar/mesa)*`;
+
+            window.open(`https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`, '_blank');
         }
     </script>
 </body>
