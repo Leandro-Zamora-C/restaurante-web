@@ -4,28 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Librería para el Efecto Confeti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <title>El Tío Silva & Brostería El Shopa</title>
+    <style>
+        /* Animación para la Cinta Deslizable Continuous */
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-marquee {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 22s linear infinite;
+        }
+    </style>
 </head>
-<body class="bg-gray-950 text-gray-100 font-sans min-h-screen pb-24">
+<body class="bg-gray-950 text-gray-100 font-sans min-h-screen pb-24 selection:bg-amber-500 selection:text-black">
 
-    <!-- Header / Selector de Marca con Señalización -->
+    <!-- Cinta de Anuncios / Promociones en Movimiento Continuous -->
+    <div class="bg-gradient-to-r from-red-900 via-amber-800 to-red-900 text-amber-200 text-xs font-bold py-1.5 overflow-hidden border-b border-amber-500/20 shadow-md">
+        <div class="animate-marquee flex gap-8 items-center">
+            <span>🔥 ¡Sabor y Tradición Criolla & Brostería al instante!</span>
+            <span>🐔 Caldos reconfortantes y Salteados al wok en El Tío Silva</span>
+            <span>👑 Los mejores Combos Broster y Alitas Acevichadas en El Shopa</span>
+            <span>🛵 Delivery a solo S/ 2.00 adicional</span>
+            <span>🔥 ¡Haz tu pedido ahora por WhatsApp!</span>
+        </div>
+    </div>
+
+    <!-- Header / Selector de Marca con Indicador de Estado en Vivo -->
     <header class="bg-black/90 backdrop-blur-md sticky top-0 z-40 border-b border-gray-800 shadow-2xl">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
-            <div class="flex items-center gap-3">
-                <span class="text-2xl">🔥</span>
-                <h1 class="text-xl font-extrabold tracking-wide text-white">Sabor & Tradición</h1>
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-3">
+            
+            <!-- Logo + Estado en Vivo (Abierto/Cerrado) -->
+            <div class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl animate-bounce">🔥</span>
+                    <h1 class="text-xl font-extrabold tracking-wide text-white">Sabor & Tradición</h1>
+                </div>
+                <!-- Badge de Estado en Tiempo Real -->
+                <div id="badge-estado-local" class="px-3 py-1 rounded-full text-xs font-black shadow-inner flex items-center gap-1.5 transition-all">
+                    <!-- Se calcula dinámicamente con JS -->
+                </div>
             </div>
             
             <!-- Indicador de Navegación + Botones Switch -->
-            <div class="flex flex-col items-center sm:items-end gap-1">
+            <div class="flex flex-col items-center md:items-end gap-1">
                 <span class="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1 animate-pulse">
                     👇 Selecciona la carta a ver aquí:
                 </span>
-                <div class="flex bg-gray-900 p-1.5 rounded-xl border-2 border-amber-500/50 shadow-lg">
-                    <button onclick="cambiarMenu('tio-silva')" id="btn-silva" class="px-4 py-2 rounded-lg text-xs font-black bg-amber-500 text-black shadow-md transition-all">
+                <div class="flex bg-gray-900 p-1.5 rounded-xl border-2 border-amber-500/50 shadow-xl">
+                    <button onclick="cambiarMenu('tio-silva')" id="btn-silva" class="px-4 py-2 rounded-lg text-xs font-black bg-amber-500 text-black shadow-lg transition-all transform active:scale-95">
                         🐔 EL TÍO SILVA
                     </button>
-                    <button onclick="cambiarMenu('el-shopa')" id="btn-shopa" class="px-4 py-2 rounded-lg text-xs font-black text-gray-400 hover:text-white transition-all">
+                    <button onclick="cambiarMenu('el-shopa')" id="btn-shopa" class="px-4 py-2 rounded-lg text-xs font-black text-gray-400 hover:text-white transition-all transform active:scale-95">
                         👑 BROSTERÍA EL SHOPA
                     </button>
                 </div>
@@ -40,25 +73,25 @@
         <section id="menu-tio-silva" class="block space-y-6">
             
             <!-- Banner / Header de Marca -->
-            <div class="bg-gradient-to-r from-amber-600 via-orange-600 to-red-700 p-6 rounded-2xl shadow-xl border border-amber-500/30 text-white flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="flex items-center gap-4">
-                    <img src="logo-silva.jpeg" alt="Logo El Tío Silva" class="w-20 h-20 rounded-full object-cover border-2 border-amber-300/40 shadow-lg">
+            <div class="bg-gradient-to-r from-amber-600 via-orange-600 to-red-700 p-6 rounded-2xl shadow-xl border border-amber-500/30 text-white flex flex-col md:flex-row justify-between items-center gap-6 relative overflow-hidden">
+                <div class="flex items-center gap-4 relative z-10">
+                    <img src="logo-silva.jpeg" alt="Logo El Tío Silva" class="w-20 h-20 rounded-full object-cover border-2 border-amber-300/40 shadow-xl transition transform hover:scale-110 duration-300">
                     <div>
-                        <h2 class="text-3xl font-black tracking-tight">EL TÍO SILVA</h2>
+                        <h2 class="text-3xl font-black tracking-tight drop-shadow-md">EL TÍO SILVA</h2>
                         <p class="text-amber-100 text-sm mt-1">Los mejores salteados, platos criollos y caldos reconfortantes.</p>
                     </div>
                 </div>
-                <div class="flex gap-2">
-                    <span class="bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10">Yape / Plin</span>
-                    <span class="bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10">Efectivo</span>
+                <div class="flex gap-2 relative z-10">
+                    <span class="bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10 backdrop-blur-md">Yape / Plin</span>
+                    <span class="bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10 backdrop-blur-md">Efectivo</span>
                 </div>
             </div>
 
             <!-- Avisos e Información Importante -->
-            <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 flex flex-col sm:flex-row justify-between items-center gap-3 text-center sm:text-left">
+            <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 flex flex-col sm:flex-row justify-between items-center gap-3 text-center sm:text-left shadow-md">
                 <div class="text-xs sm:text-sm text-amber-200 space-y-1">
                     <p>📌 <strong>Nota:</strong> Los precios mostrados son referenciales en mesa. Consultar por WhatsApp los precios para llevar.</p>
-                    <p>🛵 <strong>Servicio Delivery:</strong> Delivery de pedidos Consultar por WhatsApp el costo adicional.</p>
+                    <p>🛵 <strong>Servicio Delivery:</strong> Delivery de pedidos S/ 2.00 adicional.</p>
                 </div>
             </div>
 
@@ -69,96 +102,120 @@
                 </h3>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     
-                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/50 transition shadow-lg flex flex-col justify-between">
-                        <img src="lomo-pobre.jpg" alt="Lomo Saltado a lo Pobre" class="w-full h-48 object-cover">
+                    <!-- Tarjeta 3D / Hover Sensible 1 -->
+                    <div class="group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/80 transition-all duration-300 shadow-lg hover:shadow-amber-500/20 hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between relative">
+                        <div class="absolute top-3 right-3 z-10 bg-amber-500 text-black text-[10px] font-black px-2.5 py-1 rounded-full shadow-md animate-pulse">
+                            🔥 MÁS PEDIDO
+                        </div>
+                        <div class="overflow-hidden h-48">
+                            <img src="lomo-pobre.jpg" alt="Lomo Saltado a lo Pobre" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
                         <div class="p-4 flex-1 flex flex-col justify-between">
                             <div>
-                                <h4 class="font-bold text-white text-lg">Lomo Saltado a lo Pobre</h4>
+                                <h4 class="font-bold text-white text-lg group-hover:text-amber-400 transition">Lomo Saltado a lo Pobre</h4>
                                 <p class="text-xs text-gray-400 mt-1">Carne salteada, papas, arroz, huevo frito y plátano.</p>
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-amber-400 font-black text-xl">S/ 19.00</span>
-                                <button onclick="agregarAlCarrito('Lomo Saltado a lo Pobre (El Tío Silva)', 19.00)" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1">
+                                <button onclick="agregarAlCarrito('Lomo Saltado a lo Pobre (El Tío Silva)', 19.00, event)" class="bg-amber-500 hover:bg-amber-400 text-black px-4 py-2 rounded-xl text-xs font-black transition-all shadow-md active:scale-90 flex items-center gap-1">
                                     🛒 Agregar +
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/50 transition shadow-lg flex flex-col justify-between">
-                        <img src="lomo-saltado.jpg" alt="Lomo Saltado" class="w-full h-48 object-cover">
+                    <!-- Tarjeta 3D 2 -->
+                    <div class="group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/80 transition-all duration-300 shadow-lg hover:shadow-amber-500/20 hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
+                        <div class="overflow-hidden h-48">
+                            <img src="lomo-saltado.jpg" alt="Lomo Saltado" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
                         <div class="p-4 flex-1 flex flex-col justify-between">
                             <div>
-                                <h4 class="font-bold text-white text-lg">Lomo Saltado (Carne)</h4>
+                                <h4 class="font-bold text-white text-lg group-hover:text-amber-400 transition">Lomo Saltado (Carne)</h4>
                                 <p class="text-xs text-gray-400 mt-1">Jugosos trozos de carne fritos con cebolla y tomate.</p>
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-amber-400 font-black text-xl">S/ 15.00</span>
-                                <button onclick="agregarAlCarrito('Lomo Saltado Carne (El Tío Silva)', 15.00)" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1">
+                                <button onclick="agregarAlCarrito('Lomo Saltado Carne (El Tío Silva)', 15.00, event)" class="bg-amber-500 hover:bg-amber-400 text-black px-4 py-2 rounded-xl text-xs font-black transition-all shadow-md active:scale-90 flex items-center gap-1">
                                     🛒 Agregar +
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/50 transition shadow-lg flex flex-col justify-between">
-                        <img src="tallarin-saltado.jpg" alt="Tallarín Saltado" class="w-full h-48 object-cover">
+                    <!-- Tarjeta 3D 3 -->
+                    <div class="group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/80 transition-all duration-300 shadow-lg hover:shadow-amber-500/20 hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
+                        <div class="overflow-hidden h-48">
+                            <img src="tallarin-saltado.jpg" alt="Tallarín Saltado" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
                         <div class="p-4 flex-1 flex flex-col justify-between">
                             <div>
-                                <h4 class="font-bold text-white text-lg">Tallarín Saltado (Carne)</h4>
+                                <h4 class="font-bold text-white text-lg group-hover:text-amber-400 transition">Tallarín Saltado (Carne)</h4>
                                 <p class="text-xs text-gray-400 mt-1">Fideos salteados al wok con verduras y carne.</p>
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-amber-400 font-black text-xl">S/ 15.00</span>
-                                <button onclick="agregarAlCarrito('Tallarín Saltado Carne (El Tío Silva)', 15.00)" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1">
+                                <button onclick="agregarAlCarrito('Tallarín Saltado Carne (El Tío Silva)', 15.00, event)" class="bg-amber-500 hover:bg-amber-400 text-black px-4 py-2 rounded-xl text-xs font-black transition-all shadow-md active:scale-90 flex items-center gap-1">
                                     🛒 Agregar +
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/50 transition shadow-lg flex flex-col justify-between">
-                        <img src="chaufa.jpg" alt="Chaufa" class="w-full h-48 object-cover">
+                    <!-- Tarjeta 3D 4 -->
+                    <div class="group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/80 transition-all duration-300 shadow-lg hover:shadow-amber-500/20 hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
+                        <div class="overflow-hidden h-48">
+                            <img src="chaufa.jpg" alt="Chaufa" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
                         <div class="p-4 flex-1 flex flex-col justify-between">
                             <div>
-                                <h4 class="font-bold text-white text-lg">Chaufa</h4>
-                                <p class="text-xs text-gray-400 mt-1">Arroz chaufa con trozos de pollo y cebollita china.</p>
+                                <h4 class="font-bold text-white text-lg group-hover:text-amber-400 transition">Chaufa</h4>
+                                <p class="text-xs text-gray-400 mt-1">Arroz chaufa con trozos de carne y cebollita china.</p>
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-amber-400 font-black text-xl">S/ 13.00</span>
-                                <button onclick="agregarAlCarrito('Chaufa (El Tío Silva)', 13.00)" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1">
+                                <button onclick="agregarAlCarrito('Chaufa (El Tío Silva)', 13.00, event)" class="bg-amber-500 hover:bg-amber-400 text-black px-4 py-2 rounded-xl text-xs font-black transition-all shadow-md active:scale-90 flex items-center gap-1">
                                     🛒 Agregar +
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/50 transition shadow-lg flex flex-col justify-between">
-                        <img src="caldo-gallina.jpg" alt="Caldo de Gallina" class="w-full h-48 object-cover">
+                    <!-- Tarjeta 3D 5 -->
+                    <div class="group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/80 transition-all duration-300 shadow-lg hover:shadow-amber-500/20 hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between relative">
+                        <div class="absolute top-3 right-3 z-10 bg-orange-500 text-black text-[10px] font-black px-2.5 py-1 rounded-full shadow-md">
+                            ⭐ CLÁSICO
+                        </div>
+                        <div class="overflow-hidden h-48">
+                            <img src="caldo-gallina.jpg" alt="Caldo de Gallina" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
                         <div class="p-4 flex-1 flex flex-col justify-between">
                             <div>
-                                <h4 class="font-bold text-white text-lg">Caldo de Gallina</h4>
+                                <h4 class="font-bold text-white text-lg group-hover:text-amber-400 transition">Caldo de Gallina</h4>
                                 <p class="text-xs text-gray-400 mt-1">Caldo reconfortante con fideos, presa y huevo.</p>
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-amber-400 font-black text-xl">S/ 11.00</span>
-                                <button onclick="agregarAlCarrito('Caldo de Gallina (El Tío Silva)', 11.00)" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1">
+                                <button onclick="agregarAlCarrito('Caldo de Gallina (El Tío Silva)', 11.00, event)" class="bg-amber-500 hover:bg-amber-400 text-black px-4 py-2 rounded-xl text-xs font-black transition-all shadow-md active:scale-90 flex items-center gap-1">
                                     🛒 Agregar +
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/50 transition shadow-lg flex flex-col justify-between">
-                        <img src="bisteck-pobre.jpg" alt="Bisteck a lo Pobre" class="w-full h-48 object-cover">
+                    <!-- Tarjeta 3D 6 -->
+                    <div class="group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/80 transition-all duration-300 shadow-lg hover:shadow-amber-500/20 hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
+                        <div class="overflow-hidden h-48">
+                            <img src="bisteck-pobre.jpg" alt="Bisteck a lo Pobre" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
                         <div class="p-4 flex-1 flex flex-col justify-between">
                             <div>
-                                <h4 class="font-bold text-white text-lg">Bisteck a lo Pobre</h4>
+                                <h4 class="font-bold text-white text-lg group-hover:text-amber-400 transition">Bisteck a lo Pobre</h4>
                                 <p class="text-xs text-gray-400 mt-1">Bisteck jugoso con papas, arroz, huevo y plátano.</p>
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-amber-400 font-black text-xl">S/ 17.00</span>
-                                <button onclick="agregarAlCarrito('Bisteck a lo Pobre (El Tío Silva)', 17.00)" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1">
+                                <button onclick="agregarAlCarrito('Bisteck a lo Pobre (El Tío Silva)', 17.00, event)" class="bg-amber-500 hover:bg-amber-400 text-black px-4 py-2 rounded-xl text-xs font-black transition-all shadow-md active:scale-90 flex items-center gap-1">
                                     🛒 Agregar +
                                 </button>
                             </div>
@@ -174,68 +231,68 @@
                     <span>🔥</span> Extras
                 </h3>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <h4 class="font-bold text-white">Aeropuerto de Pollo</h4>
                             <span class="text-amber-400 font-bold block mt-1">S/ 14.00</span>
                         </div>
-                        <button onclick="agregarAlCarrito('Aeropuerto de Pollo (El Tío Silva)', 14.00)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
+                        <button onclick="agregarAlCarrito('Aeropuerto de Pollo (El Tío Silva)', 14.00, event)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <h4 class="font-bold text-white">Aeropuerto de Carne</h4>
                             <span class="text-amber-400 font-bold block mt-1">S/ 15.00</span>
                         </div>
-                        <button onclick="agregarAlCarrito('Aeropuerto de Carne (El Tío Silva)', 15.00)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
+                        <button onclick="agregarAlCarrito('Aeropuerto de Carne (El Tío Silva)', 15.00, event)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <h4 class="font-bold text-white">Pollo Saltado</h4>
                             <span class="text-amber-400 font-bold block mt-1">S/ 14.00</span>
                         </div>
-                        <button onclick="agregarAlCarrito('Pollo Saltado (El Tío Silva)', 14.00)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
+                        <button onclick="agregarAlCarrito('Pollo Saltado (El Tío Silva)', 14.00, event)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <h4 class="font-bold text-white">Churrasco a lo Pobre</h4>
                             <span class="text-amber-400 font-bold block mt-1">S/ 17.00</span>
                         </div>
-                        <button onclick="agregarAlCarrito('Churrasco a lo Pobre (El Tío Silva)', 17.00)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
+                        <button onclick="agregarAlCarrito('Churrasco a lo Pobre (El Tío Silva)', 17.00, event)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <h4 class="font-bold text-white">Chuleta a lo Pobre</h4>
                             <span class="text-amber-400 font-bold block mt-1">S/ 17.00</span>
                         </div>
-                        <button onclick="agregarAlCarrito('Chuleta a lo Pobre (El Tío Silva)', 17.00)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
+                        <button onclick="agregarAlCarrito('Chuleta a lo Pobre (El Tío Silva)', 17.00, event)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <h4 class="font-bold text-white">Pechuga Dorada</h4>
                             <span class="text-amber-400 font-bold block mt-1">S/ 17.00</span>
                         </div>
-                        <button onclick="agregarAlCarrito('Pechuga Dorada (El Tío Silva)', 17.00)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
+                        <button onclick="agregarAlCarrito('Pechuga Dorada (El Tío Silva)', 17.00, event)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <h4 class="font-bold text-white">Pechuga a lo Pobre</h4>
                             <span class="text-amber-400 font-bold block mt-1">S/ 20.00</span>
                         </div>
-                        <button onclick="agregarAlCarrito('Pechuga a lo Pobre (El Tío Silva)', 20.00)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
+                        <button onclick="agregarAlCarrito('Pechuga a lo Pobre (El Tío Silva)', 20.00, event)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <h4 class="font-bold text-white">Tallarín Saltado de Pollo</h4>
                             <span class="text-amber-400 font-bold block mt-1">S/ 14.00</span>
                         </div>
-                        <button onclick="agregarAlCarrito('Tallarín Saltado Pollo (El Tío Silva)', 14.00)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
+                        <button onclick="agregarAlCarrito('Tallarín Saltado Pollo (El Tío Silva)', 14.00, event)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <h4 class="font-bold text-white">Milanesa a lo Pobre</h4>
                             <span class="text-amber-400 font-bold block mt-1">S/ 15.00</span>
                         </div>
-                        <button onclick="agregarAlCarrito('Milanesa a lo Pobre (El Tío Silva)', 15.00)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
+                        <button onclick="agregarAlCarrito('Milanesa a lo Pobre (El Tío Silva)', 15.00, event)" class="bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
                 </div>
             </div>
@@ -246,23 +303,23 @@
                     <span>🥤</span> Bebidas
                 </h3>
                 <div class="grid sm:grid-cols-3 gap-6">
-                    <div class="bg-gray-900 p-5 rounded-2xl border border-gray-800 flex flex-col justify-between items-center text-center">
-                        <span class="text-4xl mb-2">🥤</span>
+                    <div class="bg-gray-900 p-5 rounded-2xl border border-gray-800 hover:border-amber-500/40 transition flex flex-col justify-between items-center text-center shadow-md">
+                        <span class="text-4xl mb-2 animate-bounce">🥤</span>
                         <h4 class="font-bold text-white">Chicha Morada (1 Vaso)</h4>
                         <span class="text-amber-400 font-black text-xl my-2">S/ 2.50</span>
-                        <button onclick="agregarAlCarrito('Chicha Morada Vaso (El Tío Silva)', 2.50)" class="w-full bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 py-2 rounded-xl text-xs font-bold transition">Agregar +</button>
+                        <button onclick="agregarAlCarrito('Chicha Morada Vaso (El Tío Silva)', 2.50, event)" class="w-full bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 py-2 rounded-xl text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-5 rounded-2xl border border-gray-800 flex flex-col justify-between items-center text-center">
-                        <span class="text-4xl mb-2">🏺</span>
+                    <div class="bg-gray-900 p-5 rounded-2xl border border-gray-800 hover:border-amber-500/40 transition flex flex-col justify-between items-center text-center shadow-md">
+                        <span class="text-4xl mb-2 animate-bounce">🏺</span>
                         <h4 class="font-bold text-white">Chicha Morada (1/2 Litro)</h4>
                         <span class="text-amber-400 font-black text-xl my-2">S/ 7.00</span>
-                        <button onclick="agregarAlCarrito('Chicha Morada 1/2L (El Tío Silva)', 7.00)" class="w-full bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 py-2 rounded-xl text-xs font-bold transition">Agregar +</button>
+                        <button onclick="agregarAlCarrito('Chicha Morada 1/2L (El Tío Silva)', 7.00, event)" class="w-full bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 py-2 rounded-xl text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-5 rounded-2xl border border-gray-800 flex flex-col justify-between items-center text-center">
-                        <span class="text-4xl mb-2">🍹</span>
+                    <div class="bg-gray-900 p-5 rounded-2xl border border-gray-800 hover:border-amber-500/40 transition flex flex-col justify-between items-center text-center shadow-md">
+                        <span class="text-4xl mb-2 animate-bounce">🍹</span>
                         <h4 class="font-bold text-white">Chicha Morada (1 Litro)</h4>
                         <span class="text-amber-400 font-black text-xl my-2">S/ 10.00</span>
-                        <button onclick="agregarAlCarrito('Chicha Morada 1L (El Tío Silva)', 10.00)" class="w-full bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 py-2 rounded-xl text-xs font-bold transition">Agregar +</button>
+                        <button onclick="agregarAlCarrito('Chicha Morada 1L (El Tío Silva)', 10.00, event)" class="w-full bg-amber-500/20 hover:bg-amber-500 text-amber-400 hover:text-black border border-amber-500/40 py-2 rounded-xl text-xs font-bold transition">Agregar +</button>
                     </div>
                 </div>
             </div>
@@ -273,23 +330,23 @@
         <section id="menu-el-shopa" class="hidden space-y-6">
             
             <!-- Banner / Header de Marca -->
-            <div class="bg-gradient-to-r from-red-700 via-red-800 to-orange-700 p-6 rounded-2xl shadow-xl border border-red-500/30 text-white flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="flex items-center gap-4">
-                    <img src="logo-shopa.jpeg" alt="Logo Brostería El Shopa" class="w-20 h-20 rounded-full object-cover border-2 border-red-300/40 shadow-lg">
+            <div class="bg-gradient-to-r from-red-700 via-red-800 to-orange-700 p-6 rounded-2xl shadow-xl border border-red-500/30 text-white flex flex-col md:flex-row justify-between items-center gap-6 relative overflow-hidden">
+                <div class="flex items-center gap-4 relative z-10">
+                    <img src="logo-shopa.jpeg" alt="Logo Brostería El Shopa" class="w-20 h-20 rounded-full object-cover border-2 border-red-300/40 shadow-xl transition transform hover:scale-110 duration-300">
                     <div>
-                        <h2 class="text-3xl font-black tracking-tight">BROSTERÍA EL SHOPA</h2>
+                        <h2 class="text-3xl font-black tracking-tight drop-shadow-md">BROSTERÍA EL SHOPA</h2>
                         <p class="text-red-100 text-sm mt-1">El mejor pollo broaster, salchipapas, hamburguesas, alitas y combos.</p>
                     </div>
                 </div>
-                <div class="flex gap-2">
-                    <span class="bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10">Yape / Plin</span>
-                    <span class="bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10">Interbank</span>
-                    <span class="bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10">Agora</span>
+                <div class="flex gap-2 relative z-10">
+                    <span class="bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10 backdrop-blur-md">Yape / Plin</span>
+                    <span class="bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10 backdrop-blur-md">Interbank</span>
+                    <span class="bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10 backdrop-blur-md">Agora</span>
                 </div>
             </div>
 
             <!-- Avisos e Información Importante -->
-            <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-4 flex flex-col sm:flex-row justify-between items-center gap-3 text-center sm:text-left">
+            <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-4 flex flex-col sm:flex-row justify-between items-center gap-3 text-center sm:text-left shadow-md">
                 <div class="text-xs sm:text-sm text-red-200 space-y-1">
                     <p>📌 <strong>Nota:</strong> Los precios mostrados son referenciales en mesa. Consultar por WhatsApp los precios para llevar.</p>
                     <p>🛵 <strong>Servicio Delivery:</strong> Delivery de pedidos S/ 2.00 adicional.</p>
@@ -303,95 +360,108 @@
                 </h3>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     
-                    <!-- Tarjeta 1: Pollo Broaster -->
-                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 transition shadow-lg flex flex-col justify-between">
-                        <img src="pollo broaster.jpg" alt="Pollo Broaster" class="w-full h-48 object-cover">
+                    <!-- Tarjeta 3D 1: Pollo Broaster -->
+                    <div class="group bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 transition-all duration-300 shadow-lg hover:shadow-red-500/20 hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between relative">
+                        <div class="absolute top-3 right-3 z-10 bg-red-600 text-white text-[10px] font-black px-2.5 py-1 rounded-full shadow-md animate-pulse">
+                            🔥 EL REY BROSTER
+                        </div>
+                        <div class="overflow-hidden h-48">
+                            <img src="pollo broaster.jpg" alt="Pollo Broaster" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
                         <div class="p-4 flex-1 flex flex-col justify-between">
                             <div>
-                                <h4 class="font-bold text-white text-lg">Pollo Broaster</h4>
+                                <h4 class="font-bold text-white text-lg group-hover:text-red-400 transition">Pollo Broaster</h4>
                                 <p class="text-xs text-gray-400 mt-1">Crujiente pollo broaster (Alita, Encuentro, Pierna, Pecho).</p>
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-red-400 font-black text-xl">Desde S/ 10.00</span>
-                                <button onclick="abrirModal('modal-broaster')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">Ver Opciones</button>
+                                <button onclick="abrirModal('modal-broaster')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-black transition-all shadow-md active:scale-95">Ver Opciones</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Tarjeta 2: Salchibroaster -->
-                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 transition shadow-lg flex flex-col justify-between">
-                        <img src="salchibroaster.jpg" alt="Salchibroaster" class="w-full h-48 object-cover">
+                    <!-- Tarjeta 3D 2: Salchibroaster -->
+                    <div class="group bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 transition-all duration-300 shadow-lg hover:shadow-red-500/20 hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
+                        <div class="overflow-hidden h-48">
+                            <img src="salchibroaster.jpg" alt="Salchibroaster" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
                         <div class="p-4 flex-1 flex flex-col justify-between">
                             <div>
-                                <h4 class="font-bold text-white text-lg">Salchibroaster</h4>
+                                <h4 class="font-bold text-white text-lg group-hover:text-red-400 transition">Salchibroaster</h4>
                                 <p class="text-xs text-gray-400 mt-1">Salchipapa abundante + pieza de pollo broaster a elección.</p>
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-red-400 font-black text-xl">Desde S/ 13.00</span>
-                                <button onclick="abrirModal('modal-salchibroaster')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">Ver Opciones</button>
+                                <button onclick="abrirModal('modal-salchibroaster')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-black transition-all shadow-md active:scale-95">Ver Opciones</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Tarjeta 3: Hamburguesas -->
-                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 transition shadow-lg flex flex-col justify-between">
-                        <img src="hamburguesa.jpg" alt="Hamburguesas" class="w-full h-48 object-cover">
+                    <!-- Tarjeta 3D 3: Hamburguesas -->
+                    <div class="group bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 transition-all duration-300 shadow-lg hover:shadow-red-500/20 hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
+                        <div class="overflow-hidden h-48">
+                            <img src="hamburguesa.jpg" alt="Hamburguesas" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
                         <div class="p-4 flex-1 flex flex-col justify-between">
                             <div>
-                                <h4 class="font-bold text-white text-lg">Hamburguesas</h4>
+                                <h4 class="font-bold text-white text-lg group-hover:text-red-400 transition">Hamburguesas</h4>
                                 <p class="text-xs text-gray-400 mt-1">Clásicas, Caseras, Royal, A lo Pobre y Mixta.</p>
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-red-400 font-black text-xl">Desde S/ 7.00</span>
-                                <button onclick="abrirModal('modal-hamburguesas')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">Ver Opciones</button>
+                                <button onclick="abrirModal('modal-hamburguesas')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-black transition-all shadow-md active:scale-95">Ver Opciones</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Tarjeta 4: Salchipapas -->
-                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 transition shadow-lg flex flex-col justify-between">
-                        <img src="salchipapas.png" alt="Salchipapas" class="w-full h-48 object-cover">
+                    <!-- Tarjeta 3D 4: Salchipapas -->
+                    <div class="group bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 transition-all duration-300 shadow-lg hover:shadow-red-500/20 hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
+                        <div class="overflow-hidden h-48">
+                            <img src="salchipapas.png" alt="Salchipapas" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
                         <div class="p-4 flex-1 flex flex-col justify-between">
                             <div>
-                                <h4 class="font-bold text-white text-lg">Salchipapas</h4>
+                                <h4 class="font-bold text-white text-lg group-hover:text-red-400 transition">Salchipapas</h4>
                                 <p class="text-xs text-gray-400 mt-1">Clásica, Especial (Huevo + Chorizo) y A lo Pobre.</p>
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-red-400 font-black text-xl">Desde S/ 9.00</span>
-                                <button onclick="abrirModal('modal-salchipapas')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">Ver Opciones</button>
+                                <button onclick="abrirModal('modal-salchipapas')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-black transition-all shadow-md active:scale-95">Ver Opciones</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Tarjeta 5: Alitas BBQ / Acevichadas -->
-                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 transition shadow-lg flex flex-col justify-between">
-                        <img src="combo de alitas.jpeg" alt="Alitas BBQ y Acevichadas" class="w-full h-48 object-cover">
+                    <!-- Tarjeta 3D 5: Alitas BBQ / Acevichadas -->
+                    <div class="group bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 transition-all duration-300 shadow-lg hover:shadow-red-500/20 hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
+                        <div class="overflow-hidden h-48">
+                            <img src="combo de alitas.jpeg" alt="Alitas BBQ y Acevichadas" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
                         <div class="p-4 flex-1 flex flex-col justify-between">
                             <div>
-                                <h4 class="font-bold text-white text-lg">Alitas BBQ / Acevichadas</h4>
+                                <h4 class="font-bold text-white text-lg group-hover:text-red-400 transition">Alitas BBQ / Acevichadas</h4>
                                 <p class="text-xs text-gray-400 mt-1">Porciones individuales y combos de alitas con gaseosa.</p>
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-red-400 font-black text-xl">Desde S/ 16.00</span>
-                                <button onclick="abrirModal('modal-alitas')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">Ver Opciones</button>
+                                <button onclick="abrirModal('modal-alitas')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-black transition-all shadow-md active:scale-95">Ver Opciones</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Tarjeta 6: Combos El Shopa -->
-                    <div class="bg-gray-900 rounded-2xl overflow-hidden border border-amber-500/40 hover:border-amber-400 transition shadow-lg flex flex-col justify-between">
-                        <div class="bg-gradient-to-br from-red-600 to-amber-600 h-48 flex flex-col justify-center items-center text-center p-4">
-                            <span class="text-5xl mb-2">⭐</span>
-                            <span class="bg-black/40 text-amber-300 text-xs font-black px-3 py-1 rounded-full uppercase border border-amber-300/30">Promociones</span>
+                    <!-- Tarjeta 3D 6: Combos El Shopa -->
+                    <div class="group bg-gray-900 rounded-2xl overflow-hidden border border-amber-500/40 hover:border-amber-400 transition-all duration-300 shadow-lg hover:shadow-amber-500/20 hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
+                        <div class="bg-gradient-to-br from-red-600 to-amber-600 h-48 flex flex-col justify-center items-center text-center p-4 relative overflow-hidden">
+                            <span class="text-5xl mb-2 animate-bounce">⭐</span>
+                            <span class="bg-black/40 text-amber-300 text-xs font-black px-3 py-1 rounded-full uppercase border border-amber-300/30 backdrop-blur-md">Promociones Especiales</span>
                         </div>
                         <div class="p-4 flex-1 flex flex-col justify-between">
                             <div>
-                                <h4 class="font-bold text-white text-lg">Combos El Shopa</h4>
+                                <h4 class="font-bold text-white text-lg group-hover:text-amber-400 transition">Combos El Shopa</h4>
                                 <p class="text-xs text-gray-400 mt-1">Combos 1, 2, 3 (Familiares) y Combo Alitas Mix 2.0.</p>
                             </div>
                             <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-800">
                                 <span class="text-amber-400 font-black text-xl">Desde S/ 23.00</span>
-                                <button onclick="abrirModal('modal-combos')" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-bold transition">Ver Opciones</button>
+                                <button onclick="abrirModal('modal-combos')" class="bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl text-xs font-black transition-all shadow-md active:scale-95">Ver Opciones</button>
                             </div>
                         </div>
                     </div>
@@ -403,33 +473,33 @@
             <div>
                 <h3 class="text-2xl font-black text-red-400 mb-6 border-b border-red-500/30 pb-2">🥤 Bebidas</h3>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-red-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <span class="text-white font-bold block text-sm">Inka / Coca (Vidrio)</span>
                             <span class="text-red-400 font-black">S/ 2.50</span>
                         </div>
-                        <button onclick="agregarAlCarrito('Gaseosa Personal Vidrio (El Shopa)', 2.50)" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Agregar +</button>
+                        <button onclick="agregarAlCarrito('Gaseosa Personal Vidrio (El Shopa)', 2.50, event)" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-red-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <span class="text-white font-bold block text-sm">Gordita</span>
                             <span class="text-red-400 font-black">S/ 4.50</span>
                         </div>
-                        <button onclick="agregarAlCarrito('Gordita (El Shopa)', 4.50)" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Agregar +</button>
+                        <button onclick="agregarAlCarrito('Gordita (El Shopa)', 4.50, event)" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-red-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <span class="text-white font-bold block text-sm">Gaseosa 1 Litro</span>
                             <span class="text-red-400 font-black">S/ 6.00</span>
                         </div>
-                        <button onclick="agregarAlCarrito('Gaseosa 1L (El Shopa)', 6.00)" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Agregar +</button>
+                        <button onclick="agregarAlCarrito('Gaseosa 1L (El Shopa)', 6.00, event)" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-between items-center">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-red-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <span class="text-white font-bold block text-sm">Café / Infusiones</span>
                             <span class="text-red-400 font-black">S/ 3.00</span>
                         </div>
-                        <button onclick="agregarAlCarrito('Café o Infusión (El Shopa)', 3.00)" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Agregar +</button>
+                        <button onclick="agregarAlCarrito('Café o Infusión (El Shopa)', 3.00, event)" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Agregar +</button>
                     </div>
                 </div>
             </div>
@@ -448,19 +518,19 @@
             <div class="space-y-3">
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Alita Broaster</span>
-                    <button onclick="agregarAlCarrito('Alita Broaster', 10.00); cerrarModal('modal-broaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 10.00 +</button>
+                    <button onclick="agregarAlCarrito('Alita Broaster', 10.00, event); cerrarModal('modal-broaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 10.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Encuentro Broaster</span>
-                    <button onclick="agregarAlCarrito('Encuentro Broaster', 11.00); cerrarModal('modal-broaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 11.00 +</button>
+                    <button onclick="agregarAlCarrito('Encuentro Broaster', 11.00, event); cerrarModal('modal-broaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 11.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Pierna Broaster</span>
-                    <button onclick="agregarAlCarrito('Pierna Broaster', 11.00); cerrarModal('modal-broaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 11.00 +</button>
+                    <button onclick="agregarAlCarrito('Pierna Broaster', 11.00, event); cerrarModal('modal-broaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 11.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Pecho Broaster</span>
-                    <button onclick="agregarAlCarrito('Pecho Broaster', 12.00); cerrarModal('modal-broaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 12.00 +</button>
+                    <button onclick="agregarAlCarrito('Pecho Broaster', 12.00, event); cerrarModal('modal-broaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 12.00 +</button>
                 </div>
             </div>
         </div>
@@ -474,19 +544,19 @@
             <div class="space-y-3">
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Salchibroaster Alita</span>
-                    <button onclick="agregarAlCarrito('Salchibroaster Alita', 13.00); cerrarModal('modal-salchibroaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 13.00 +</button>
+                    <button onclick="agregarAlCarrito('Salchibroaster Alita', 13.00, event); cerrarModal('modal-salchibroaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 13.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Salchibroaster Encuentro</span>
-                    <button onclick="agregarAlCarrito('Salchibroaster Encuentro', 14.00); cerrarModal('modal-salchibroaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 14.00 +</button>
+                    <button onclick="agregarAlCarrito('Salchibroaster Encuentro', 14.00, event); cerrarModal('modal-salchibroaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 14.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Salchibroaster Pierna</span>
-                    <button onclick="agregarAlCarrito('Salchibroaster Pierna', 14.00); cerrarModal('modal-salchibroaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 14.00 +</button>
+                    <button onclick="agregarAlCarrito('Salchibroaster Pierna', 14.00, event); cerrarModal('modal-salchibroaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 14.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Salchibroaster Pecho</span>
-                    <button onclick="agregarAlCarrito('Salchibroaster Pecho', 15.00); cerrarModal('modal-salchibroaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 15.00 +</button>
+                    <button onclick="agregarAlCarrito('Salchibroaster Pecho', 15.00, event); cerrarModal('modal-salchibroaster');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 15.00 +</button>
                 </div>
             </div>
         </div>
@@ -500,31 +570,31 @@
             <div class="space-y-3">
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white text-sm">Clásica (Carne/Pollo)</span>
-                    <button onclick="agregarAlCarrito('Hamburguesa Clásica', 7.00); cerrarModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 7.00 +</button>
+                    <button onclick="agregarAlCarrito('Hamburguesa Clásica', 7.00, event); cerrarModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 7.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white text-sm">Clásica Casera</span>
-                    <button onclick="agregarAlCarrito('Hamburguesa Clásica Casera', 10.00); cerrarModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 10.00 +</button>
+                    <button onclick="agregarAlCarrito('Hamburguesa Clásica Casera', 10.00, event); cerrarModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 10.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white text-sm">Royal (Huevo + Queso)</span>
-                    <button onclick="agregarAlCarrito('Hamburguesa Royal', 11.00); cerrarModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 11.00 +</button>
+                    <button onclick="agregarAlCarrito('Hamburguesa Royal', 11.00, event); cerrarModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 11.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white text-sm">Royale Casera</span>
-                    <button onclick="agregarAlCarrito('Hamburguesa Royale Casera', 15.00); cerrarModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 15.00 +</button>
+                    <button onclick="agregarAlCarrito('Hamburguesa Royale Casera', 15.00, event); cerrarModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 15.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white text-sm">A lo Pobre</span>
-                    <button onclick="agregarAlCarrito('Hamburguesa A lo Pobre', 13.00); cerrarModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 13.00 +</button>
+                    <button onclick="agregarAlCarrito('Hamburguesa A lo Pobre', 13.00, event); cerrarModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 13.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white text-sm">A lo Pobre Casera</span>
-                    <button onclick="agregarAlCarrito('Hamburguesa A lo Pobre Casera', 17.00); cerrarModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 17.00 +</button>
+                    <button onclick="agregarAlCarrito('Hamburguesa A lo Pobre Casera', 17.00, event); cerrarModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 17.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white text-sm">Mixta (Huevo + Chorizo)</span>
-                    <button onclick="agregarAlCarrito('Hamburguesa Mixta', 13.00); cerrarModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 13.00 +</button>
+                    <button onclick="agregarAlCarrito('Hamburguesa Mixta', 13.00, event); cerrarModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 13.00 +</button>
                 </div>
             </div>
         </div>
@@ -538,15 +608,15 @@
             <div class="space-y-3">
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Salchipapa Clásica</span>
-                    <button onclick="agregarAlCarrito('Salchipapa Clásica', 9.00); cerrarModal('modal-salchipapas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 9.00 +</button>
+                    <button onclick="agregarAlCarrito('Salchipapa Clásica', 9.00, event); cerrarModal('modal-salchipapas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 9.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Salchipapa Especial</span>
-                    <button onclick="agregarAlCarrito('Salchipapa Especial', 14.00); cerrarModal('modal-salchipapas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 14.00 +</button>
+                    <button onclick="agregarAlCarrito('Salchipapa Especial', 14.00, event); cerrarModal('modal-salchipapas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 14.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Salchipapa A lo Pobre</span>
-                    <button onclick="agregarAlCarrito('Salchipapa A lo Pobre', 14.00); cerrarModal('modal-salchipapas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 14.00 +</button>
+                    <button onclick="agregarAlCarrito('Salchipapa A lo Pobre', 14.00, event); cerrarModal('modal-salchipapas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 14.00 +</button>
                 </div>
             </div>
         </div>
@@ -560,11 +630,11 @@
             <div class="space-y-3">
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Alitas BBQ (6 piezas)</span>
-                    <button onclick="agregarAlCarrito('Alitas BBQ (6 piezas)', 16.00); cerrarModal('modal-alitas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 16.00 +</button>
+                    <button onclick="agregarAlCarrito('Alitas BBQ (6 piezas)', 16.00, event); cerrarModal('modal-alitas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 16.00 +</button>
                 </div>
                 <div class="flex justify-between items-center bg-gray-800/80 p-3 rounded-xl">
                     <span class="font-bold text-white">Alitas Acevichadas (6 piezas)</span>
-                    <button onclick="agregarAlCarrito('Alitas Acevichadas (6 piezas)', 16.00); cerrarModal('modal-alitas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 16.00 +</button>
+                    <button onclick="agregarAlCarrito('Alitas Acevichadas (6 piezas)', 16.00, event); cerrarModal('modal-alitas');" class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold">S/ 16.00 +</button>
                 </div>
             </div>
         </div>
@@ -581,28 +651,28 @@
                         <h4 class="font-bold text-white">Combo 1</h4>
                         <p class="text-xs text-gray-400">2 Piernas Broster + Gordita/Pepsi</p>
                     </div>
-                    <button onclick="agregarAlCarrito('Combo 1 El Shopa', 23.00); cerrarModal('modal-combos');" class="bg-amber-500 hover:bg-amber-600 text-black text-xs px-3 py-1.5 rounded-lg font-bold">S/ 23.00 +</button>
+                    <button onclick="agregarAlCarrito('Combo 1 El Shopa', 23.00, event); cerrarModal('modal-combos');" class="bg-amber-500 hover:bg-amber-600 text-black text-xs px-3 py-1.5 rounded-lg font-bold">S/ 23.00 +</button>
                 </div>
                 <div class="bg-gray-800/80 p-3.5 rounded-xl border border-gray-700 flex justify-between items-center">
                     <div>
                         <h4 class="font-bold text-white">Combo 2</h4>
                         <p class="text-xs text-gray-400">2 Encuentros Broster + Gordita/Pepsi</p>
                     </div>
-                    <button onclick="agregarAlCarrito('Combo 2 El Shopa', 24.00); cerrarModal('modal-combos');" class="bg-amber-500 hover:bg-amber-600 text-black text-xs px-3 py-1.5 rounded-lg font-bold">S/ 24.00 +</button>
+                    <button onclick="agregarAlCarrito('Combo 2 El Shopa', 24.00, event); cerrarModal('modal-combos');" class="bg-amber-500 hover:bg-amber-600 text-black text-xs px-3 py-1.5 rounded-lg font-bold">S/ 24.00 +</button>
                 </div>
                 <div class="bg-gray-800/80 p-3.5 rounded-xl border border-amber-500/40 flex justify-between items-center">
                     <div>
                         <h4 class="font-bold text-white">Combo 3 (Familiar)</h4>
                         <p class="text-xs text-gray-400">2 Piernas + 2 Pechos + 1 Alita + Gaseosa 1L</p>
                     </div>
-                    <button onclick="agregarAlCarrito('Combo 3 Familiar', 55.00); cerrarModal('modal-combos');" class="bg-amber-500 hover:bg-amber-600 text-black text-xs px-3 py-1.5 rounded-lg font-bold">S/ 55.00 +</button>
+                    <button onclick="agregarAlCarrito('Combo 3 Familiar', 55.00, event); cerrarModal('modal-combos');" class="bg-amber-500 hover:bg-amber-600 text-black text-xs px-3 py-1.5 rounded-lg font-bold">S/ 55.00 +</button>
                 </div>
                 <div class="bg-gray-800/80 p-3.5 rounded-xl border border-gray-700 flex justify-between items-center">
                     <div>
                         <h4 class="font-bold text-white">Combo Alitas Mix 2.0</h4>
                         <p class="text-xs text-gray-400">Alitas BBQ + Acevichadas + Inka 1L</p>
                     </div>
-                    <button onclick="agregarAlCarrito('Combo Alitas Mix 2.0', 34.00); cerrarModal('modal-combos');" class="bg-amber-500 hover:bg-amber-600 text-black text-xs px-3 py-1.5 rounded-lg font-bold">S/ 34.00 +</button>
+                    <button onclick="agregarAlCarrito('Combo Alitas Mix 2.0', 34.00, event); cerrarModal('modal-combos');" class="bg-amber-500 hover:bg-amber-600 text-black text-xs px-3 py-1.5 rounded-lg font-bold">S/ 34.00 +</button>
                 </div>
             </div>
         </div>
@@ -610,7 +680,7 @@
 
 
     <!-- ================= BOTÓN FLOTANTE DE UBICACIÓN (GOOGLE MAPS) ================= -->
-    <a href="https://maps.app.goo.gl/K3GsnYws5ziiBqkm8" target="_blank" class="fixed bottom-20 left-4 z-40 bg-blue-600 hover:bg-blue-700 text-white font-bold px-3.5 py-2.5 rounded-full shadow-2xl border-2 border-blue-400/40 flex items-center gap-2 transition-all transform hover:scale-105 active:scale-95">
+    <a href="https://maps.app.goo.gl/K3GsnYws5ziiBqkm8" target="_blank" class="fixed bottom-20 left-4 z-40 bg-blue-600 hover:bg-blue-700 text-white font-bold px-3.5 py-2.5 rounded-full shadow-2xl border-2 border-blue-400/40 flex items-center gap-2 transition-all transform hover:scale-110 active:scale-95 animate-pulse">
         <span class="text-lg">📍</span>
         <span class="text-xs font-black tracking-wide pr-1">¿Cómo llegar?</span>
     </a>
@@ -622,13 +692,13 @@
     <div id="barra-carrito" class="fixed bottom-0 left-0 right-0 bg-emerald-600 text-white p-4 shadow-2xl z-40 hidden border-t border-emerald-400/30">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <span class="text-2xl">🛒</span>
+                <span class="text-2xl animate-bounce">🛒</span>
                 <div>
                     <p class="font-black text-sm sm:text-base"><span id="cant-items">0</span> pedido(s) en tu carrito</p>
                     <p class="text-xs text-emerald-100">Total aprox: <strong id="total-carrito">S/ 0.00</strong></p>
                 </div>
             </div>
-            <button onclick="abrirModal('modal-carrito-detalle')" class="bg-black hover:bg-gray-900 text-white font-bold px-4 py-2 rounded-xl text-xs sm:text-sm transition shadow-md">
+            <button onclick="abrirModal('modal-carrito-detalle')" class="bg-black hover:bg-gray-900 text-white font-bold px-4 py-2 rounded-xl text-xs sm:text-sm transition shadow-md active:scale-95">
                 Ver Pedido / Enviar
             </button>
         </div>
@@ -660,7 +730,7 @@
             </div>
 
             <div class="mt-6 pt-4 border-t border-gray-800 space-y-3">
-                <button onclick="enviarPedidoWhatsApp()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-black font-black py-3 rounded-xl text-sm transition flex justify-center items-center gap-2 shadow-lg">
+                <button onclick="enviarPedidoWhatsApp()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-black font-black py-3 rounded-xl text-sm transition flex justify-center items-center gap-2 shadow-lg active:scale-95">
                     <span>📲</span> Enviar Pedido a WhatsApp
                 </button>
                 <button onclick="vaciarCarrito()" class="w-full bg-gray-800 hover:bg-gray-700 text-gray-400 py-2 rounded-xl text-xs font-bold transition">
@@ -671,10 +741,36 @@
     </div>
 
 
-    <!-- ================= LÓGICA INTERACTIVA (JAVASCRIPT) ================= -->
+    <!-- ================= LÓGICA INTERACTIVA & ESTADO EN VIVO ================= -->
     <script>
-        // Array para el Carrito de Compras
         let carrito = [];
+        let estaAbiertoGlobal = true;
+
+        // Evaluación del Estado en Tiempo Real (Horario: 5:00 PM a 11:30 PM)
+        function evaluarEstadoLocal() {
+            const ahora = new Date();
+            const hora = ahora.getHours();
+            const minutos = ahora.getMinutes();
+            const tiempoEnMinutos = hora * 60 + minutos;
+
+            const inicioAbierto = 17 * 60; // 5:00 PM
+            const finAbierto = 23 * 60 + 30; // 11:30 PM
+
+            const badge = document.getElementById('badge-estado-local');
+
+            if (tiempoEnMinutos >= inicioAbierto && tiempoEnMinutos <= finAbierto) {
+                estaAbiertoGlobal = true;
+                badge.className = "px-3 py-1 rounded-full text-xs font-black bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 shadow-inner flex items-center gap-1.5 animate-pulse";
+                badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400 inline-block"></span> 🟢 ABIERTO AHORA`;
+            } else {
+                estaAbiertoGlobal = false;
+                badge.className = "px-3 py-1 rounded-full text-xs font-black bg-red-500/20 text-red-400 border border-red-500/40 shadow-inner flex items-center gap-1.5";
+                badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-red-500 inline-block"></span> 🔴 CERRADO — Abrimos a las 5:00 PM`;
+            }
+        }
+
+        // Ejecutar estado al cargar
+        evaluarEstadoLocal();
 
         function cambiarMenu(local) {
             const menuSilva = document.getElementById('menu-tio-silva');
@@ -685,13 +781,13 @@
             if (local === 'tio-silva') {
                 menuSilva.classList.remove('hidden');
                 menuShopa.classList.add('hidden');
-                btnSilva.className = "px-4 py-2 rounded-lg text-xs font-black bg-amber-500 text-black shadow-md transition-all";
-                btnShopa.className = "px-4 py-2 rounded-lg text-xs font-black text-gray-400 hover:text-white transition-all";
+                btnSilva.className = "px-4 py-2 rounded-lg text-xs font-black bg-amber-500 text-black shadow-lg transition-all transform active:scale-95";
+                btnShopa.className = "px-4 py-2 rounded-lg text-xs font-black text-gray-400 hover:text-white transition-all transform active:scale-95";
             } else {
                 menuShopa.classList.remove('hidden');
                 menuSilva.classList.add('hidden');
-                btnShopa.className = "px-4 py-2 rounded-lg text-xs font-black bg-red-600 text-white shadow-md transition-all";
-                btnSilva.className = "px-4 py-2 rounded-lg text-xs font-black text-gray-400 hover:text-white transition-all";
+                btnShopa.className = "px-4 py-2 rounded-lg text-xs font-black bg-red-600 text-white shadow-lg transition-all transform active:scale-95";
+                btnSilva.className = "px-4 py-2 rounded-lg text-xs font-black text-gray-400 hover:text-white transition-all transform active:scale-95";
             }
         }
 
@@ -703,7 +799,8 @@
             document.getElementById(idModal).classList.add('hidden');
         }
 
-        function agregarAlCarrito(nombre, precio) {
+        // Agregar al carrito con Disparo de Confeti Visual
+        function agregarAlCarrito(nombre, precio, event) {
             const itemExistente = carrito.find(i => i.nombre === nombre);
             if (itemExistente) {
                 itemExistente.cantidad += 1;
@@ -711,6 +808,20 @@
                 carrito.push({ nombre, precio, cantidad: 1 });
             }
             actualizarCarritoUI();
+
+            // Disparo de Confeti Visual
+            if (event && window.confetti) {
+                const rect = event.target.getBoundingClientRect();
+                const x = (rect.left + rect.width / 2) / window.innerWidth;
+                const y = (rect.top + rect.height / 2) / window.innerHeight;
+
+                confetti({
+                    particleCount: 25,
+                    spread: 50,
+                    origin: { x: x, y: y },
+                    colors: ['#f59e0b', '#ef4444', '#10b981']
+                });
+            }
         }
 
         function eliminarDelCarrito(nombre) {
@@ -744,7 +855,6 @@
                 barra.classList.add('hidden');
             }
 
-            // Renderizar Lista en Modal
             listaModal.innerHTML = '';
             if (carrito.length === 0) {
                 listaModal.innerHTML = `<p class="text-gray-500 text-center text-xs py-4">El carrito está vacío.</p>`;
@@ -767,7 +877,13 @@
             if (carrito.length === 0) return;
 
             const telefono = "51942539346";
-            let mensaje = "¡Hola! Quisiera realizar el siguiente pedido:\n\n";
+            let mensaje = "";
+
+            if (!estaAbiertoGlobal) {
+                mensaje += "📌 *RESERVA / PROGRAMACIÓN DE PEDIDO (Local Cerrado Actualmente)*\n\n";
+            }
+
+            mensaje += "¡Hola! Quisiera realizar el siguiente pedido:\n\n";
 
             carrito.forEach(item => {
                 mensaje += `• ${item.cantidad}x ${item.nombre} - S/ ${(item.precio * item.cantidad).toFixed(2)}\n`;
