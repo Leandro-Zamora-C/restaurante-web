@@ -41,7 +41,7 @@
             pointer-events: none;
         }
 
-        /* Transición suave para filtros */
+        /* Transición suave para filtros y búsqueda */
         .item-menu {
             transition: all 0.3s ease-in-out;
         }
@@ -51,7 +51,7 @@
             transform: scale(0.95);
         }
 
-        /* ESTILOS OPTIMIZADOS PARA MODO CLARO */
+        /* ESTILOS OPTIMIZADOS PARA MODO CLARO Y OSCURO */
         body.modo-claro {
             background-color: #f8fafc !important;
             color: #0f172a !important;
@@ -123,6 +123,11 @@
             background-color: #fef2f2 !important;
             border-color: #fecaca !important;
             color: #991b1b !important;
+        }
+        body.modo-claro .input-busqueda {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+            border-color: #cbd5e1 !important;
         }
 
         /* Efecto Ripple (Olas al presionar botones) */
@@ -203,6 +208,17 @@
     <!-- Contenido Principal -->
     <main class="max-w-6xl mx-auto px-4 pt-6">
 
+        <!-- ================= BARRA DE BÚSQUEDA EN TIEMPO REAL ================= -->
+        <div data-aos="fade-down" class="mb-6">
+            <div class="relative max-w-xl mx-auto">
+                <input type="text" id="input-buscador" oninput="filtrarPorBusqueda()" placeholder="🔍 Busca un plato o ingrediente (ej. Chaufa, Lomo, Broaster, Alitas...)" class="input-busqueda w-full bg-gray-900 text-white placeholder-gray-400 px-5 py-3.5 pl-12 rounded-2xl border-2 border-amber-500/40 focus:border-amber-500 outline-none shadow-xl transition-all text-sm font-medium">
+                <span class="absolute left-4 top-3.5 text-lg">🔍</span>
+                <button id="btn-limpiar-busqueda" onclick="limpiarBusqueda()" class="hidden absolute right-4 top-3.5 text-gray-400 hover:text-white text-xs font-bold bg-gray-800 px-2 py-1 rounded-md">
+                    ✕ Limpiar
+                </button>
+            </div>
+        </div>
+
         <!-- ================= SECCIÓN: EL TÍO SILVA ================= -->
         <section id="menu-tio-silva" class="block space-y-6">
             
@@ -215,9 +231,14 @@
                         <p class="text-amber-100 text-sm mt-1">Los mejores salteados, platos criollos y caldos reconfortantes.</p>
                     </div>
                 </div>
-                <div class="flex gap-2 relative z-10">
-                    <span class="badge-pago bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10 backdrop-blur-md text-white">Yape / Plin</span>
-                    <span class="badge-pago bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10 backdrop-blur-md text-white">Efectivo</span>
+                <!-- Métodos de Pago Interactivos -->
+                <div class="flex flex-wrap justify-center gap-2 relative z-10">
+                    <button onclick="mostrarInfoPago('Yape / Plin', 'Aceptamos transferencias por Yape o Plin al instante al momento de la entrega o pedido.', '📱')" class="btn-ripple badge-pago bg-black/40 hover:bg-amber-500 hover:text-black px-3.5 py-1.5 rounded-full text-xs font-bold border border-white/20 backdrop-blur-md text-white transition transform active:scale-95 shadow-md flex items-center gap-1">
+                        <span>📱</span> Yape / Plin
+                    </button>
+                    <button onclick="mostrarInfoPago('Efectivo', 'Aceptamos pago en efectivo contra entrega o directo en caja local.', '💵')" class="btn-ripple badge-pago bg-black/40 hover:bg-amber-500 hover:text-black px-3.5 py-1.5 rounded-full text-xs font-bold border border-white/20 backdrop-blur-md text-white transition transform active:scale-95 shadow-md flex items-center gap-1">
+                        <span>💵</span> Efectivo
+                    </button>
                 </div>
             </div>
 
@@ -505,10 +526,17 @@
                         <p class="text-red-100 text-sm mt-1">El mejor pollo broaster, salchipapas, hamburguesas, alitas y combos.</p>
                     </div>
                 </div>
-                <div class="flex gap-2 relative z-10">
-                    <span class="badge-pago bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10 backdrop-blur-md text-white">Yape / Plin</span>
-                    <span class="badge-pago bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10 backdrop-blur-md text-white">Interbank</span>
-                    <span class="badge-pago bg-black/40 px-3 py-1.5 rounded-full text-xs font-bold border border-white/10 backdrop-blur-md text-white">Agora</span>
+                <!-- Métodos de Pago Interactivos -->
+                <div class="flex flex-wrap justify-center gap-2 relative z-10">
+                    <button onclick="mostrarInfoPago('Yape / Plin', 'Aceptamos transferencias por Yape o Plin al instante al momento de la entrega o pedido.', '📱')" class="btn-ripple badge-pago bg-black/40 hover:bg-red-600 hover:text-white px-3 py-1.5 rounded-full text-xs font-bold border border-white/20 backdrop-blur-md text-white transition transform active:scale-95 shadow-md flex items-center gap-1">
+                        <span>📱</span> Yape / Plin
+                    </button>
+                    <button onclick="mostrarInfoPago('Interbank', 'Transferencias interbancarias directas o mediante código QR.', '🏦')" class="btn-ripple badge-pago bg-black/40 hover:bg-red-600 hover:text-white px-3 py-1.5 rounded-full text-xs font-bold border border-white/20 backdrop-blur-md text-white transition transform active:scale-95 shadow-md flex items-center gap-1">
+                        <span>🏦</span> Interbank
+                    </button>
+                    <button onclick="mostrarInfoPago('Agora Pay', 'Aceptamos pagos rápidos mediante la aplicación Agora Pay.', '💳')" class="btn-ripple badge-pago bg-black/40 hover:bg-red-600 hover:text-white px-3 py-1.5 rounded-full text-xs font-bold border border-white/20 backdrop-blur-md text-white transition transform active:scale-95 shadow-md flex items-center gap-1">
+                        <span>💳</span> Agora
+                    </button>
                 </div>
             </div>
 
@@ -708,10 +736,50 @@
             </div>
         </section>
 
+
+        <!-- ================= SECCIÓN GALERÍA EN MESA (PRÓXIMAMENTE) ================= -->
+        <section data-aos="fade-up" class="mt-16 pt-8 border-t border-gray-800/80">
+            <div class="text-center max-w-xl mx-auto mb-8">
+                <span class="bg-amber-500/10 text-amber-500 text-xs font-black px-3 py-1 rounded-full border border-amber-500/30 uppercase tracking-widest inline-block mb-2">📸 Experiencia Visual</span>
+                <h3 class="text-2xl font-extrabold text-white">Galería de Platos Servidos</h3>
+                <p class="text-xs text-gray-400 mt-1">Muy pronto podrás disfrutar de fotos reales de nuestra cocina en vivo.</p>
+            </div>
+
+            <div class="relative rounded-3xl overflow-hidden p-6 bg-gradient-to-br from-gray-900/90 via-black to-gray-900/90 border border-gray-800 shadow-2xl">
+                <!-- Grilla difuminada de relleno -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 filter blur-sm opacity-30 select-none pointer-events-none">
+                    <div class="h-36 bg-amber-600/30 rounded-2xl flex justify-center items-center text-4xl">🍲</div>
+                    <div class="h-36 bg-red-600/30 rounded-2xl flex justify-center items-center text-4xl">🍗</div>
+                    <div class="h-36 bg-orange-600/30 rounded-2xl flex justify-center items-center text-4xl">🍟</div>
+                    <div class="h-36 bg-yellow-600/30 rounded-2xl flex justify-center items-center text-4xl">🍔</div>
+                </div>
+
+                <!-- Overlay de Mensaje Próximamente -->
+                <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6 bg-black/40 backdrop-blur-md">
+                    <span class="text-4xl mb-3 animate-bounce">📸✨</span>
+                    <h4 class="text-xl font-black text-white">¡PRÓXIMAMENTE!</h4>
+                    <p class="text-xs text-amber-300 font-medium max-w-md mt-1">Estamos preparando una sesión fotográfica especial de nuestros salteados al wok y combos broster para que aprecies la calidad antes de pedir.</p>
+                </div>
+            </div>
+        </section>
+
     </main>
 
 
     <!-- ================= VENTANAS EMERGENTES (MODALES) ================= -->
+
+    <!-- Modal Información Métodos de Pago -->
+    <div id="modal-info-pago" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
+        <div class="bg-gray-900 border-2 border-amber-500 rounded-2xl max-w-sm w-full p-6 text-center relative shadow-2xl">
+            <button onclick="cerrarModal('modal-info-pago')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">✕</button>
+            <span id="pago-icono" class="text-5xl block mb-2">📱</span>
+            <h3 id="pago-titulo" class="text-2xl font-black text-amber-500">Método de Pago</h3>
+            <p id="pago-desc" class="text-xs text-gray-300 mt-2 mb-6">Información detallada sobre esta forma de pago.</p>
+            <button onclick="cerrarModal('modal-info-pago')" class="btn-ripple w-full bg-amber-500 hover:bg-amber-400 text-black font-black py-2.5 rounded-xl text-xs transition shadow-md">
+                ¡Entendido!
+            </button>
+        </div>
+    </div>
 
     <!-- Modal Ruleta del Sabor -->
     <div id="modal-ruleta" class="fixed inset-0 bg-black/85 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
@@ -736,7 +804,7 @@
         </div>
     </div>
 
-    <!-- Modal 1: Pollo Broaster -->
+    <!-- Modales de Productos -->
     <div id="modal-broaster" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
         <div class="bg-gray-900 border border-red-500/50 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
             <button onclick="cerrarModal('modal-broaster')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">✕</button>
@@ -762,7 +830,6 @@
         </div>
     </div>
 
-    <!-- Modal 2: Salchibroaster -->
     <div id="modal-salchibroaster" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
         <div class="bg-gray-900 border border-red-500/50 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
             <button onclick="cerrarModal('modal-salchibroaster')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">✕</button>
@@ -788,7 +855,6 @@
         </div>
     </div>
 
-    <!-- Modal 3: Hamburguesas -->
     <div id="modal-hamburguesas" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
         <div class="bg-gray-900 border border-red-500/50 rounded-2xl max-w-md w-full p-6 relative shadow-2xl max-h-[90vh] overflow-y-auto">
             <button onclick="cerrarModal('modal-hamburguesas')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">✕</button>
@@ -826,7 +892,6 @@
         </div>
     </div>
 
-    <!-- Modal 4: Salchipapas -->
     <div id="modal-salchipapas" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
         <div class="bg-gray-900 border border-red-500/50 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
             <button onclick="cerrarModal('modal-salchipapas')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">✕</button>
@@ -848,7 +913,6 @@
         </div>
     </div>
 
-    <!-- Modal 5: Alitas -->
     <div id="modal-alitas" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
         <div class="bg-gray-900 border border-red-500/50 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
             <button onclick="cerrarModal('modal-alitas')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">✕</button>
@@ -866,7 +930,6 @@
         </div>
     </div>
 
-    <!-- Modal 6: Combos El Shopa -->
     <div id="modal-combos" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
         <div class="bg-gray-900 border border-amber-500/50 rounded-2xl max-w-md w-full p-6 relative shadow-2xl max-h-[90vh] overflow-y-auto">
             <button onclick="cerrarModal('modal-combos')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl font-bold">✕</button>
@@ -940,7 +1003,7 @@
                 </h3>
                 
                 <div id="lista-items-carrito" class="space-y-3 mb-6 max-h-60 overflow-y-auto pr-1">
-                    <!-- Ítems dinámicos con controles de cantidad -->
+                    <!-- Ítems dinámicos -->
                 </div>
 
                 <div class="border-t border-gray-800 pt-3 space-y-1 text-sm">
@@ -967,7 +1030,7 @@
     </div>
 
 
-    <!-- ================= LÓGICA INTERACTIVA & EFECTOS TEMA / AUDIO ================= -->
+    <!-- ================= LÓGICA INTERACTIVA & BÚSQUEDA ================= -->
     <script>
         // Inicializar Animaciones al Hacer Scroll
         AOS.init({
@@ -1024,6 +1087,44 @@
             } catch (e) {
                 // Silencioso
             }
+        }
+
+        // Mostrar Modal con Información del Método de Pago
+        function mostrarInfoPago(titulo, desc, icono) {
+            reproducirSonido('click');
+            document.getElementById('pago-titulo').innerText = titulo;
+            document.getElementById('pago-desc').innerText = desc;
+            document.getElementById('pago-icono').innerText = icono;
+            abrirModal('modal-info-pago');
+        }
+
+        // Búsqueda Inteligente en Tiempo Real
+        function filtrarPorBusqueda() {
+            const query = document.getElementById('input-buscador').value.toLowerCase().trim();
+            const btnLimpiar = document.getElementById('btn-limpiar-busqueda');
+            const items = document.querySelectorAll('.item-menu');
+
+            if (query.length > 0) {
+                btnLimpiar.classList.remove('hidden');
+            } else {
+                btnLimpiar.classList.add('hidden');
+            }
+
+            items.forEach(item => {
+                const texto = item.innerText.toLowerCase();
+                if (texto.includes(query)) {
+                    item.classList.remove('oculto');
+                } else {
+                    item.classList.add('oculto');
+                }
+            });
+            AOS.refresh();
+        }
+
+        function limpiarBusqueda() {
+            reproducirSonido('click');
+            document.getElementById('input-buscador').value = '';
+            filtrarPorBusqueda();
         }
 
         // Switch de Modo Claro / Modo Oscuro
@@ -1110,6 +1211,8 @@
             const btnSilva = document.getElementById('btn-silva');
             const btnShopa = document.getElementById('btn-shopa');
 
+            limpiarBusqueda();
+
             if (local === 'tio-silva') {
                 menuSilva.classList.remove('hidden');
                 menuShopa.classList.add('hidden');
@@ -1127,6 +1230,7 @@
         // Filtro por Categoría (Tabs)
         function filtrarCategoria(marca, categoria, btn) {
             reproducirSonido('click');
+            limpiarBusqueda();
             const contenedor = document.getElementById(marca === 'tio-silva' ? 'menu-tio-silva' : 'menu-el-shopa');
             const items = contenedor.querySelectorAll('.item-menu');
             const botones = contenedor.querySelectorAll(marca === 'tio-silva' ? '.btn-filtro-silva' : '.btn-filtro-shopa');
