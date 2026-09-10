@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brostería El Shopa & El Tío Silva | Sabor & Tradición</title>
 
-    <!-- Meta Tags para PWA (Instalable como App en Celulares) -->
+    <!-- Meta Tags para PWA -->
     <meta name="theme-color" content="#991b1b">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -35,8 +35,29 @@
             animation: marquee 22s linear infinite;
         }
 
-        body.modo-oscuro .glow-silva:hover { box-shadow: 0 0 25px rgba(245, 158, 11, 0.4); }
-        body.modo-oscuro .glow-shopa:hover { box-shadow: 0 0 25px rgba(239, 68, 68, 0.4); }
+        /* EFECTO BORDE NEÓN EN MOVIMIENTO (GLOW LIVE) */
+        @keyframes borderGlow {
+            0% { border-color: #ef4444; box-shadow: 0 0 15px rgba(239, 68, 68, 0.5); }
+            50% { border-color: #f59e0b; box-shadow: 0 0 25px rgba(245, 158, 11, 0.8); }
+            100% { border-color: #ef4444; box-shadow: 0 0 15px rgba(239, 68, 68, 0.5); }
+        }
+        .card-destacada-neon {
+            animation: borderGlow 3s infinite linear;
+        }
+
+        /* PARTÍCULAS / CHISPAS DE FUEGO SUTILES */
+        .spark {
+            position: absolute;
+            background: radial-gradient(circle, #f59e0b 0%, #ef4444 100%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: rise 3s infinite ease-in;
+            opacity: 0.6;
+        }
+        @keyframes rise {
+            0% { transform: translateY(0) scale(1); opacity: 0.8; }
+            100% { transform: translateY(-120px) scale(0.2); opacity: 0; }
+        }
 
         @keyframes floatUp {
             0% { opacity: 1; transform: translateY(0) scale(1); }
@@ -53,6 +74,11 @@
             display: none !important;
             opacity: 0;
             transform: scale(0.95);
+        }
+
+        /* NOTIFICACIÓN TOAST */
+        #toast-notification {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
         }
 
         /* ESTILOS OPTIMIZADOS PARA MODO CLARO Y OSCURO */
@@ -89,20 +115,29 @@
         @keyframes ripple-animation { to { transform: scale(4); opacity: 0; } }
     </style>
 </head>
-<body class="modo-oscuro bg-gray-950 text-gray-100 font-sans min-h-screen pb-28 selection:bg-amber-500 selection:text-black transition-colors duration-500">
+<body class="modo-oscuro bg-gray-950 text-gray-100 font-sans min-h-screen pb-28 selection:bg-amber-500 selection:text-black transition-colors duration-500 overflow-x-hidden">
 
-    <!-- Cinta de Anuncios -->
-    <div class="cinta-top bg-gradient-to-r from-red-900 via-amber-800 to-red-900 text-amber-200 text-xs font-bold py-1.5 overflow-hidden border-b border-amber-500/20 shadow-md">
-        <div class="animate-marquee flex gap-8 items-center">
-            <span>👑 Los mejores Combos Broster y Alitas Acevichadas en El Shopa</span>
-            <span>🐔 Caldos reconfortantes y Salteados al wok en El Tío Silva</span>
-            <span>🔥 ¡Sabor y Tradición Criolla & Brostería al instante!</span>
-            <span>🛵 Delivery a solo S/ 2.00 adicional</span>
-            <span>📱 ¡Síguenos en TikTok @brosteriaelshopa!</span>
+    <!-- NOTIFICACIÓN FLOTANTE TOAST -->
+    <div id="toast-notification" class="fixed top-20 right-4 z-50 bg-gray-900 border-2 border-emerald-500 text-white px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3 transform translate-x-72 opacity-0 pointer-events-none backdrop-blur-md">
+        <span class="text-2xl animate-bounce">🛒</span>
+        <div>
+            <p id="toast-title" class="font-black text-xs text-emerald-400">¡Producto agregado!</p>
+            <p id="toast-desc" class="text-[11px] text-gray-300">Tu plato ya está en el carrito.</p>
         </div>
     </div>
 
-    <!-- Header con TikTok + Estado en Vivo + Ruleta + Switch Claro/Oscuro -->
+    <!-- Cinta de Anuncios con Indicador Social -->
+    <div class="cinta-top bg-gradient-to-r from-red-900 via-amber-800 to-red-900 text-amber-200 text-xs font-bold py-1.5 overflow-hidden border-b border-amber-500/20 shadow-md">
+        <div class="animate-marquee flex gap-8 items-center">
+            <span>🔥 +120 pedidos enviados hoy por WhatsApp</span>
+            <span>👑 Los mejores Combos Broster y Alitas Acevichadas en El Shopa</span>
+            <span>🐔 Caldos reconfortantes y Salteados al wok en El Tío Silva</span>
+            <span>🛵 Delivery a solo S/ 2.00 adicional</span>
+            <span>📱 Síguenos en TikTok @brosteriaelshopa</span>
+        </div>
+    </div>
+
+    <!-- Header Principal -->
     <header class="bg-black/90 backdrop-blur-md sticky top-0 z-40 border-b border-gray-800 shadow-2xl transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-3">
             
@@ -145,12 +180,15 @@
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 pt-6">
+    <main class="max-w-6xl mx-auto px-4 pt-6 relative">
+
+        <!-- CONTENEDOR DE CHISPAS EN VIVO -->
+        <div id="sparks-container" class="absolute inset-0 overflow-hidden pointer-events-none h-64 z-0"></div>
 
         <!-- BARRA DE BÚSQUEDA EN TIEMPO REAL -->
-        <div data-aos="fade-down" class="mb-6">
+        <div data-aos="fade-down" class="mb-6 relative z-10">
             <div class="relative max-w-xl mx-auto">
-                <input type="text" id="input-buscador" oninput="filtrarPorBusqueda()" placeholder="🔍 Busca un plato o ingrediente (ej. Broaster, Alitas, Chaufa, Lomo...)" class="input-busqueda w-full bg-gray-900 text-white placeholder-gray-400 px-5 py-3.5 pl-12 rounded-2xl border-2 border-red-500/40 focus:border-red-500 outline-none shadow-xl transition-all text-sm font-medium">
+                <input type="text" id="input-buscador" oninput="filtrarPorBusqueda()" placeholder="🔍 Busca un plato o ingrediente (ej. Broaster, Alitas, Chaufa, Lomo...)" class="input-busqueda w-full bg-gray-900/90 backdrop-blur-md text-white placeholder-gray-400 px-5 py-3.5 pl-12 rounded-2xl border-2 border-red-500/40 focus:border-red-500 outline-none shadow-xl transition-all text-sm font-medium">
                 <span class="absolute left-4 top-3.5 text-lg">🔍</span>
                 <button id="btn-limpiar-busqueda" onclick="limpiarBusqueda()" class="hidden absolute right-4 top-3.5 text-gray-400 hover:text-white text-xs font-bold bg-gray-800 px-2 py-1 rounded-md">
                     ✕ Limpiar
@@ -159,8 +197,8 @@
         </div>
 
         <!-- SECCIÓN: BROSTERÍA EL SHOPA -->
-        <section id="menu-el-shopa" class="block space-y-6">
-            <div data-aos="fade-down" class="banner-header bg-gradient-to-r from-red-700 via-red-800 to-orange-700 p-6 rounded-2xl shadow-xl border border-red-500/30 text-white flex flex-col md:flex-row justify-between items-center gap-6 relative overflow-hidden">
+        <section id="menu-el-shopa" class="block space-y-6 relative z-10">
+            <div data-aos="fade-down" class="banner-header bg-gradient-to-r from-red-700 via-red-800 to-orange-700 p-6 rounded-2xl shadow-xl border border-red-500/30 text-white flex flex-col md:flex-row justify-between items-center gap-6 relative overflow-hidden transition-transform duration-300 hover:scale-[1.01]">
                 <div class="flex items-center gap-4 relative z-10">
                     <img src="logo-shopa.jpeg" alt="Logo Brostería El Shopa" class="w-20 h-20 rounded-full object-cover border-2 border-red-300/40 shadow-xl transition transform hover:scale-110 duration-300">
                     <div>
@@ -193,9 +231,9 @@
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Tarjeta 1: Pollo Broaster -->
-                <div data-aos="fade-up" data-aos-delay="100" class="item-menu cat-pollo-broaster group bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 glow-shopa transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between relative">
-                    <div class="absolute top-3 right-3 z-10 bg-red-600 text-white text-[10px] font-black px-2.5 py-1 rounded-full shadow-md animate-pulse">🔥 EL REY BROSTER</div>
+                <!-- Tarjeta 1: Pollo Broaster (CON BORDE NEÓN EN VIVO) -->
+                <div data-aos="fade-up" data-aos-delay="100" class="item-menu cat-pollo-broaster group bg-gray-900 rounded-2xl overflow-hidden border-2 card-destacada-neon transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between relative">
+                    <div class="absolute top-3 right-3 z-10 bg-red-600 text-white text-[10px] font-black px-2.5 py-1 rounded-full shadow-md animate-bounce">🔥 EL REY BROSTER</div>
                     <div class="overflow-hidden h-48"><img src="pollo broaster.jpg" alt="Pollo Broaster" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"></div>
                     <div class="p-4 flex-1 flex flex-col justify-between">
                         <div>
@@ -213,7 +251,7 @@
                 </div>
 
                 <!-- Tarjeta 2: Salchibroaster -->
-                <div data-aos="fade-up" data-aos-delay="200" class="item-menu cat-pollo-broaster cat-salchipapas group bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 glow-shopa transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
+                <div data-aos="fade-up" data-aos-delay="200" class="item-menu cat-pollo-broaster cat-salchipapas group bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
                     <div class="overflow-hidden h-48"><img src="salchibroaster.jpg" alt="Salchibroaster" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"></div>
                     <div class="p-4 flex-1 flex flex-col justify-between">
                         <div>
@@ -231,7 +269,7 @@
                 </div>
 
                 <!-- Tarjeta 3: Hamburguesas -->
-                <div data-aos="fade-up" data-aos-delay="300" class="item-menu cat-hamburguesas group bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 glow-shopa transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
+                <div data-aos="fade-up" data-aos-delay="300" class="item-menu cat-hamburguesas group bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
                     <div class="overflow-hidden h-48"><img src="hamburguesa.jpg" alt="Hamburguesas" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"></div>
                     <div class="p-4 flex-1 flex flex-col justify-between">
                         <div>
@@ -249,7 +287,7 @@
                 </div>
 
                 <!-- Tarjeta 4: Salchipapas -->
-                <div data-aos="fade-up" data-aos-delay="100" class="item-menu cat-salchipapas group bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 glow-shopa transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
+                <div data-aos="fade-up" data-aos-delay="100" class="item-menu cat-salchipapas group bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
                     <div class="overflow-hidden h-48"><img src="salchipapas.png" alt="Salchipapas" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"></div>
                     <div class="p-4 flex-1 flex flex-col justify-between">
                         <div>
@@ -267,7 +305,7 @@
                 </div>
 
                 <!-- Tarjeta 5: Alitas BBQ / Acevichadas -->
-                <div data-aos="fade-up" data-aos-delay="200" class="item-menu cat-alitas group bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 glow-shopa transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
+                <div data-aos="fade-up" data-aos-delay="200" class="item-menu cat-alitas group bg-gray-900 rounded-2xl overflow-hidden border border-red-500/40 hover:border-red-400 transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
                     <div class="overflow-hidden h-48"><img src="combo de alitas.jpeg" alt="Alitas BBQ y Acevichadas" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"></div>
                     <div class="p-4 flex-1 flex flex-col justify-between">
                         <div>
@@ -285,7 +323,7 @@
                 </div>
 
                 <!-- Tarjeta 6: Combos El Shopa -->
-                <div data-aos="fade-up" data-aos-delay="300" class="item-menu cat-combos group bg-gray-900 rounded-2xl overflow-hidden border border-amber-500/40 hover:border-amber-400 glow-shopa transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
+                <div data-aos="fade-up" data-aos-delay="300" class="item-menu cat-combos group bg-gray-900 rounded-2xl overflow-hidden border border-amber-500/40 hover:border-amber-400 transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
                     <div class="bg-gradient-to-br from-red-600 to-amber-600 h-48 flex flex-col justify-center items-center text-center p-4 relative overflow-hidden">
                         <span class="text-5xl mb-2 animate-bounce">⭐</span>
                         <span class="bg-black/40 text-amber-300 text-xs font-black px-3 py-1 rounded-full uppercase border border-amber-300/30 backdrop-blur-md">Promociones Especiales</span>
@@ -310,28 +348,28 @@
             <div data-aos="fade-up" class="item-menu cat-bebidas">
                 <h3 class="text-2xl font-black text-red-600 dark:text-red-500 mb-6 border-b border-red-500/30 pb-2">🥤 Bebidas</h3>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-red-500/40 glow-shopa transition flex justify-between items-center shadow-md">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-red-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <span class="text-white font-bold block text-sm">Inka / Coca (Vidrio)</span>
                             <span class="text-red-600 dark:text-red-500 font-black">S/ 2.50</span>
                         </div>
                         <button onclick="agregarAlCarrito('Gaseosa Personal Vidrio (El Shopa)', 2.50, event)" class="btn-ripple bg-red-600 hover:bg-red-700 text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-red-500/40 glow-shopa transition flex justify-between items-center shadow-md">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-red-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <span class="text-white font-bold block text-sm">Gordita</span>
                             <span class="text-red-600 dark:text-red-500 font-black">S/ 4.50</span>
                         </div>
                         <button onclick="agregarAlCarrito('Gordita (El Shopa)', 4.50, event)" class="btn-ripple bg-red-600 hover:bg-red-700 text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-red-500/40 glow-shopa transition flex justify-between items-center shadow-md">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-red-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <span class="text-white font-bold block text-sm">Gaseosa 1 Litro</span>
                             <span class="text-red-600 dark:text-red-500 font-black">S/ 6.00</span>
                         </div>
                         <button onclick="agregarAlCarrito('Gaseosa 1L (El Shopa)', 6.00, event)" class="btn-ripple bg-red-600 hover:bg-red-700 text-white border border-red-500/40 px-2.5 py-1 rounded text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-red-500/40 glow-shopa transition flex justify-between items-center shadow-md">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-red-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <span class="text-white font-bold block text-sm">Café / Infusiones</span>
                             <span class="text-red-600 dark:text-red-500 font-black">S/ 3.00</span>
@@ -343,8 +381,8 @@
         </section>
 
         <!-- SECCIÓN: EL TÍO SILVA -->
-        <section id="menu-tio-silva" class="hidden space-y-6">
-            <div data-aos="fade-down" class="banner-header bg-gradient-to-r from-amber-600 via-orange-600 to-red-700 p-6 rounded-2xl shadow-xl border border-amber-500/30 text-white flex flex-col md:flex-row justify-between items-center gap-6 relative overflow-hidden">
+        <section id="menu-tio-silva" class="hidden space-y-6 relative z-10">
+            <div data-aos="fade-down" class="banner-header bg-gradient-to-r from-amber-600 via-orange-600 to-red-700 p-6 rounded-2xl shadow-xl border border-amber-500/30 text-white flex flex-col md:flex-row justify-between items-center gap-6 relative overflow-hidden transition-transform duration-300 hover:scale-[1.01]">
                 <div class="flex items-center gap-4 relative z-10">
                     <img src="logo-silva.jpeg" alt="Logo El Tío Silva" class="w-20 h-20 rounded-full object-cover border-2 border-amber-300/40 shadow-xl transition transform hover:scale-110 duration-300">
                     <div>
@@ -373,9 +411,9 @@
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Tarjeta 1: Lomo Saltado a lo Pobre -->
-                <div data-aos="fade-up" data-aos-delay="100" class="item-menu cat-principales group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/80 glow-silva transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between relative">
-                    <div class="absolute top-3 right-3 z-10 bg-amber-500 text-black text-[10px] font-black px-2.5 py-1 rounded-full shadow-md animate-pulse">🔥 MÁS PEDIDO</div>
+                <!-- Tarjeta 1: Lomo Saltado a lo Pobre (CON BORDE NEÓN EN VIVO) -->
+                <div data-aos="fade-up" data-aos-delay="100" class="item-menu cat-principales group bg-gray-900 rounded-2xl overflow-hidden border-2 card-destacada-neon transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between relative">
+                    <div class="absolute top-3 right-3 z-10 bg-amber-500 text-black text-[10px] font-black px-2.5 py-1 rounded-full shadow-md animate-bounce">🔥 MÁS PEDIDO</div>
                     <div class="overflow-hidden h-48 relative"><img src="lomo-pobre.jpg" alt="Lomo Saltado a lo Pobre" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"></div>
                     <div class="p-4 flex-1 flex flex-col justify-between">
                         <div>
@@ -393,7 +431,7 @@
                 </div>
 
                 <!-- Tarjeta 2: Lomo Saltado Carne -->
-                <div data-aos="fade-up" data-aos-delay="200" class="item-menu cat-principales group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/80 glow-silva transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
+                <div data-aos="fade-up" data-aos-delay="200" class="item-menu cat-principales group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/80 transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
                     <div class="overflow-hidden h-48"><img src="lomo-saltado.jpg" alt="Lomo Saltado" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"></div>
                     <div class="p-4 flex-1 flex flex-col justify-between">
                         <div>
@@ -411,7 +449,7 @@
                 </div>
 
                 <!-- Tarjeta 3: Tallarín Saltado -->
-                <div data-aos="fade-up" data-aos-delay="300" class="item-menu cat-principales group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/80 glow-silva transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
+                <div data-aos="fade-up" data-aos-delay="300" class="item-menu cat-principales group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/80 transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
                     <div class="overflow-hidden h-48"><img src="tallarin-saltado.jpg" alt="Tallarín Saltado" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"></div>
                     <div class="p-4 flex-1 flex flex-col justify-between">
                         <div>
@@ -429,7 +467,7 @@
                 </div>
 
                 <!-- Tarjeta 4: Chaufa -->
-                <div data-aos="fade-up" data-aos-delay="100" class="item-menu cat-principales group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/80 glow-silva transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
+                <div data-aos="fade-up" data-aos-delay="100" class="item-menu cat-principales group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/80 transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
                     <div class="overflow-hidden h-48"><img src="chaufa.jpg" alt="Chaufa" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"></div>
                     <div class="p-4 flex-1 flex flex-col justify-between">
                         <div>
@@ -447,7 +485,7 @@
                 </div>
 
                 <!-- Tarjeta 5: Caldo de Gallina -->
-                <div data-aos="fade-up" data-aos-delay="200" class="item-menu cat-principales group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/80 glow-silva transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between relative">
+                <div data-aos="fade-up" data-aos-delay="200" class="item-menu cat-principales group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/80 transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between relative">
                     <div class="absolute top-3 right-3 z-10 bg-orange-500 text-black text-[10px] font-black px-2.5 py-1 rounded-full shadow-md">⭐ CLÁSICO</div>
                     <div class="overflow-hidden h-48"><img src="caldo-gallina.jpg" alt="Caldo de Gallina" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"></div>
                     <div class="p-4 flex-1 flex flex-col justify-between">
@@ -466,7 +504,7 @@
                 </div>
 
                 <!-- Tarjeta 6: Bisteck a lo Pobre -->
-                <div data-aos="fade-up" data-aos-delay="300" class="item-menu cat-principales group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/80 glow-silva transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
+                <div data-aos="fade-up" data-aos-delay="300" class="item-menu cat-principales group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-amber-500/80 transition-all duration-300 shadow-lg hover:-translate-y-2 hover:scale-[1.02] flex flex-col justify-between">
                     <div class="overflow-hidden h-48"><img src="bisteck-pobre.jpg" alt="Bisteck a lo Pobre" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"></div>
                     <div class="p-4 flex-1 flex flex-col justify-between">
                         <div>
@@ -490,63 +528,63 @@
                     <span>🔥</span> Extras
                 </h3>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 glow-silva transition flex justify-between items-center shadow-md">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <h4 class="font-bold text-white">Aeropuerto de Pollo</h4>
                             <span class="text-amber-600 dark:text-amber-500 font-bold block mt-1">S/ 14.00</span>
                         </div>
                         <button onclick="agregarAlCarrito('Aeropuerto de Pollo (El Tío Silva)', 14.00, event)" class="btn-ripple bg-amber-500 hover:bg-amber-400 text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 glow-silva transition flex justify-between items-center shadow-md">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <h4 class="font-bold text-white">Aeropuerto de Carne</h4>
                             <span class="text-amber-600 dark:text-amber-500 font-bold block mt-1">S/ 15.00</span>
                         </div>
                         <button onclick="agregarAlCarrito('Aeropuerto de Carne (El Tío Silva)', 15.00, event)" class="btn-ripple bg-amber-500 hover:bg-amber-400 text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 glow-silva transition flex justify-between items-center shadow-md">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <h4 class="font-bold text-white">Pollo Saltado</h4>
                             <span class="text-amber-600 dark:text-amber-500 font-bold block mt-1">S/ 14.00</span>
                         </div>
                         <button onclick="agregarAlCarrito('Pollo Saltado (El Tío Silva)', 14.00, event)" class="btn-ripple bg-amber-500 hover:bg-amber-400 text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 glow-silva transition flex justify-between items-center shadow-md">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <h4 class="font-bold text-white">Churrasco a lo Pobre</h4>
                             <span class="text-amber-600 dark:text-amber-500 font-bold block mt-1">S/ 17.00</span>
                         </div>
                         <button onclick="agregarAlCarrito('Churrasco a lo Pobre (El Tío Silva)', 17.00, event)" class="btn-ripple bg-amber-500 hover:bg-amber-400 text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 glow-silva transition flex justify-between items-center shadow-md">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <h4 class="font-bold text-white">Chuleta a lo Pobre</h4>
                             <span class="text-amber-600 dark:text-amber-500 font-bold block mt-1">S/ 17.00</span>
                         </div>
                         <button onclick="agregarAlCarrito('Chuleta a lo Pobre (El Tío Silva)', 17.00, event)" class="btn-ripple bg-amber-500 hover:bg-amber-400 text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 glow-silva transition flex justify-between items-center shadow-md">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <h4 class="font-bold text-white">Pechuga Dorada</h4>
                             <span class="text-amber-600 dark:text-amber-500 font-bold block mt-1">S/ 17.00</span>
                         </div>
                         <button onclick="agregarAlCarrito('Pechuga Dorada (El Tío Silva)', 17.00, event)" class="btn-ripple bg-amber-500 hover:bg-amber-400 text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 glow-silva transition flex justify-between items-center shadow-md">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <h4 class="font-bold text-white">Pechuga a lo Pobre</h4>
                             <span class="text-amber-600 dark:text-amber-500 font-bold block mt-1">S/ 20.00</span>
                         </div>
                         <button onclick="agregarAlCarrito('Pechuga a lo Pobre (El Tío Silva)', 20.00, event)" class="btn-ripple bg-amber-500 hover:bg-amber-400 text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 glow-silva transition flex justify-between items-center shadow-md">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <h4 class="font-bold text-white">Tallarín Saltado de Pollo</h4>
                             <span class="text-amber-600 dark:text-amber-500 font-bold block mt-1">S/ 14.00</span>
                         </div>
                         <button onclick="agregarAlCarrito('Tallarín Saltado Pollo (El Tío Silva)', 14.00, event)" class="btn-ripple bg-amber-500 hover:bg-amber-400 text-black border border-amber-500/40 px-3 py-1.5 rounded-lg text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 glow-silva transition flex justify-between items-center shadow-md">
+                    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 hover:border-amber-500/40 transition flex justify-between items-center shadow-md">
                         <div>
                             <h4 class="font-bold text-white">Milanesa a lo Pobre</h4>
                             <span class="text-amber-600 dark:text-amber-500 font-bold block mt-1">S/ 15.00</span>
@@ -562,19 +600,19 @@
                     <span>🥤</span> Bebidas
                 </h3>
                 <div class="grid sm:grid-cols-3 gap-6">
-                    <div class="bg-gray-900 p-5 rounded-2xl border border-gray-800 hover:border-amber-500/40 glow-silva transition flex flex-col justify-between items-center text-center shadow-md">
+                    <div class="bg-gray-900 p-5 rounded-2xl border border-gray-800 hover:border-amber-500/40 transition flex flex-col justify-between items-center text-center shadow-md">
                         <span class="text-4xl mb-2 animate-bounce">🥤</span>
                         <h4 class="font-bold text-white">Chicha Morada (1 Vaso)</h4>
                         <span class="text-amber-600 dark:text-amber-500 font-black text-xl my-2">S/ 2.50</span>
                         <button onclick="agregarAlCarrito('Chicha Morada Vaso (El Tío Silva)', 2.50, event)" class="btn-ripple w-full bg-amber-500 hover:bg-amber-400 text-black border border-amber-500/40 py-2 rounded-xl text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-5 rounded-2xl border border-gray-800 hover:border-amber-500/40 glow-silva transition flex flex-col justify-between items-center text-center shadow-md">
+                    <div class="bg-gray-900 p-5 rounded-2xl border border-gray-800 hover:border-amber-500/40 transition flex flex-col justify-between items-center text-center shadow-md">
                         <span class="text-4xl mb-2 animate-bounce">🏺</span>
                         <h4 class="font-bold text-white">Chicha Morada (1/2 Litro)</h4>
                         <span class="text-amber-600 dark:text-amber-500 font-black text-xl my-2">S/ 7.00</span>
                         <button onclick="agregarAlCarrito('Chicha Morada 1/2L (El Tío Silva)', 7.00, event)" class="btn-ripple w-full bg-amber-500 hover:bg-amber-400 text-black border border-amber-500/40 py-2 rounded-xl text-xs font-bold transition">Agregar +</button>
                     </div>
-                    <div class="bg-gray-900 p-5 rounded-2xl border border-gray-800 hover:border-amber-500/40 glow-silva transition flex flex-col justify-between items-center text-center shadow-md">
+                    <div class="bg-gray-900 p-5 rounded-2xl border border-gray-800 hover:border-amber-500/40 transition flex flex-col justify-between items-center text-center shadow-md">
                         <span class="text-4xl mb-2 animate-bounce">🍹</span>
                         <h4 class="font-bold text-white">Chicha Morada (1 Litro)</h4>
                         <span class="text-amber-600 dark:text-amber-500 font-black text-xl my-2">S/ 10.00</span>
@@ -584,8 +622,7 @@
             </div>
         </section>
 
-
-        <!-- ================= SECCIÓN GALERÍA EN MESA (EXPERIENCIA VISUAL) ================= -->
+        <!-- SECCIÓN GALERÍA EN MESA (EXPERIENCIA VISUAL) -->
         <section data-aos="fade-up" class="mt-16 pt-8 border-t border-gray-800/80">
             <div class="text-center max-w-xl mx-auto mb-8">
                 <span class="bg-red-500/10 text-red-500 text-xs font-black px-3 py-1 rounded-full border border-red-500/30 uppercase tracking-widest inline-block mb-2">📸 Experiencia Visual</span>
@@ -610,7 +647,6 @@
         </section>
 
     </main>
-
 
     <!-- VENTANAS EMERGENTES (MODALES) -->
     <div id="modal-info-pago" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
@@ -742,19 +778,16 @@
         </div>
     </div>
 
-
-    <!-- BOTÓN FLOTANTE 1: GOOGLE MAPS (UBICACIÓN) -->
+    <!-- BOTONES FLOTANTES -->
     <a href="https://maps.app.goo.gl/K3GsnYws5ziiBqkm8" target="_blank" rel="noopener noreferrer" class="fixed bottom-20 left-4 z-40 bg-blue-600 hover:bg-blue-700 text-white font-bold px-3.5 py-2.5 rounded-full shadow-2xl border-2 border-blue-400/40 flex items-center gap-2 transition-all transform hover:scale-110 active:scale-95 animate-pulse">
         <span class="text-lg">📍</span>
         <span class="text-xs font-black tracking-wide pr-1">¿Cómo llegar?</span>
     </a>
 
-    <!-- BOTÓN FLOTANTE 2: WHATSAPP DIRECTO -->
     <a href="https://wa.me/51942539346?text=¡Hola!%20Quisiera%20hacer%20una%20consulta%20o%20pedido%20directo." target="_blank" rel="noopener noreferrer" class="fixed bottom-20 right-4 z-40 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-4 py-2.5 rounded-full shadow-2xl border-2 border-emerald-300/40 flex items-center gap-2 transition-all transform hover:scale-110 active:scale-95 animate-bounce">
         <svg class="w-5 h-5 fill-current text-white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
         <span class="text-xs font-black tracking-wide pr-1">WhatsApp</span>
     </a>
-
 
     <!-- BARRA Y MODAL DEL CARRITO DE COMPRAS -->
     <div id="barra-carrito" class="fixed bottom-0 left-0 right-0 bg-emerald-600 text-white p-4 shadow-2xl z-40 hidden border-t border-emerald-400/30">
@@ -789,14 +822,47 @@
         </div>
     </div>
 
-
-    <!-- SCRIPT JS ÍNTEGRO CON TODA LA LÓGICA DE NAVEGACIÓN Y PERSISTENCIA DE LIKES -->
+    <!-- SCRIPT CON INTERACCIONES Y SENSACIONES AVANZADAS -->
     <script>
         AOS.init({ duration: 700, once: true });
 
         let carrito = [];
         let estaAbiertoGlobal = true;
         let audioCtx = null;
+
+        // GENERADOR DE CHISPAS / FUEGO SUTIL EN VIVO
+        function generarChispas() {
+            const container = document.getElementById('sparks-container');
+            if (!container) return;
+            for (let i = 0; i < 15; i++) {
+                const spark = document.createElement('div');
+                spark.className = 'spark';
+                spark.style.left = `${Math.random() * 100}%`;
+                spark.style.top = `${Math.random() * 100}%`;
+                const size = Math.random() * 6 + 2;
+                spark.style.width = `${size}px`;
+                spark.style.height = `${size}px`;
+                spark.style.animationDelay = `${Math.random() * 3}s`;
+                spark.style.animationDuration = `${Math.random() * 2 + 2}s`;
+                container.appendChild(spark);
+            }
+        }
+        generarChispas();
+
+        // MOSTRAR TOAST DINÁMICO
+        function mostrarToast(titulo, desc) {
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-title').innerText = titulo;
+            document.getElementById('toast-desc').innerText = desc;
+
+            toast.classList.remove('translate-x-72', 'opacity-0', 'pointer-events-none');
+            toast.classList.add('translate-x-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-x-0', 'opacity-100');
+                toast.classList.add('translate-x-72', 'opacity-0', 'pointer-events-none');
+            }, 2500);
+        }
 
         function cargarLikesLocales() {
             const likesSpans = document.querySelectorAll('.like-count');
@@ -1003,6 +1069,8 @@
             if (itemExistente) itemExistente.cantidad += 1;
             else carrito.push({ nombre, precio, cantidad: 1 });
             actualizarCarritoUI();
+
+            mostrarToast("¡Añadido al carrito! 🛒", `${nombre} - S/ ${precio.toFixed(2)}`);
 
             if (event && window.confetti) {
                 const rect = event.target.getBoundingClientRect();
