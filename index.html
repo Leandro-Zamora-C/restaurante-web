@@ -87,13 +87,9 @@
             pointer-events: none;
         }
         @keyframes ripple-animation { to { transform: scale(4); opacity: 0; } }
-
-        /* Estrellas Interactivas */
-        .star-rating span { cursor: pointer; transition: color 0.2s; }
-        .star-rating span.active { color: #f59e0b; }
     </style>
 </head>
-<body class="modo-oscuro bg-gray-950 text-gray-100 font-sans min-h-screen pb-24 selection:bg-amber-500 selection:text-black transition-colors duration-500">
+<body class="modo-oscuro bg-gray-950 text-gray-100 font-sans min-h-screen pb-28 selection:bg-amber-500 selection:text-black transition-colors duration-500">
 
     <!-- Cinta de Anuncios -->
     <div class="cinta-top bg-gradient-to-r from-red-900 via-amber-800 to-red-900 text-amber-200 text-xs font-bold py-1.5 overflow-hidden border-b border-amber-500/20 shadow-md">
@@ -613,46 +609,6 @@
             </div>
         </section>
 
-
-        <!-- ================= VALORACIONES Y COMENTARIOS REALES ================= -->
-        <section data-aos="fade-up" class="mt-16 pt-8 border-t border-gray-800">
-            <div class="text-center max-w-xl mx-auto mb-8">
-                <span class="bg-amber-500/10 text-amber-500 text-xs font-black px-3 py-1 rounded-full border border-amber-500/30 uppercase tracking-widest inline-block mb-2">⭐ Opiniones de Clientes</span>
-                <h3 class="text-3xl font-extrabold text-white">¿Qué opinas de nuestra comida?</h3>
-                <p class="text-xs text-gray-400 mt-1">Tu experiencia nos ayuda a seguir brindando la mejor sazón.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8">
-                <div class="bg-gray-900 border border-amber-500/30 p-6 rounded-2xl text-center flex flex-col justify-center items-center shadow-xl">
-                    <span id="promedio-estrellas" class="text-5xl font-black text-amber-400">4.9</span>
-                    <div class="text-amber-400 text-xl my-1">⭐⭐⭐⭐⭐</div>
-                    <span id="total-resenas" class="text-xs text-gray-400 font-bold">Basado en 24 opiniones</span>
-                </div>
-
-                <div class="md:col-span-2 bg-gray-900 border border-gray-800 p-6 rounded-2xl shadow-xl">
-                    <h4 class="text-sm font-bold text-white mb-3">Deja tu comentario y puntuación:</h4>
-                    <form onsubmit="guardarResena(event)" class="space-y-3">
-                        <div class="flex gap-4">
-                            <input type="text" id="nombre-usuario" placeholder="Tu nombre" required class="w-1/2 bg-gray-800 text-white text-xs p-3 rounded-xl border border-gray-700 outline-none focus:border-amber-500">
-                            <div class="star-rating text-2xl text-gray-600 flex items-center gap-1 w-1/2" id="selector-estrellas">
-                                <span onclick="seleccionarEstrellas(1)">★</span>
-                                <span onclick="seleccionarEstrellas(2)">★</span>
-                                <span onclick="seleccionarEstrellas(3)">★</span>
-                                <span onclick="seleccionarEstrellas(4)">★</span>
-                                <span onclick="seleccionarEstrellas(5)">★</span>
-                            </div>
-                        </div>
-                        <textarea id="comentario-usuario" rows="2" placeholder="¿Qué tal estuvo el sabor, crocancia y atención?" required class="w-full bg-gray-800 text-white text-xs p-3 rounded-xl border border-gray-700 outline-none focus:border-amber-500"></textarea>
-                        <button type="submit" class="btn-ripple w-full bg-gradient-to-r from-amber-500 to-red-600 text-white font-black py-2.5 rounded-xl text-xs shadow-md transition">
-                            Publicar Mi Opinión
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-            <div id="contenedor-comentarios" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto"></div>
-        </section>
-
     </main>
 
 
@@ -787,10 +743,16 @@
     </div>
 
 
-    <!-- BOTÓN FLOTANTE DE UBICACIÓN (GOOGLE MAPS) -->
-    <a href="https://maps.app.goo.gl/K3GsnYws5ziiBqkm8" target="_blank" class="fixed bottom-20 left-4 z-40 bg-blue-600 hover:bg-blue-700 text-white font-bold px-3.5 py-2.5 rounded-full shadow-2xl border-2 border-blue-400/40 flex items-center gap-2 transition-all transform hover:scale-110 active:scale-95 animate-pulse">
+    <!-- BOTÓN FLOTANTE 1: GOOGLE MAPS (UBICACIÓN) -->
+    <a href="https://maps.app.goo.gl/K3GsnYws5ziiBqkm8" target="_blank" rel="noopener noreferrer" class="fixed bottom-20 left-4 z-40 bg-blue-600 hover:bg-blue-700 text-white font-bold px-3.5 py-2.5 rounded-full shadow-2xl border-2 border-blue-400/40 flex items-center gap-2 transition-all transform hover:scale-110 active:scale-95 animate-pulse">
         <span class="text-lg">📍</span>
         <span class="text-xs font-black tracking-wide pr-1">¿Cómo llegar?</span>
+    </a>
+
+    <!-- BOTÓN FLOTANTE 2: WHATSAPP DIRECTO -->
+    <a href="https://wa.me/51942539346?text=¡Hola!%20Quisiera%20hacer%20una%20consulta%20o%20pedido%20directo." target="_blank" rel="noopener noreferrer" class="fixed bottom-20 right-4 z-40 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-4 py-2.5 rounded-full shadow-2xl border-2 border-emerald-300/40 flex items-center gap-2 transition-all transform hover:scale-110 active:scale-95 animate-bounce">
+        <svg class="w-5 h-5 fill-current text-white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        <span class="text-xs font-black tracking-wide pr-1">WhatsApp</span>
     </a>
 
 
@@ -828,20 +790,13 @@
     </div>
 
 
-    <!-- SCRIPT JS ÍNTEGRO CON TODA LA LÓGICA DE NAVEGACIÓN Y PERSISTENCIA -->
+    <!-- SCRIPT JS ÍNTEGRO CON TODA LA LÓGICA DE NAVEGACIÓN Y PERSISTENCIA DE LIKES -->
     <script>
         AOS.init({ duration: 700, once: true });
 
         let carrito = [];
         let estaAbiertoGlobal = true;
         let audioCtx = null;
-        let estrellasSeleccionadas = 5;
-
-        let listaResenas = [
-            { nombre: "Carlos M.", estrellas: 5, comentario: "El pollo broaster super crocante y las papas fritas 10/10.", fecha: "Ayer" },
-            { nombre: "Fiorella R.", estrellas: 5, comentario: "Las alitas acevichadas de El Shopa son las mejores de la zona.", fecha: "Hace 2 días" },
-            { nombre: "Erick Z.", estrellas: 4, comentario: "Muy buen Lomo Saltado a lo pobre en El Tío Silva, abundante carne.", fecha: "Hace 4 días" }
-        ];
 
         function cargarLikesLocales() {
             const likesSpans = document.querySelectorAll('.like-count');
@@ -854,67 +809,6 @@
             });
         }
         cargarLikesLocales();
-
-        function cargarResenas() {
-            const guardadas = localStorage.getItem('resenas_restaurante');
-            if (guardadas) listaResenas = JSON.parse(guardadas);
-            renderizarResenas();
-        }
-
-        function seleccionarEstrellas(num) {
-            estrellasSeleccionadas = num;
-            const spans = document.querySelectorAll('#selector-estrellas span');
-            spans.forEach((span, index) => {
-                if (index < num) span.classList.add('active');
-                else span.classList.remove('active');
-            });
-        }
-
-        function guardarResena(e) {
-            e.preventDefault();
-            const nombre = document.getElementById('nombre-usuario').value.trim();
-            const comentario = document.getElementById('comentario-usuario').value.trim();
-            if (!nombre || !comentario) return;
-
-            listaResenas.unshift({ nombre, estrellas: estrellasSeleccionadas, comentario, fecha: "Hoy" });
-            localStorage.setItem('resenas_restaurante', JSON.stringify(listaResenas));
-
-            renderizarResenas();
-            document.getElementById('nombre-usuario').value = '';
-            document.getElementById('comentario-usuario').value = '';
-            seleccionarEstrellas(5);
-
-            if (window.confetti) confetti({ particleCount: 40, spread: 60, origin: { y: 0.8 } });
-        }
-
-        function renderizarResenas() {
-            const contenedor = document.getElementById('contenedor-comentarios');
-            const promedioEl = document.getElementById('promedio-estrellas');
-            const totalEl = document.getElementById('total-resenas');
-            contenedor.innerHTML = '';
-
-            let suma = 0;
-            listaResenas.forEach(res => {
-                suma += res.estrellas;
-                contenedor.innerHTML += `
-                    <div class="bg-gray-900 border border-gray-800 p-4 rounded-xl text-xs space-y-2 shadow-md">
-                        <div class="flex justify-between items-center">
-                            <strong class="text-white font-bold">${res.nombre}</strong>
-                            <span class="text-amber-400">${'⭐'.repeat(res.estrellas)}</span>
-                        </div>
-                        <p class="text-gray-300">${res.comentario}</p>
-                        <span class="text-[10px] text-gray-500 block text-right">${res.fecha}</span>
-                    </div>
-                `;
-            });
-
-            const promedio = listaResenas.length > 0 ? (suma / listaResenas.length).toFixed(1) : "5.0";
-            promedioEl.innerText = promedio;
-            totalEl.innerText = `Basado en ${listaResenas.length} opiniones`;
-        }
-
-        cargarResenas();
-        seleccionarEstrellas(5);
 
         function reproducirSonido(tipo) {
             try {
