@@ -197,6 +197,12 @@
                     </div>
                 </div>
 
+                <!-- INDICADOR EN TIEMPO REAL DE HORARIO (5:00 PM a 1:00 AM) -->
+                <div id="status-atencion-badge" class="flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/80 px-2.5 py-1 rounded-full text-[10px] font-extrabold shadow-sm">
+                    <span id="status-dot" class="w-2.5 h-2.5 rounded-full"></span>
+                    <span id="status-text">Verificando...</span>
+                </div>
+
                 <button onclick="reproducirSonidoClick(); girarRuletaSorpresa();" class="bg-gradient-to-r from-red-600 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white font-black px-3 py-1 rounded-full text-[11px] shadow-md flex items-center gap-1 transition transform hover:scale-105 active:scale-95">
                     🎲 ¿Qué comer hoy?
                 </button>
@@ -314,7 +320,7 @@
                     </div>
                 </div>
 
-                <!-- Hamburguesas (Sin la palabra "caseras") -->
+                <!-- Hamburguesas -->
                 <div data-aos="fade-up" class="item-menu cat-hamburguesas tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border border-slate-800 hover:border-red-500 transition flex flex-col justify-between relative">
                     <div class="glare-effect"></div>
                     <div class="overflow-hidden h-44 relative bg-slate-900">
@@ -691,7 +697,6 @@
         </div>
     </div>
 
-    <!-- MODAL HAMBURGUESAS (SIN LA PALABRA "CASERAS") -->
     <div id="modal-hamburguesas" class="modal-backdrop fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
         <div class="bg-brand-cardBg border border-red-500/50 rounded-3xl max-w-md w-full p-6 relative shadow-2xl max-h-[85vh] overflow-y-auto">
             <button onclick="cerrarModal('modal-hamburguesas')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
@@ -719,7 +724,6 @@
         </div>
     </div>
 
-    <!-- MODAL ALITAS (SIN EL COMBO) -->
     <div id="modal-alitas" class="modal-backdrop fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
         <div class="bg-brand-cardBg border border-red-500/50 rounded-3xl max-w-md w-full p-6 relative shadow-2xl">
             <button onclick="cerrarModal('modal-alitas')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
@@ -731,7 +735,6 @@
         </div>
     </div>
 
-    <!-- MODAL COMBOS (AQUÍ SE MOVIÓ EL COMBO DE ALITAS) -->
     <div id="modal-combos" class="modal-backdrop fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
         <div class="bg-brand-cardBg border border-amber-500/50 rounded-3xl max-w-md w-full p-6 relative shadow-2xl max-h-[85vh] overflow-y-auto">
             <button onclick="cerrarModal('modal-combos')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
@@ -817,6 +820,30 @@
 
     <script>
         AOS.init({ duration: 750, once: true });
+
+        // Verificador de horario en tiempo real (Abierto de 5:00 PM a 1:00 AM)
+        function actualizarEstadoHorario() {
+            const ahora = new Date();
+            const hora = ahora.getHours(); // 0 - 23
+            const statusDot = document.getElementById('status-dot');
+            const statusText = document.getElementById('status-text');
+
+            // Abierto desde las 17:00 (5 PM) hasta las 01:00 (1 AM)
+            const estaAbierto = (hora >= 17 || hora < 1);
+
+            if (estaAbierto) {
+                statusDot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping';
+                statusText.className = 'text-emerald-400 font-extrabold';
+                statusText.innerText = '🟢 Abierto ahora (Hasta 1:00 AM)';
+            } else {
+                statusDot.className = 'w-2.5 h-2.5 rounded-full bg-rose-500';
+                statusText.className = 'text-rose-400 font-extrabold';
+                statusText.innerText = '🔴 Cerrado (Abre 5:00 PM)';
+            }
+        }
+
+        actualizarEstadoHorario();
+        setInterval(actualizarEstadoHorario, 60000); // Se actualiza cada minuto
 
         let carrito = [];
         let temaActualIndex = 0;
