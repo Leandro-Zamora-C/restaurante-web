@@ -185,19 +185,19 @@
         </div>
     </div>
 
+    <!-- HEADER REDISEÑADO CON SELECTOR SIMÉTRICO Y CENTRADO -->
     <header class="bg-brand-darkBg/95 backdrop-blur-xl sticky top-0 z-40 border-b border-slate-800/80 shadow-lg transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 flex flex-col md:flex-row justify-between items-center gap-2.5">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 py-3 flex flex-col lg:flex-row justify-between items-center gap-3">
             
-            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 w-full lg:w-auto">
                 <div class="flex items-center gap-2">
-                    <div id="brand-logo-badge" class="w-8 h-8 rounded-xl bg-gradient-to-tr from-red-600 to-amber-500 flex items-center justify-center shadow-lg text-base transition-all duration-500">🔥</div>
+                    <div id="brand-logo-badge" class="w-9 h-9 rounded-xl bg-gradient-to-tr from-red-600 to-amber-500 flex items-center justify-center shadow-lg text-lg transition-all duration-500">🔥</div>
                     <div>
                         <h1 class="text-base sm:text-lg font-black tracking-tight text-white leading-none">Sabor & Tradición</h1>
                         <span id="brand-subtitle" class="text-[9px] text-amber-400 font-semibold tracking-widest uppercase transition-colors duration-500">Brostería Artesanal & Combos</span>
                     </div>
                 </div>
 
-                <!-- INDICADOR EN TIEMPO REAL DE HORARIO (5:00 PM a 1:00 AM) VISIBLE EN PC Y MÓVIL -->
                 <div id="status-atencion-badge" class="flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/80 px-2.5 py-1 rounded-full text-[10px] font-extrabold shadow-sm">
                     <span id="status-dot" class="w-2.5 h-2.5 rounded-full"></span>
                     <span id="status-text">Verificando...</span>
@@ -217,23 +217,37 @@
                 </button>
             </div>
             
-            <!-- SELECTOR DE CARTA ULTRA VISIBLE CON INDICACIÓN CLARA -->
-            <div class="flex flex-col items-center sm:items-end gap-1">
-                <div class="flex items-center gap-1.5 bg-amber-500/15 border border-amber-500/40 px-2.5 py-0.5 rounded-lg">
+            <!-- SELECTOR DE CARTA CENTRADO, REFORZADO Y CON MÁXIMO CONTRASTE -->
+            <div class="flex flex-col items-center justify-center w-full lg:w-auto gap-1.5 bg-slate-950/60 p-2 rounded-2xl border border-slate-800/90 shadow-inner">
+                <div class="flex items-center justify-center gap-1.5 bg-amber-500/15 border border-amber-500/40 px-3 py-0.5 rounded-full">
                     <span class="text-xs">🔄</span>
-                    <span class="text-[10px] font-black text-amber-400 uppercase tracking-wider">Toca para cambiar de Carta:</span>
+                    <span class="text-[10px] font-black text-amber-400 uppercase tracking-wider text-center">Toca el botón para cambiar de Carta:</span>
                 </div>
-                <div class="flex bg-slate-900 p-1.5 rounded-2xl border-2 border-slate-700 shadow-xl gap-1">
-                    <button onclick="cambiarMenu('el-shopa')" id="btn-shopa" class="px-4 py-2 rounded-xl text-xs font-black bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg transition-all transform active:scale-95 flex items-center gap-1.5 border border-red-400/50">
-                        <span>👑</span> BROSTERÍA EL SHOPA
+                <div class="grid grid-cols-2 gap-2 w-full sm:w-auto">
+                    <button onclick="cambiarMenu('el-shopa')" id="btn-shopa" class="px-4 py-2.5 rounded-xl text-xs font-black bg-gradient-to-r from-red-600 to-red-700 text-white shadow-[0_0_20px_rgba(220,38,38,0.5)] transition-all transform active:scale-95 flex items-center justify-center gap-2 border-2 border-red-400">
+                        <span class="text-sm">👑</span> <span>BROSTERÍA EL SHOPA</span>
                     </button>
-                    <button onclick="cambiarMenu('tio-silva')" id="btn-silva" class="px-4 py-2 rounded-xl text-xs font-black text-slate-300 hover:text-white transition-all transform active:scale-95 flex items-center gap-1.5 border border-transparent">
-                        <span>🐔</span> EL TÍO SILVA
+                    <button onclick="cambiarMenu('tio-silva')" id="btn-silva" class="px-4 py-2.5 rounded-xl text-xs font-black bg-slate-900 text-slate-300 hover:text-white transition-all transform active:scale-95 flex items-center justify-center gap-2 border-2 border-slate-700">
+                        <span class="text-sm">🐔</span> <span>EL TÍO SILVA</span>
                     </button>
                 </div>
             </div>
+
         </div>
     </header>
+
+    <!-- INDICADOR EN VIVO DE LOTES EN COCINA -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 mt-3 relative z-30">
+        <div id="kitchen-ticker" class="bg-slate-900/95 backdrop-blur-xl border border-amber-500/40 rounded-2xl py-2 px-4 flex flex-wrap items-center justify-center gap-2.5 text-xs font-bold shadow-lg text-center">
+            <span class="flex h-2.5 w-2.5 relative shrink-0">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500"></span>
+            </span>
+            <span id="kitchen-status-text" class="text-amber-400 tracking-wide">
+                🔥 <strong class="text-white">Wok encendido a full</strong> | Siguiente bache de pollo broaster crujiente sale en: <span id="kitchen-timer" class="font-mono bg-slate-950 px-2 py-0.5 rounded-lg border border-amber-500/30 text-amber-300">04:12</span>
+            </span>
+        </div>
+    </div>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 pt-5 relative">
 
@@ -254,12 +268,11 @@
                         <img src="logo-shopa.png" alt="Brostería El Shopa Logo" loading="lazy" class="relative w-36 h-36 sm:w-44 sm:h-44 object-contain logo-bounce-tilt drop-shadow-[0_0_20px_rgba(239,68,68,0.8)]">
                     </div>
                     <div class="flex flex-col justify-center max-w-xl space-y-2">
-                        <span class="bg-red-600/30 text-red-400 text-[11px] font-black px-3.5 py-1 rounded-full border border-red-500/50 uppercase tracking-widest inline-block w-fit">🔥 BROSTERÍA ARTESANAL & COMBOS</span>
-                        <p class="text-slate-200 text-xs sm:text-sm font-medium leading-relaxed">El crujiente perfecto en pollo broaster gigante, salchipapas abundantes, alitas acevichadas y hamburguesas artesanales.</p>
-                        <!-- MODIFICADO: Se cambió "100% Aceite Limpio" por "100% Sabor Crujiente" -->
+                        <span class="bg-red-600/30 text-red-400 text-[11px] font-black px-3.5 py-1 rounded-full border border-red-500/50 uppercase tracking-widest inline-block w-fit">🔥 BROSTERÍA ARTESANAL & COMBOS [cite: 1]</span>
+                        <p class="text-slate-200 text-xs sm:text-sm font-medium leading-relaxed">El crujiente perfecto en pollo broaster gigante, salchipapas abundantes, alitas acevichadas y hamburguesas artesanales [cite: 1].</p>
                         <div class="grid grid-cols-3 gap-2.5 pt-2 border-t border-red-500/20 text-center">
                             <div class="bg-slate-950/50 p-2 rounded-xl border border-red-500/20"><span class="block text-red-400 font-black text-xs">100%</span><span class="text-[9px] text-slate-300">Sabor Crujiente</span></div>
-                            <div class="bg-slate-950/50 p-2 rounded-xl border border-red-500/20"><span class="block text-amber-500 font-black text-xs">20 Min</span><span class="text-[9px] text-slate-300">Delivery Rápido</span></div>
+                            <div class="bg-slate-950/50 p-2 rounded-xl border border-red-500/20"><span class="block text-amber-500 font-black text-xs">20 Min</span><span class="text-[9px] text-slate-300">Delivery Rápido [cite: 1]</span></div>
                             <div class="bg-slate-950/50 p-2 rounded-xl border border-red-500/20"><span class="block text-emerald-400 font-black text-xs">★★★★★</span><span class="text-[9px] text-slate-300">Sabor Criollo</span></div>
                         </div>
                     </div>
@@ -282,22 +295,22 @@
                 <!-- Pollo Broaster -->
                 <div data-aos="fade-up" class="item-menu cat-pollo-broaster tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border-2 border-red-500 shadow-lg transition-all duration-300 flex flex-col justify-between relative">
                     <div class="glare-effect"></div>
-                    <div class="absolute top-2.5 left-2.5 z-20 sello-dorado text-black text-[9px] font-black px-2.5 py-0.5 rounded-full uppercase">🥇 Sello de la Casa</div>
+                    <div class="absolute top-2.5 left-2.5 z-20 sello-dorado text-black text-[9px] font-black px-2.5 py-0.5 rounded-full uppercase">🥇 Sello de la Casa [cite: 1]</div>
                     <div class="overflow-hidden h-44 relative bg-slate-900">
                         <img src="pollo broaster.jpg" alt="Pollo Broaster" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition">
                     </div>
                     <div class="p-4 flex-1 flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-start">
-                                <h4 class="font-extrabold text-white text-base">Pollo Broaster</h4>
+                                <h4 class="font-extrabold text-white text-base">Pollo Broaster [cite: 1]</h4>
                                 <button onclick="darMeGusta('pollo_broaster', this, event)" class="text-[11px] bg-slate-900 border border-slate-700 px-2 py-0.5 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="pollo_broaster">790</span></button>
                             </div>
-                            <p class="text-[10px] text-amber-500 font-extrabold mt-0.5">🔥 14 personas están viendo este plato</p>
-                            <p class="text-[11px] text-slate-400 mt-1">Crujiente pollo broaster (Alita, Encuentro, Pierna, Pecho).</p>
+                            <p class="text-[10px] text-amber-500 font-extrabold mt-0.5">🔥 14 personas están viendo este plato [cite: 1]</p>
+                            <p class="text-[11px] text-slate-400 mt-1">Crujiente pollo broaster (Alita, Encuentro, Pierna, Pecho) [cite: 1].</p>
                         </div>
                         <div class="flex justify-between items-center mt-4 pt-3 border-t border-slate-800">
-                            <div><span class="text-[9px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-red-500 font-black text-lg">Desde S/ 10.00</span></div>
-                            <button onclick="reproducirSonidoClick(); abrirModal('modal-broaster');" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-[11px] font-black shadow-md">Ver Opciones</button>
+                            <div><span class="text-[9px] text-slate-400 block font-bold">Consumo Mesa [cite: 1]</span><span class="text-red-500 font-black text-lg">Desde S/ 10.00 [cite: 1]</span></div>
+                            <button onclick="reproducirSonidoClick(); abrirModal('modal-broaster');" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-[11px] font-black shadow-md">Ver Opciones [cite: 1]</button>
                         </div>
                     </div>
                 </div>
@@ -311,15 +324,15 @@
                     <div class="p-4 flex-1 flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-start">
-                                <h4 class="font-extrabold text-white text-base">Salchibroaster</h4>
+                                <h4 class="font-extrabold text-white text-base">Salchibroaster [cite: 1]</h4>
                                 <button onclick="darMeGusta('salchibroaster', this, event)" class="text-[11px] bg-slate-900 border border-slate-700 px-2 py-0.5 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="salchibroaster">665</span></button>
                             </div>
-                            <p class="text-[10px] text-amber-500 font-extrabold mt-0.5">👀 9 personas están viendo este plato</p>
-                            <p class="text-[11px] text-slate-400 mt-1">Salchipapa artesanal + pieza broaster (Alita, Encuentro, Pierna, Pecho).</p>
+                            <p class="text-[10px] text-amber-500 font-extrabold mt-0.5">👀 9 personas están viendo este plato [cite: 1]</p>
+                            <p class="text-[11px] text-slate-400 mt-1">Salchipapa artesanal + pieza broaster (Alita, Encuentro, Pierna, Pecho) [cite: 1].</p>
                         </div>
                         <div class="flex justify-between items-center mt-4 pt-3 border-t border-slate-800">
-                            <div><span class="text-[9px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-red-500 font-black text-lg">Desde S/ 13.00</span></div>
-                            <button onclick="reproducirSonidoClick(); abrirModal('modal-salchibroaster');" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-[11px] font-black shadow-md">Ver Opciones</button>
+                            <div><span class="text-[9px] text-slate-400 block font-bold">Consumo Mesa [cite: 1]</span><span class="text-red-500 font-black text-lg">Desde S/ 13.00 [cite: 1]</span></div>
+                            <button onclick="reproducirSonidoClick(); abrirModal('modal-salchibroaster');" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-[11px] font-black shadow-md">Ver Opciones [cite: 1]</button>
                         </div>
                     </div>
                 </div>
@@ -333,14 +346,14 @@
                     <div class="p-4 flex-1 flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-start">
-                                <h4 class="font-extrabold text-white text-base">Hamburguesas</h4>
+                                <h4 class="font-extrabold text-white text-base">Hamburguesas [cite: 1]</h4>
                                 <button onclick="darMeGusta('hamburguesas', this, event)" class="text-[11px] bg-slate-900 border border-slate-700 px-2 py-0.5 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="hamburguesas">512</span></button>
                             </div>
-                            <p class="text-[11px] text-slate-400 mt-1">Clásica, Royale, A lo Pobre y Mixta en suave pan.</p>
+                            <p class="text-[11px] text-slate-400 mt-1">Clásica, Royale, A lo Pobre y Mixta en suave pan [cite: 1].</p>
                         </div>
                         <div class="flex justify-between items-center mt-4 pt-3 border-t border-slate-800">
-                            <div><span class="text-[9px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-red-500 font-black text-lg">Desde S/ 7.00</span></div>
-                            <button onclick="reproducirSonidoClick(); abrirModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-[11px] font-black shadow-md">Ver Opciones</button>
+                            <div><span class="text-[9px] text-slate-400 block font-bold">Consumo Mesa [cite: 1]</span><span class="text-red-500 font-black text-lg">Desde S/ 7.00 [cite: 1]</span></div>
+                            <button onclick="reproducirSonidoClick(); abrirModal('modal-hamburguesas');" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-[11px] font-black shadow-md">Ver Opciones [cite: 1]</button>
                         </div>
                     </div>
                 </div>
@@ -354,14 +367,14 @@
                     <div class="p-4 flex-1 flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-start">
-                                <h4 class="font-extrabold text-white text-base">Salchipapas</h4>
+                                <h4 class="font-extrabold text-white text-base">Salchipapas [cite: 1]</h4>
                                 <button onclick="darMeGusta('salchipapas', this, event)" class="text-[11px] bg-slate-900 border border-slate-700 px-2 py-0.5 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="salchipapas">430</span></button>
                             </div>
-                            <p class="text-[11px] text-slate-400 mt-1">Clásica, Especial y A lo Pobre.</p>
+                            <p class="text-[11px] text-slate-400 mt-1">Clásica, Especial y A lo Pobre [cite: 1].</p>
                         </div>
                         <div class="flex justify-between items-center mt-4 pt-3 border-t border-slate-800">
-                            <div><span class="text-[9px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-red-500 font-black text-lg">Desde S/ 9.00</span></div>
-                            <button onclick="reproducirSonidoClick(); abrirModal('modal-salchipapas');" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-[11px] font-black shadow-md">Ver Opciones</button>
+                            <div><span class="text-[9px] text-slate-400 block font-bold">Consumo Mesa [cite: 1]</span><span class="text-red-500 font-black text-lg">Desde S/ 9.00 [cite: 1]</span></div>
+                            <button onclick="reproducirSonidoClick(); abrirModal('modal-salchipapas');" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-[11px] font-black shadow-md">Ver Opciones [cite: 1]</button>
                         </div>
                     </div>
                 </div>
@@ -375,14 +388,14 @@
                     <div class="p-4 flex-1 flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-start">
-                                <h4 class="font-extrabold text-white text-base">Alitas Especiales</h4>
+                                <h4 class="font-extrabold text-white text-base">Alitas Especiales [cite: 1]</h4>
                                 <button onclick="darMeGusta('alitas', this, event)" class="text-[11px] bg-slate-900 border border-slate-700 px-2 py-0.5 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="alitas">588</span></button>
                             </div>
-                            <p class="text-[11px] text-slate-400 mt-1">Porciones de 6 piezas a la BBQ y Acevichadas.</p>
+                            <p class="text-[11px] text-slate-400 mt-1">Porciones de 6 piezas a la BBQ y Acevichadas [cite: 1].</p>
                         </div>
                         <div class="flex justify-between items-center mt-4 pt-3 border-t border-slate-800">
-                            <div><span class="text-[9px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-red-500 font-black text-lg">Desde S/ 16.00</span></div>
-                            <button onclick="reproducirSonidoClick(); abrirModal('modal-alitas');" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-[11px] font-black shadow-md">Ver Opciones</button>
+                            <div><span class="text-[9px] text-slate-400 block font-bold">Consumo Mesa [cite: 1]</span><span class="text-red-500 font-black text-lg">Desde S/ 16.00 [cite: 1]</span></div>
+                            <button onclick="reproducirSonidoClick(); abrirModal('modal-alitas');" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-[11px] font-black shadow-md">Ver Opciones [cite: 1]</button>
                         </div>
                     </div>
                 </div>
@@ -394,15 +407,15 @@
                     <div class="p-4 flex-1 flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-start">
-                                <h4 class="font-extrabold text-white text-base">Combos El Shopa</h4>
+                                <h4 class="font-extrabold text-white text-base">Combos El Shopa [cite: 1]</h4>
                                 <button onclick="darMeGusta('combos_shopa', this, event)" class="text-[11px] bg-slate-900 border border-slate-700 px-2 py-0.5 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="combos_shopa">745</span></button>
                             </div>
-                            <p class="text-[10px] text-amber-500 font-extrabold mt-0.5">🔥 22 personas están viendo este combo</p>
-                            <p class="text-[11px] text-slate-400 mt-1">Combos personales, familiares y pack de alitas.</p>
+                            <p class="text-[10px] text-amber-500 font-extrabold mt-0.5">🔥 22 personas están viendo este combo [cite: 1]</p>
+                            <p class="text-[11px] text-slate-400 mt-1">Combos personales, familiares y pack de alitas [cite: 1].</p>
                         </div>
                         <div class="flex justify-between items-center mt-4 pt-3 border-t border-slate-800">
-                            <div><span class="text-[9px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-amber-500 font-black text-lg">Desde S/ 23.00</span></div>
-                            <button onclick="reproducirSonidoClick(); abrirModal('modal-combos');" class="bg-amber-500 hover:bg-amber-400 text-black px-4 py-2 rounded-xl text-[11px] font-black shadow-md">Ver Opciones</button>
+                            <div><span class="text-[9px] text-slate-400 block font-bold">Consumo Mesa [cite: 1]</span><span class="text-amber-500 font-black text-lg">Desde S/ 23.00 [cite: 1]</span></div>
+                            <button onclick="reproducirSonidoClick(); abrirModal('modal-combos');" class="bg-amber-500 hover:bg-amber-400 text-black px-4 py-2 rounded-xl text-[11px] font-black shadow-md">Ver Opciones [cite: 1]</button>
                         </div>
                     </div>
                 </div>
@@ -641,6 +654,36 @@
             </div>
         </section>
 
+        <!-- SECCIÓN GALERÍA - PRÓXIMAMENTE -->
+        <section data-aos="fade-up" class="mt-14 mb-8 relative z-10">
+            <div class="bg-brand-cardBg border-2 border-dashed border-slate-700/80 rounded-3xl p-6 sm:p-10 text-center space-y-4 shadow-xl">
+                <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-2xl">📸</div>
+                <h3 class="text-xl sm:text-2xl font-black text-white">Galería "Detrás de Sazón"</h3>
+                <span class="inline-block bg-amber-500/20 text-amber-400 text-xs font-black px-3.5 py-1 rounded-full border border-amber-500/40 uppercase tracking-widest">Próximamente</span>
+                <p class="text-xs sm:text-sm text-slate-400 max-w-lg mx-auto leading-relaxed">
+                    Muy pronto podrás disfrutar aquí de una experiencia visual con fotos en tiempo real de nuestro wok a candela, las freidoras y los platos humeantes recién servidos.
+                </p>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 max-w-3xl mx-auto">
+                    <div class="h-28 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col items-center justify-center text-slate-400 text-xs gap-1.5 hover:border-amber-500/40 transition">
+                        <span class="text-xl">🔥</span>
+                        <span class="font-bold text-slate-300">Wok en Vivo</span>
+                    </div>
+                    <div class="h-28 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col items-center justify-center text-slate-400 text-xs gap-1.5 hover:border-amber-500/40 transition">
+                        <span class="text-xl">🍗</span>
+                        <span class="font-bold text-slate-300">Broster Crujiente</span>
+                    </div>
+                    <div class="h-28 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col items-center justify-center text-slate-400 text-xs gap-1.5 hover:border-amber-500/40 transition">
+                        <span class="text-xl">🍲</span>
+                        <span class="font-bold text-slate-300">Caldos 12h</span>
+                    </div>
+                    <div class="h-28 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col items-center justify-center text-slate-400 text-xs gap-1.5 hover:border-amber-500/40 transition">
+                        <span class="text-xl">👨‍🍳</span>
+                        <span class="font-bold text-slate-300">Nuestra Cocina</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- BARRA INFERIOR MÓVIL -->
@@ -761,7 +804,7 @@
                 </div>
                 <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 flex justify-between items-center">
                     <div><h4 class="font-bold text-white text-sm">Combos El Shopa 2.0</h4><p class="text-xs text-slate-400">Alitas Mix + Gaseosa 1L</p></div>
-                    <button onclick="agregarAlCarritoAnimado('Combos El Shopa 2.0 (Alitas Mix + 1L)', 34.00, event); cerrarModal('modal-combos');" class="bg-amber-500 text-black text-xs px-3.5 py-2 rounded-xl font-bold shadow-md">S/ 34.00 +</button>
+                    <button onclick="agregarAlCarritoAnimado('Combos El Shopa 2.0 (Alitas Mix + 1L)', 34.00, event); cerrarModal('modal-combos');" class="bg-amber-500 text-black text-xs px-3.5 py-2 rounded-xl font-bold shadow-md">S/ 34.00 +</button></div>
                 </div>
             </div>
         </div>
@@ -828,14 +871,29 @@
     <script>
         AOS.init({ duration: 750, once: true });
 
+        // Temporizador de lotes en cocina
+        let totalSeconds = 252; // 04:12 en segundos
+        function actualizarTemporizadorCocina() {
+            const timerEl = document.getElementById('kitchen-timer');
+            if (!timerEl) return;
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            timerEl.innerText = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            if (totalSeconds > 0) {
+                totalSeconds--;
+            } else {
+                totalSeconds = 480; // se reinicia el siguiente bache
+            }
+        }
+        setInterval(actualizarTemporizadorCocina, 1000);
+
         // Verificador de horario en tiempo real (Abierto de 5:00 PM a 1:00 AM)
         function actualizarEstadoHorario() {
             const ahora = new Date();
-            const hora = ahora.getHours(); // 0 - 23
+            const hora = ahora.getHours();
             const statusDot = document.getElementById('status-dot');
             const statusText = document.getElementById('status-text');
 
-            // Abierto desde las 17:00 (5 PM) hasta las 01:00 (1 AM)
             const estaAbierto = (hora >= 17 || hora < 1);
 
             if (estaAbierto) {
@@ -1067,13 +1125,13 @@
             if (local === 'el-shopa') {
                 menuShopa.classList.remove('hidden');
                 menuSilva.classList.add('hidden');
-                btnShopa.className = "px-4 py-2 rounded-xl text-xs font-black bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg transition-all transform active:scale-95 flex items-center gap-1.5 border border-red-400/50";
-                btnSilva.className = "px-4 py-2 rounded-xl text-xs font-black text-slate-300 hover:text-white transition-all transform active:scale-95 flex items-center gap-1.5 border border-transparent";
+                btnShopa.className = "px-4 py-2.5 rounded-xl text-xs font-black bg-gradient-to-r from-red-600 to-red-700 text-white shadow-[0_0_20px_rgba(220,38,38,0.5)] transition-all transform active:scale-95 flex items-center justify-center gap-2 border-2 border-red-400";
+                btnSilva.className = "px-4 py-2.5 rounded-xl text-xs font-black bg-slate-900 text-slate-300 hover:text-white transition-all transform active:scale-95 flex items-center justify-center gap-2 border-2 border-slate-700";
             } else {
                 menuSilva.classList.remove('hidden');
                 menuShopa.classList.add('hidden');
-                btnSilva.className = "px-4 py-2 rounded-xl text-xs font-black bg-gradient-to-r from-emerald-400 to-brand-greenNeon text-black shadow-[0_0_12px_rgba(0,255,102,0.6)] transition-all transform active:scale-95 flex items-center gap-1.5 border border-emerald-300";
-                btnShopa.className = "px-4 py-2 rounded-xl text-xs font-black text-slate-300 hover:text-white transition-all transform active:scale-95 flex items-center gap-1.5 border border-transparent";
+                btnSilva.className = "px-4 py-2.5 rounded-xl text-xs font-black bg-gradient-to-r from-emerald-400 to-brand-greenNeon text-black shadow-[0_0_20px_rgba(0,255,102,0.6)] transition-all transform active:scale-95 flex items-center justify-center gap-2 border-2 border-emerald-300";
+                btnShopa.className = "px-4 py-2.5 rounded-xl text-xs font-black bg-slate-900 text-slate-300 hover:text-white transition-all transform active:scale-95 flex items-center justify-center gap-2 border-2 border-slate-700";
             }
             AOS.refresh();
         }
