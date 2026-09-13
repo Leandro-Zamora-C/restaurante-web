@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brostería El Shopa & El Tío Silva | Carta Completa</title>
+    <title>Brostería El Shopa & El Tío Silva | Menú Digital</title>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -32,7 +32,6 @@
         }
     </script>
 
-    <!-- Google Fonts & Librerías -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -41,7 +40,10 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <style>
-        /* BARRA DE PROGRESO SUPERIOR */
+        body {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="%2300ff66" stroke="%23ff003c" stroke-width="1.5"><path d="M12 2C8 2 4 6 4 11c0 4 3 7 7 7v4h2v-4c4 0 7-3 7-7 0-5-4-9-8-9z"/><circle cx="12" cy="11" r="3" fill="%23f59e0b"/></svg>'), auto;
+        }
+
         #reading-progress {
             position: fixed;
             top: 0;
@@ -63,7 +65,6 @@
             animation: marquee 24s linear infinite;
         }
 
-        /* FLASH DE TRANSICIÓN AL CAMBIAR DE SEDE */
         #flash-overlay {
             position: fixed;
             inset: 0;
@@ -73,7 +74,6 @@
             transition: opacity 0.5s ease;
         }
 
-        /* HUMO Y VAPOR CSS PARA EL TÍO SILVA */
         .steam-container {
             position: absolute;
             top: 10px;
@@ -100,7 +100,6 @@
             100% { transform: translateY(-35px) scaleX(2.5); opacity: 0; }
         }
 
-        /* 3D TILT CARD EFFECT & GLARE */
         .tilt-card {
             transform-style: preserve-3d;
             perspective: 1000px;
@@ -117,14 +116,12 @@
             border-radius: 1.5rem;
         }
 
-        /* SELLO DE LA CASA METÁLICO DORADO */
         .sello-dorado {
             background: linear-gradient(135deg, #ffe066 0%, #d4af37 50%, #8a6d1c 100%);
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4), inset 0 1px 2px rgba(255,255,255,0.8);
             border: 1px solid #fff5cc;
         }
 
-        /* ANIMACIÓN FLY TO CART */
         .flying-item {
             position: fixed;
             z-index: 9999;
@@ -141,7 +138,6 @@
             font-size: 1.2rem;
         }
 
-        /* PATRONES DE FONDO POR MARCA */
         .bg-pattern-shopa {
             background-image: radial-gradient(rgba(220, 38, 38, 0.12) 1px, transparent 1px);
             background-size: 20px 20px;
@@ -151,7 +147,6 @@
             background-size: 20px 20px;
         }
 
-        /* ESTILOS DE TEMA NOCHE CRIOLLA NEÓN */
         body.modo-noche-criolla {
             background-color: #030508 !important;
             color: #ffffff !important;
@@ -168,7 +163,6 @@
             transform: scale(1.1) rotate(5deg);
         }
 
-        /* BOTONES E INTERFAZ EL TÍO SILVA (VERDE NEÓN) */
         .tio-silva-theme .btn-silva-main {
             background: linear-gradient(90deg, #00ff66 0%, #00cc52 100%) !important;
             color: #000000 !important;
@@ -190,7 +184,6 @@
     <div id="reading-progress"></div>
     <div id="flash-overlay"></div>
 
-    <!-- TOAST NOTIFICATION -->
     <div id="toast-notification" class="fixed top-6 right-6 z-50 bg-slate-900/90 backdrop-blur-xl border border-emerald-500/50 text-white px-5 py-4 rounded-2xl shadow-2xl flex items-center gap-3.5 transform translate-x-80 opacity-0 pointer-events-none transition-all duration-500">
         <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-xl">🛒</div>
         <div>
@@ -199,7 +192,6 @@
         </div>
     </div>
 
-    <!-- CINTA SUPERIOR -->
     <div class="bg-gradient-to-r from-red-950 via-slate-950 to-emerald-950 text-amber-300 text-[11px] font-bold py-2 overflow-hidden border-b border-slate-800 shadow-md">
         <div class="animate-marquee flex gap-10 items-center">
             <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-ping"></span> 🔥 +120 pedidos enviados hoy por WhatsApp</span>
@@ -209,7 +201,6 @@
         </div>
     </div>
 
-    <!-- HEADER FLOTANTE -->
     <header class="bg-brand-darkBg/90 backdrop-blur-xl sticky top-0 z-40 border-b border-slate-800/80 shadow-2xl transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex flex-col md:flex-row justify-between items-center gap-4">
             
@@ -222,8 +213,6 @@
                     </div>
                 </div>
 
-                <div id="badge-estado-local" class="px-3 py-1 rounded-full text-[11px] font-black shadow-inner flex items-center gap-1.5 transition-all"></div>
-
                 <button onclick="girarRuletaSorpresa()" class="bg-gradient-to-r from-red-600 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white font-black px-3.5 py-1.5 rounded-full text-xs shadow-lg flex items-center gap-1.5 transition transform hover:scale-105 active:scale-95">
                     🎲 ¿Qué comer hoy?
                 </button>
@@ -233,7 +222,6 @@
                 </button>
             </div>
             
-            <!-- SELECTOR DE SEDES -->
             <div class="flex flex-col items-center md:items-end gap-1.5">
                 <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-1">
                     <span>Selecciona la carta aquí</span> 👇
@@ -252,7 +240,6 @@
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 pt-8 relative">
 
-        <!-- BÚSQUEDA -->
         <div data-aos="fade-down" class="mb-8 relative z-10">
             <div class="relative max-w-2xl mx-auto">
                 <input type="text" id="input-buscador" oninput="filtrarPorBusqueda()" placeholder="🔍 Busca un plato o ingrediente (ej. Broaster, Alitas, Chaufa, Lomo...)" class="input-busqueda w-full bg-slate-900/90 backdrop-blur-xl text-white placeholder-slate-400 px-6 py-4 pl-14 rounded-2xl border border-slate-700/80 focus:border-amber-500/80 outline-none shadow-2xl transition-all text-sm font-medium">
@@ -304,7 +291,7 @@
                                 <button onclick="darMeGusta('pollo_broaster', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="pollo_broaster">790</span></button>
                             </div>
                             <p class="text-[11px] text-amber-400 font-extrabold mt-1">🔥 14 personas están viendo este plato</p>
-                            <p class="text-xs text-slate-400 mt-1">Crujiente pollo broaster sazonado con nuestra receta secreta.</p>
+                            <p class="text-xs text-slate-400 mt-1">Crujiente pollo broaster (Alita, Encuentro, Pierna, Pecho).</p>
                         </div>
                         <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
                             <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-red-500 font-black text-xl">Desde S/ 10.00</span></div>
@@ -326,7 +313,7 @@
                                 <button onclick="darMeGusta('salchibroaster', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="salchibroaster">665</span></button>
                             </div>
                             <p class="text-[11px] text-amber-400 font-extrabold mt-1">👀 9 personas están viendo este plato</p>
-                            <p class="text-xs text-slate-400 mt-1">Salchipapa artesanal + pieza de pollo broaster a elección.</p>
+                            <p class="text-xs text-slate-400 mt-1">Salchipapa artesanal + pieza broaster (Alita, Encuentro, Pierna, Pecho).</p>
                         </div>
                         <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
                             <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-red-500 font-black text-xl">Desde S/ 13.00</span></div>
@@ -344,10 +331,10 @@
                     <div class="p-5 flex-1 flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-start">
-                                <h4 class="font-extrabold text-white text-xl">Hamburguesas</h4>
+                                <h4 class="font-extrabold text-white text-xl">Hamburguesas Caseras</h4>
                                 <button onclick="darMeGusta('hamburguesas', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="hamburguesas">512</span></button>
                             </div>
-                            <p class="text-xs text-slate-400 mt-1">Hamburguesas artesanales de carne o pollo en pan brioche suave.</p>
+                            <p class="text-xs text-slate-400 mt-1">Clásica, Royale, A lo Pobre y Mixta en suave pan.</p>
                         </div>
                         <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
                             <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-red-500 font-black text-xl">Desde S/ 7.00</span></div>
@@ -368,7 +355,7 @@
                                 <h4 class="font-extrabold text-white text-xl">Salchipapas</h4>
                                 <button onclick="darMeGusta('salchipapas', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="salchipapas">430</span></button>
                             </div>
-                            <p class="text-xs text-slate-400 mt-1">Papas fritas crujientes con salchicha especial de la casa.</p>
+                            <p class="text-xs text-slate-400 mt-1">Clásica, Especial y A lo Pobre.</p>
                         </div>
                         <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
                             <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-red-500 font-black text-xl">Desde S/ 9.00</span></div>
@@ -377,7 +364,7 @@
                     </div>
                 </div>
 
-                <!-- Alitas BBQ / Acevichadas -->
+                <!-- Alitas -->
                 <div data-aos="fade-up" class="item-menu cat-alitas tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border border-slate-800 hover:border-red-500 transition flex flex-col justify-between relative">
                     <div class="glare-effect"></div>
                     <div class="overflow-hidden h-52 relative bg-slate-900">
@@ -386,10 +373,10 @@
                     <div class="p-5 flex-1 flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-start">
-                                <h4 class="font-extrabold text-white text-xl">Alitas BBQ / Acevichadas</h4>
+                                <h4 class="font-extrabold text-white text-xl">Alitas Especiales</h4>
                                 <button onclick="darMeGusta('alitas', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="alitas">588</span></button>
                             </div>
-                            <p class="text-xs text-slate-400 mt-1">Jugosas alitas bañadas en salsa BBQ o crema acevichada.</p>
+                            <p class="text-xs text-slate-400 mt-1">Porciones de 6 piezas a la BBQ, Acevichadas y Combo 2.0.</p>
                         </div>
                         <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
                             <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-red-500 font-black text-xl">Desde S/ 16.00</span></div>
@@ -409,7 +396,7 @@
                                 <button onclick="darMeGusta('combos_shopa', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="combos_shopa">745</span></button>
                             </div>
                             <p class="text-[11px] text-amber-400 font-extrabold mt-1">🔥 22 personas están viendo este combo</p>
-                            <p class="text-xs text-slate-400 mt-1">Combos familiares 1, 2, 3 y Combo Alitas Mix 2.0.</p>
+                            <p class="text-xs text-slate-400 mt-1">Combos 1, 2 y 3 con gaseosas incluidas.</p>
                         </div>
                         <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
                             <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-amber-400 font-black text-xl">Desde S/ 23.00</span></div>
@@ -422,28 +409,32 @@
             <!-- BEBIDAS SHOPA -->
             <div data-aos="fade-up" class="item-menu cat-bebidas pt-4">
                 <h3 class="text-2xl font-black text-red-500 mb-6 border-b border-red-500/20 pb-3">🥤 Bebidas & Refrescos</h3>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="bg-brand-cardBg p-5 rounded-2xl border border-slate-800 flex justify-between items-center">
-                        <div><span class="text-white font-bold block text-sm">Gaseosa Personal Vidrio</span><span class="text-red-500 font-black text-base">S/ 2.50</span></div>
-                        <button onclick="agregarAlCarritoAnimado('Gaseosa Personal Vidrio (El Shopa)', 2.50, event)" class="bg-red-600 hover:bg-red-700 text-white px-3.5 py-1.5 rounded-xl text-xs font-bold">Agregar +</button>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <div class="bg-brand-cardBg p-4 rounded-2xl border border-slate-800 flex justify-between items-center">
+                        <div><span class="text-white font-bold block text-xs">Inka/Coca Vidrio</span><span class="text-red-500 font-black text-sm">S/ 2.50</span></div>
+                        <button onclick="agregarAlCarritoAnimado('Inka/Coca Cola Vidrio (El Shopa)', 2.50, event)" class="bg-red-600 text-white px-3 py-1.5 rounded-xl text-xs font-bold">Agregar +</button>
                     </div>
-                    <div class="bg-brand-cardBg p-5 rounded-2xl border border-slate-800 flex justify-between items-center">
-                        <div><span class="text-white font-bold block text-sm">Gordita</span><span class="text-red-500 font-black text-base">S/ 4.50</span></div>
-                        <button onclick="agregarAlCarritoAnimado('Gordita (El Shopa)', 4.50, event)" class="bg-red-600 hover:bg-red-700 text-white px-3.5 py-1.5 rounded-xl text-xs font-bold">Agregar +</button>
+                    <div class="bg-brand-cardBg p-4 rounded-2xl border border-slate-800 flex justify-between items-center">
+                        <div><span class="text-white font-bold block text-xs">Gordita</span><span class="text-red-500 font-black text-sm">S/ 4.50</span></div>
+                        <button onclick="agregarAlCarritoAnimado('Gordita (El Shopa)', 4.50, event)" class="bg-red-600 text-white px-3 py-1.5 rounded-xl text-xs font-bold">Agregar +</button>
                     </div>
-                    <div class="bg-brand-cardBg p-5 rounded-2xl border border-slate-800 flex justify-between items-center">
-                        <div><span class="text-white font-bold block text-sm">Gaseosa 1 Litro</span><span class="text-red-500 font-black text-base">S/ 6.00</span></div>
-                        <button onclick="agregarAlCarritoAnimado('Gaseosa 1L (El Shopa)', 6.00, event)" class="bg-red-600 hover:bg-red-700 text-white px-3.5 py-1.5 rounded-xl text-xs font-bold">Agregar +</button>
+                    <div class="bg-brand-cardBg p-4 rounded-2xl border border-slate-800 flex justify-between items-center">
+                        <div><span class="text-white font-bold block text-xs">Un Litro</span><span class="text-red-500 font-black text-sm">S/ 6.00</span></div>
+                        <button onclick="agregarAlCarritoAnimado('Gaseosa 1 Litro (El Shopa)', 6.00, event)" class="bg-red-600 text-white px-3 py-1.5 rounded-xl text-xs font-bold">Agregar +</button>
                     </div>
-                    <div class="bg-brand-cardBg p-5 rounded-2xl border border-slate-800 flex justify-between items-center">
-                        <div><span class="text-white font-bold block text-sm">Café / Infusiones</span><span class="text-red-500 font-black text-base">S/ 3.00</span></div>
-                        <button onclick="agregarAlCarritoAnimado('Café o Infusión (El Shopa)', 3.00, event)" class="bg-red-600 hover:bg-red-700 text-white px-3.5 py-1.5 rounded-xl text-xs font-bold">Agregar +</button>
+                    <div class="bg-brand-cardBg p-4 rounded-2xl border border-slate-800 flex justify-between items-center">
+                        <div><span class="text-white font-bold block text-xs">Café</span><span class="text-red-500 font-black text-sm">S/ 3.00</span></div>
+                        <button onclick="agregarAlCarritoAnimado('Café (El Shopa)', 3.00, event)" class="bg-red-600 text-white px-3 py-1.5 rounded-xl text-xs font-bold">Agregar +</button>
+                    </div>
+                    <div class="bg-brand-cardBg p-4 rounded-2xl border border-slate-800 flex justify-between items-center">
+                        <div><span class="text-white font-bold block text-xs">Infusiones</span><span class="text-red-500 font-black text-sm">S/ 2.50</span></div>
+                        <button onclick="agregarAlCarritoAnimado('Infusiones (El Shopa)', 2.50, event)" class="bg-red-600 text-white px-3 py-1.5 rounded-xl text-xs font-bold">Agregar +</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN EL TÍO SILVA (VERDE NEÓN FOSFORESCENTE) -->
+        <!-- SECCIÓN EL TÍO SILVA -->
         <section id="menu-tio-silva" class="hidden space-y-8 relative z-10 tio-silva-theme">
             <div data-aos="fade-down" class="banner-header bg-gradient-to-r from-emerald-950 via-slate-950 to-green-950 p-6 sm:p-8 md:p-10 rounded-3xl shadow-[0_0_35px_rgba(0,255,102,0.3)] border-2 border-brand-greenNeon text-white flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
                 <div class="flex flex-col md:flex-row items-center gap-8 relative z-10 text-center md:text-left w-full md:w-auto">
@@ -462,7 +453,7 @@
                 <button onclick="filtrarCategoria('tio-silva', 'todos', this)" class="btn-filtro-silva px-4 py-2 rounded-xl text-xs font-black bg-brand-greenNeon text-black border border-brand-greenNeon shadow-[0_0_15px_rgba(0,255,102,0.4)]">Todos</button>
                 <button onclick="filtrarCategoria('tio-silva', 'principales', this)" class="btn-filtro-silva bg-slate-900 text-slate-300 px-4 py-2 rounded-xl text-xs font-black border border-slate-800">🍲 Platos Principales</button>
                 <button onclick="filtrarCategoria('tio-silva', 'extras', this)" class="btn-filtro-silva bg-slate-900 text-slate-300 px-4 py-2 rounded-xl text-xs font-black border border-slate-800">🔥 Extras</button>
-                <button onclick="filtrarCategoria('tio-silva', 'bebidas', this)" class="btn-filtro-silva bg-slate-900 text-slate-300 px-4 py-2 rounded-xl text-xs font-black border border-slate-800">🥤 Bebidas</button>
+                <button onclick="filtrarCategoria('tio-silva', 'bebidas', this)" class="btn-filtro-silva bg-slate-900 text-slate-300 px-4 py-2 rounded-xl text-xs font-black border border-slate-800">🥤 Chicha Morada</button>
             </div>
 
             <!-- GRID TÍO SILVA -->
@@ -470,7 +461,7 @@
                 <!-- Lomo Saltado a lo Pobre -->
                 <div data-aos="fade-up" class="item-menu cat-principales tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border-2 border-brand-greenNeon shadow-[0_0_25px_rgba(0,255,102,0.3)] transition flex flex-col justify-between relative">
                     <div class="glare-effect"></div>
-                    <div class="absolute top-3 left-3 z-20 sello-dorado text-black text-[10px] font-black px-3 py-1 rounded-full uppercase">🥇 Plato Estrella del Día</div>
+                    <div class="absolute top-3 left-3 z-20 sello-dorado text-black text-[10px] font-black px-3 py-1 rounded-full uppercase">🥇 Recomendado</div>
                     <div class="steam-container"><div class="steam-particle"></div><div class="steam-particle"></div><div class="steam-particle"></div></div>
                     <div class="overflow-hidden h-52 relative bg-slate-900">
                         <img src="lomo-pobre.jpg" alt="Lomo Saltado a lo Pobre" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition">
@@ -478,59 +469,37 @@
                     <div class="p-5 flex-1 flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-start">
-                                <h4 class="font-extrabold text-white text-xl">Lomo Saltado a lo Pobre</h4>
+                                <h4 class="font-extrabold text-white text-xl">Lomo Saltado a lo pobre</h4>
                                 <button onclick="darMeGusta('lomo_pobre', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="lomo_pobre">785</span></button>
                             </div>
                             <p class="text-[11px] text-brand-greenNeon font-extrabold mt-1">🔥 18 personas están viendo este plato</p>
-                            <p class="text-xs text-slate-400 mt-1">Carne jugosa salteada al wok con papas, arroz, huevo y plátano frito.</p>
+                            <p class="text-xs text-slate-400 mt-1">Jugosos trozos de carne salteados con papas, arroz, huevo frito y plátano.</p>
                         </div>
                         <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
                             <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-brand-greenNeon font-black text-xl">S/ 19.00</span></div>
-                            <button onclick="agregarAlCarritoAnimado('Lomo Saltado a lo Pobre (El Tío Silva)', 19.00, event)" class="btn-silva-main font-black px-5 py-2.5 rounded-2xl text-xs flex items-center gap-1.5">🛒 Agregar +</button>
+                            <button onclick="agregarAlCarritoAnimado('Lomo Saltado a lo pobre (El Tío Silva)', 19.00, event)" class="btn-silva-main font-black px-5 py-2.5 rounded-2xl text-xs flex items-center gap-1.5">🛒 Agregar +</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Lomo Saltado Carne -->
+                <!-- Tallarin saltado (carne) -->
                 <div data-aos="fade-up" class="item-menu cat-principales tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border border-slate-800 hover:border-brand-greenNeon transition flex flex-col justify-between relative">
                     <div class="glare-effect"></div>
                     <div class="steam-container"><div class="steam-particle"></div><div class="steam-particle"></div></div>
                     <div class="overflow-hidden h-52 relative bg-slate-900">
-                        <img src="lomo-saltado.jpg" alt="Lomo Saltado" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition">
+                        <img src="tallarin-saltado.jpg" alt="Tallarin saltado (carne)" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition">
                     </div>
                     <div class="p-5 flex-1 flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-start">
-                                <h4 class="font-extrabold text-white text-xl">Lomo Saltado (Carne)</h4>
-                                <button onclick="darMeGusta('lomo_carne', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="lomo_carne">542</span></button>
-                            </div>
-                            <p class="text-xs text-slate-400 mt-1">Jugosos trozos de carne salteados con cebolla roja, tomate y ají amarillo.</p>
-                        </div>
-                        <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
-                            <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-brand-greenNeon font-black text-xl">S/ 15.00</span></div>
-                            <button onclick="agregarAlCarritoAnimado('Lomo Saltado Carne (El Tío Silva)', 15.00, event)" class="btn-silva-main font-black px-5 py-2.5 rounded-2xl text-xs flex items-center gap-1.5">🛒 Agregar +</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tallarín Saltado -->
-                <div data-aos="fade-up" class="item-menu cat-principales tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border border-slate-800 hover:border-brand-greenNeon transition flex flex-col justify-between relative">
-                    <div class="glare-effect"></div>
-                    <div class="steam-container"><div class="steam-particle"></div><div class="steam-particle"></div></div>
-                    <div class="overflow-hidden h-52 relative bg-slate-900">
-                        <img src="tallarin-saltado.jpg" alt="Tallarín Saltado" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition">
-                    </div>
-                    <div class="p-5 flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex justify-between items-start">
-                                <h4 class="font-extrabold text-white text-xl">Tallarín Saltado (Carne)</h4>
+                                <h4 class="font-extrabold text-white text-xl">Tallarin saltado (carne)</h4>
                                 <button onclick="darMeGusta('tallarin_carne', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="tallarin_carne">480</span></button>
                             </div>
-                            <p class="text-xs text-slate-400 mt-1">Fideos salteados al wok a alto fuego con jugosa carne y verduras.</p>
+                            <p class="text-xs text-slate-400 mt-1">Fideos criollos salteados a alto fuego con carne jugosa y verduras.</p>
                         </div>
                         <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
                             <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-brand-greenNeon font-black text-xl">S/ 15.00</span></div>
-                            <button onclick="agregarAlCarritoAnimado('Tallarín Saltado Carne (El Tío Silva)', 15.00, event)" class="btn-silva-main font-black px-5 py-2.5 rounded-2xl text-xs flex items-center gap-1.5">🛒 Agregar +</button>
+                            <button onclick="agregarAlCarritoAnimado('Tallarin saltado carne (El Tío Silva)', 15.00, event)" class="btn-silva-main font-black px-5 py-2.5 rounded-2xl text-xs flex items-center gap-1.5">🛒 Agregar +</button>
                         </div>
                     </div>
                 </div>
@@ -547,7 +516,7 @@
                                 <h4 class="font-extrabold text-white text-xl">Chaufa</h4>
                                 <button onclick="darMeGusta('chaufa', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="chaufa">620</span></button>
                             </div>
-                            <p class="text-xs text-slate-400 mt-1">Arroz chaufa ahumado al wok con trozos de pollo y huevo salteado.</p>
+                            <p class="text-xs text-slate-400 mt-1">Arroz chaufa ahumado con cecina/pollo y tortilla de huevo.</p>
                         </div>
                         <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
                             <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-brand-greenNeon font-black text-xl">S/ 13.00</span></div>
@@ -570,7 +539,7 @@
                                 <button onclick="darMeGusta('caldo_gallina', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="caldo_gallina">710</span></button>
                             </div>
                             <p class="text-[11px] text-brand-greenNeon font-extrabold mt-1">👀 11 personas están viendo este caldo</p>
-                            <p class="text-xs text-slate-400 mt-1">Sustancioso caldo con fideos largos, presa abundante y huevo.</p>
+                            <p class="text-xs text-slate-400 mt-1">Sustancioso caldo de gallina con fideos largos y huevo.</p>
                         </div>
                         <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
                             <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-brand-greenNeon font-black text-xl">S/ 11.00</span></div>
@@ -579,23 +548,45 @@
                     </div>
                 </div>
 
-                <!-- Bisteck a lo Pobre -->
+                <!-- Lomo Saltado (carne) -->
                 <div data-aos="fade-up" class="item-menu cat-principales tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border border-slate-800 hover:border-brand-greenNeon transition flex flex-col justify-between relative">
                     <div class="glare-effect"></div>
+                    <div class="steam-container"><div class="steam-particle"></div><div class="steam-particle"></div></div>
                     <div class="overflow-hidden h-52 relative bg-slate-900">
-                        <img src="bisteck-pobre.jpg" alt="Bisteck a lo Pobre" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition">
+                        <img src="lomo-saltado.jpg" alt="Lomo Saltado (carne)" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition">
                     </div>
                     <div class="p-5 flex-1 flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-start">
-                                <h4 class="font-extrabold text-white text-xl">Bisteck a lo Pobre</h4>
+                                <h4 class="font-extrabold text-white text-xl">Lomo Saltado (carne)</h4>
+                                <button onclick="darMeGusta('lomo_carne', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="lomo_carne">542</span></button>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-1">Lomo salteado clásico con papas fritas y arroz blanco.</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
+                            <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-brand-greenNeon font-black text-xl">S/ 15.00</span></div>
+                            <button onclick="agregarAlCarritoAnimado('Lomo Saltado carne (El Tío Silva)', 15.00, event)" class="btn-silva-main font-black px-5 py-2.5 rounded-2xl text-xs flex items-center gap-1.5">🛒 Agregar +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bisteck a lo pobre -->
+                <div data-aos="fade-up" class="item-menu cat-principales tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border border-slate-800 hover:border-brand-greenNeon transition flex flex-col justify-between relative">
+                    <div class="glare-effect"></div>
+                    <div class="overflow-hidden h-52 relative bg-slate-900">
+                        <img src="bisteck-pobre.jpg" alt="Bisteck a lo pobre" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-extrabold text-white text-xl">Bisteck a lo pobre</h4>
                                 <button onclick="darMeGusta('bisteck_pobre', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="bisteck_pobre">395</span></button>
                             </div>
-                            <p class="text-xs text-slate-400 mt-1">Jugoso bisteck servido con papas fritas, arroz, huevo y plátano dulce.</p>
+                            <p class="text-xs text-slate-400 mt-1">Bisteck a la plancha con arroz, papas fritas, huevo y plátano.</p>
                         </div>
                         <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
                             <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-brand-greenNeon font-black text-xl">S/ 17.00</span></div>
-                            <button onclick="agregarAlCarritoAnimado('Bisteck a lo Pobre (El Tío Silva)', 17.00, event)" class="btn-silva-main font-black px-5 py-2.5 rounded-2xl text-xs flex items-center gap-1.5">🛒 Agregar +</button>
+                            <button onclick="agregarAlCarritoAnimado('Bisteck a lo pobre (El Tío Silva)', 17.00, event)" class="btn-silva-main font-black px-5 py-2.5 rounded-2xl text-xs flex items-center gap-1.5">🛒 Agregar +</button>
                         </div>
                     </div>
                 </div>
@@ -605,42 +596,39 @@
             <div data-aos="fade-up" class="item-menu cat-extras pt-4">
                 <h3 class="text-2xl font-black text-brand-greenNeon mb-6 border-b border-brand-greenNeon/20 pb-3">🔥 Platos Extras</h3>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div class="bg-brand-cardBg p-5 rounded-2xl border border-slate-800 flex justify-between items-center">
-                        <div><h4 class="font-bold text-white text-sm">Aeropuerto de Pollo</h4><span class="text-brand-greenNeon font-black text-base">S/ 14.00</span></div>
-                        <button onclick="agregarAlCarritoAnimado('Aeropuerto de Pollo (El Tío Silva)', 14.00, event)" class="btn-silva-main px-3.5 py-1.5 rounded-xl text-xs font-bold">Agregar +</button>
-                    </div>
-                    <div class="bg-brand-cardBg p-5 rounded-2xl border border-slate-800 flex justify-between items-center">
-                        <div><h4 class="font-bold text-white text-sm">Aeropuerto de Carne</h4><span class="text-brand-greenNeon font-black text-base">S/ 15.00</span></div>
-                        <button onclick="agregarAlCarritoAnimado('Aeropuerto de Carne (El Tío Silva)', 15.00, event)" class="btn-silva-main px-3.5 py-1.5 rounded-xl text-xs font-bold">Agregar +</button>
-                    </div>
-                    <div class="bg-brand-cardBg p-5 rounded-2xl border border-slate-800 flex justify-between items-center">
-                        <div><h4 class="font-bold text-white text-sm">Pollo Saltado</h4><span class="text-brand-greenNeon font-black text-base">S/ 14.00</span></div>
-                        <button onclick="agregarAlCarritoAnimado('Pollo Saltado (El Tío Silva)', 14.00, event)" class="btn-silva-main px-3.5 py-1.5 rounded-xl text-xs font-bold">Agregar +</button>
-                    </div>
+                    <div class="bg-brand-cardBg p-4 rounded-2xl border border-slate-800 flex justify-between items-center"><div><h4 class="font-bold text-white text-xs">Aeropuerto de pollo</h4><span class="text-brand-greenNeon font-black text-sm">S/ 14.00</span></div><button onclick="agregarAlCarritoAnimado('Aeropuerto de pollo', 14.00, event)" class="btn-silva-main px-3 py-1.5 rounded-xl text-xs font-bold">Agregar +</button></div>
+                    <div class="bg-brand-cardBg p-4 rounded-2xl border border-slate-800 flex justify-between items-center"><div><h4 class="font-bold text-white text-xs">Aeropuerto de carne</h4><span class="text-brand-greenNeon font-black text-sm">S/ 15.00</span></div><button onclick="agregarAlCarritoAnimado('Aeropuerto de carne', 15.00, event)" class="btn-silva-main px-3 py-1.5 rounded-xl text-xs font-bold">Agregar +</button></div>
+                    <div class="bg-brand-cardBg p-4 rounded-2xl border border-slate-800 flex justify-between items-center"><div><h4 class="font-bold text-white text-xs">Pollo saltado</h4><span class="text-brand-greenNeon font-black text-sm">S/ 14.00</span></div><button onclick="agregarAlCarritoAnimado('Pollo saltado', 14.00, event)" class="btn-silva-main px-3 py-1.5 rounded-xl text-xs font-bold">Agregar +</button></div>
+                    <div class="bg-brand-cardBg p-4 rounded-2xl border border-slate-800 flex justify-between items-center"><div><h4 class="font-bold text-white text-xs">Churrasco a lo pobre</h4><span class="text-brand-greenNeon font-black text-sm">S/ 17.00</span></div><button onclick="agregarAlCarritoAnimado('Churrasco a lo pobre', 17.00, event)" class="btn-silva-main px-3 py-1.5 rounded-xl text-xs font-bold">Agregar +</button></div>
+                    <div class="bg-brand-cardBg p-4 rounded-2xl border border-slate-800 flex justify-between items-center"><div><h4 class="font-bold text-white text-xs">Chuleta a lo pobre</h4><span class="text-brand-greenNeon font-black text-sm">S/ 17.00</span></div><button onclick="agregarAlCarritoAnimado('Chuleta a lo pobre', 17.00, event)" class="btn-silva-main px-3 py-1.5 rounded-xl text-xs font-bold">Agregar +</button></div>
+                    <div class="bg-brand-cardBg p-4 rounded-2xl border border-slate-800 flex justify-between items-center"><div><h4 class="font-bold text-white text-xs">Pechuga Dorada</h4><span class="text-brand-greenNeon font-black text-sm">S/ 17.00</span></div><button onclick="agregarAlCarritoAnimado('Pechuga Dorada', 17.00, event)" class="btn-silva-main px-3 py-1.5 rounded-xl text-xs font-bold">Agregar +</button></div>
+                    <div class="bg-brand-cardBg p-4 rounded-2xl border border-slate-800 flex justify-between items-center"><div><h4 class="font-bold text-white text-xs">Pechuga a lo pobre</h4><span class="text-brand-greenNeon font-black text-sm">S/ 20.00</span></div><button onclick="agregarAlCarritoAnimado('Pechuga a lo pobre', 20.00, event)" class="btn-silva-main px-3 py-1.5 rounded-xl text-xs font-bold">Agregar +</button></div>
+                    <div class="bg-brand-cardBg p-4 rounded-2xl border border-slate-800 flex justify-between items-center"><div><h4 class="font-bold text-white text-xs">Tallarin saltado de pollo</h4><span class="text-brand-greenNeon font-black text-sm">S/ 14.00</span></div><button onclick="agregarAlCarritoAnimado('Tallarin saltado de pollo', 14.00, event)" class="btn-silva-main px-3 py-1.5 rounded-xl text-xs font-bold">Agregar +</button></div>
+                    <div class="bg-brand-cardBg p-4 rounded-2xl border border-slate-800 flex justify-between items-center"><div><h4 class="font-bold text-white text-xs">Milanesa a lo pobre</h4><span class="text-brand-greenNeon font-black text-sm">S/ 15.00</span></div><button onclick="agregarAlCarritoAnimado('Milanesa a lo pobre', 15.00, event)" class="btn-silva-main px-3 py-1.5 rounded-xl text-xs font-bold">Agregar +</button></div>
                 </div>
             </div>
 
-            <!-- BEBIDAS TÍO SILVA -->
+            <!-- CHICHA MORADA TÍO SILVA -->
             <div data-aos="fade-up" class="item-menu cat-bebidas pt-4">
-                <h3 class="text-2xl font-black text-brand-greenNeon mb-6 border-b border-brand-greenNeon/20 pb-3">🥤 Refrescos Artesanales</h3>
+                <h3 class="text-2xl font-black text-brand-greenNeon mb-6 border-b border-brand-greenNeon/20 pb-3">🥤 Chicha Morada Artesanal</h3>
                 <div class="grid sm:grid-cols-3 gap-6">
                     <div class="bg-brand-cardBg p-6 rounded-3xl border border-slate-800 text-center flex flex-col justify-between items-center">
                         <span class="text-5xl mb-3">🥤</span>
-                        <h4 class="font-bold text-white">Chicha Morada (Vaso)</h4>
+                        <h4 class="font-bold text-white">Chicha Morada (1 Vaso)</h4>
                         <span class="text-brand-greenNeon font-black text-2xl my-2">S/ 2.50</span>
-                        <button onclick="agregarAlCarritoAnimado('Chicha Morada Vaso (El Tío Silva)', 2.50, event)" class="btn-silva-main w-full py-2.5 rounded-2xl text-xs font-bold">Agregar +</button>
+                        <button onclick="agregarAlCarritoAnimado('Chicha Morada 1 Vaso (El Tío Silva)', 2.50, event)" class="btn-silva-main w-full py-2.5 rounded-2xl text-xs font-bold">Agregar +</button>
                     </div>
                     <div class="bg-brand-cardBg p-6 rounded-3xl border border-slate-800 text-center flex flex-col justify-between items-center">
                         <span class="text-5xl mb-3">🏺</span>
                         <h4 class="font-bold text-white">Chicha Morada (1/2 Litro)</h4>
                         <span class="text-brand-greenNeon font-black text-2xl my-2">S/ 7.00</span>
-                        <button onclick="agregarAlCarritoAnimado('Chicha Morada 1/2L (El Tío Silva)', 7.00, event)" class="btn-silva-main w-full py-2.5 rounded-2xl text-xs font-bold">Agregar +</button>
+                        <button onclick="agregarAlCarritoAnimado('Chicha Morada 1/2 Litro (El Tío Silva)', 7.00, event)" class="btn-silva-main w-full py-2.5 rounded-2xl text-xs font-bold">Agregar +</button>
                     </div>
                     <div class="bg-brand-cardBg p-6 rounded-3xl border border-slate-800 text-center flex flex-col justify-between items-center">
                         <span class="text-5xl mb-3">🍹</span>
                         <h4 class="font-bold text-white">Chicha Morada (1 Litro)</h4>
                         <span class="text-brand-greenNeon font-black text-2xl my-2">S/ 10.00</span>
-                        <button onclick="agregarAlCarritoAnimado('Chicha Morada 1L (El Tío Silva)', 10.00, event)" class="btn-silva-main w-full py-2.5 rounded-2xl text-xs font-bold">Agregar +</button>
+                        <button onclick="agregarAlCarritoAnimado('Chicha Morada 1 Litro (El Tío Silva)', 10.00, event)" class="btn-silva-main w-full py-2.5 rounded-2xl text-xs font-bold">Agregar +</button>
                     </div>
                 </div>
             </div>
@@ -679,16 +667,16 @@
         </div>
     </div>
 
-    <!-- MODALES DE OPCIONES MULTIPLES -->
+    <!-- MODALES SHOPA CORREGIDOS -->
     <div id="modal-broaster" class="modal-backdrop fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
         <div class="bg-brand-cardBg border border-red-500/50 rounded-3xl max-w-md w-full p-6 relative shadow-2xl">
             <button onclick="cerrarModal('modal-broaster')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
             <h3 class="text-2xl font-black text-red-500 mb-5 border-b border-slate-800 pb-3">🍗 Pollo Broaster</h3>
             <div class="space-y-3">
-                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Alita Broaster</span><button onclick="agregarAlCarritoAnimado('Alita Broaster', 10.00, event); cerrarModal('modal-broaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 10.00 +</button></div>
-                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Encuentro Broaster</span><button onclick="agregarAlCarritoAnimado('Encuentro Broaster', 11.00, event); cerrarModal('modal-broaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 11.00 +</button></div>
-                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Pierna Broaster</span><button onclick="agregarAlCarritoAnimado('Pierna Broaster', 11.00, event); cerrarModal('modal-broaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 11.00 +</button></div>
-                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Pecho Broaster</span><button onclick="agregarAlCarritoAnimado('Pecho Broaster', 12.00, event); cerrarModal('modal-broaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 12.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">ALITA</span><button onclick="agregarAlCarritoAnimado('Alita Broaster', 10.00, event); cerrarModal('modal-broaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 10.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">ENCUENTRO</span><button onclick="agregarAlCarritoAnimado('Encuentro Broaster', 11.00, event); cerrarModal('modal-broaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 11.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">PIERNA</span><button onclick="agregarAlCarritoAnimado('Pierna Broaster', 11.00, event); cerrarModal('modal-broaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 11.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">PECHO</span><button onclick="agregarAlCarritoAnimado('Pecho Broaster', 12.00, event); cerrarModal('modal-broaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 12.00 +</button></div>
             </div>
         </div>
     </div>
@@ -698,10 +686,10 @@
             <button onclick="cerrarModal('modal-salchibroaster')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
             <h3 class="text-2xl font-black text-red-500 mb-5 border-b border-slate-800 pb-3">🍟 Salchibroaster</h3>
             <div class="space-y-3">
-                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Salchibroaster Alita</span><button onclick="agregarAlCarritoAnimado('Salchibroaster Alita', 13.00, event); cerrarModal('modal-salchibroaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 13.00 +</button></div>
-                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Salchibroaster Encuentro</span><button onclick="agregarAlCarritoAnimado('Salchibroaster Encuentro', 14.00, event); cerrarModal('modal-salchibroaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 14.00 +</button></div>
-                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Salchibroaster Pierna</span><button onclick="agregarAlCarritoAnimado('Salchibroaster Pierna', 14.00, event); cerrarModal('modal-salchibroaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 14.00 +</button></div>
-                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Salchibroaster Pecho</span><button onclick="agregarAlCarritoAnimado('Salchibroaster Pecho', 15.00, event); cerrarModal('modal-salchibroaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 15.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">ALITA</span><button onclick="agregarAlCarritoAnimado('Salchibroaster Alita', 13.00, event); cerrarModal('modal-salchibroaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 13.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">ENCUENTRO</span><button onclick="agregarAlCarritoAnimado('Salchibroaster Encuentro', 14.00, event); cerrarModal('modal-salchibroaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 14.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">PIERNA</span><button onclick="agregarAlCarritoAnimado('Salchibroaster Pierna', 14.00, event); cerrarModal('modal-salchibroaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 14.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">PECHO</span><button onclick="agregarAlCarritoAnimado('Salchibroaster Pecho', 15.00, event); cerrarModal('modal-salchibroaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 15.00 +</button></div>
             </div>
         </div>
     </div>
@@ -709,11 +697,14 @@
     <div id="modal-hamburguesas" class="modal-backdrop fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
         <div class="bg-brand-cardBg border border-red-500/50 rounded-3xl max-w-md w-full p-6 relative shadow-2xl max-h-[85vh] overflow-y-auto">
             <button onclick="cerrarModal('modal-hamburguesas')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
-            <h3 class="text-2xl font-black text-red-500 mb-5 border-b border-slate-800 pb-3">🍔 Hamburguesas</h3>
+            <h3 class="text-2xl font-black text-red-500 mb-5 border-b border-slate-800 pb-3">🍔 Hamburguesas Caseras</h3>
             <div class="space-y-3">
-                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Clásica (Carne/Pollo)</span><button onclick="agregarAlCarritoAnimado('Hamburguesa Clásica', 7.00, event); cerrarModal('modal-hamburguesas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 7.00 +</button></div>
-                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Royal (Huevo + Queso)</span><button onclick="agregarAlCarritoAnimado('Hamburguesa Royal', 11.00, event); cerrarModal('modal-hamburguesas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 11.00 +</button></div>
-                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">A lo Pobre</span><button onclick="agregarAlCarritoAnimado('Hamburguesa A lo Pobre', 13.00, event); cerrarModal('modal-hamburguesas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 13.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">CLÁSICA DE CARNE</span><button onclick="agregarAlCarritoAnimado('Hamburguesa Clásica Carne', 7.00, event); cerrarModal('modal-hamburguesas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 7.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">CLÁSICA DE POLLO</span><button onclick="agregarAlCarritoAnimado('Hamburguesa Clásica Pollo', 7.00, event); cerrarModal('modal-hamburguesas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 7.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">ROYAL (HUEVO+QUESO) CARNE</span><button onclick="agregarAlCarritoAnimado('Hamburguesa Royal Carne', 11.00, event); cerrarModal('modal-hamburguesas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 11.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">ROYAL (HUEVO+QUESO) POLLO</span><button onclick="agregarAlCarritoAnimado('Hamburguesa Royal Pollo', 11.00, event); cerrarModal('modal-hamburguesas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 11.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">A LO POBRE (HUEVO+PLÁTANO)</span><button onclick="agregarAlCarritoAnimado('Hamburguesa A lo Pobre', 13.00, event); cerrarModal('modal-hamburguesas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 13.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">MIXTA (HUEVO+CHORIZO)</span><button onclick="agregarAlCarritoAnimado('Hamburguesa Mixta', 13.00, event); cerrarModal('modal-hamburguesas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 13.00 +</button></div>
             </div>
         </div>
     </div>
@@ -723,8 +714,9 @@
             <button onclick="cerrarModal('modal-salchipapas')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
             <h3 class="text-2xl font-black text-red-500 mb-5 border-b border-slate-800 pb-3">🍟 Salchipapas</h3>
             <div class="space-y-3">
-                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Salchipapa Clásica</span><button onclick="agregarAlCarritoAnimado('Salchipapa Clásica', 9.00, event); cerrarModal('modal-salchipapas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 9.00 +</button></div>
-                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Salchipapa Especial</span><button onclick="agregarAlCarritoAnimado('Salchipapa Especial', 14.00, event); cerrarModal('modal-salchipapas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 14.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">CLÁSICA</span><button onclick="agregarAlCarritoAnimado('Salchipapa Clásica', 9.00, event); cerrarModal('modal-salchipapas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 9.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">ESPECIAL (HUEVO+CHORIZO)</span><button onclick="agregarAlCarritoAnimado('Salchipapa Especial', 14.00, event); cerrarModal('modal-salchipapas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 14.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">A LO POBRE (HUEVO+PLÁTANO)</span><button onclick="agregarAlCarritoAnimado('Salchipapa A lo Pobre', 14.00, event); cerrarModal('modal-salchipapas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 14.00 +</button></div>
             </div>
         </div>
     </div>
@@ -732,10 +724,11 @@
     <div id="modal-alitas" class="modal-backdrop fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
         <div class="bg-brand-cardBg border border-red-500/50 rounded-3xl max-w-md w-full p-6 relative shadow-2xl">
             <button onclick="cerrarModal('modal-alitas')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
-            <h3 class="text-2xl font-black text-red-500 mb-5 border-b border-slate-800 pb-3">🍗 Alitas</h3>
+            <h3 class="text-2xl font-black text-red-500 mb-5 border-b border-slate-800 pb-3">🍗 Alitas Especiales</h3>
             <div class="space-y-3">
-                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Alitas BBQ (6 piezas)</span><button onclick="agregarAlCarritoAnimado('Alitas BBQ (6 piezas)', 16.00, event); cerrarModal('modal-alitas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 16.00 +</button></div>
-                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Alitas Acevichadas (6 piezas)</span><button onclick="agregarAlCarritoAnimado('Alitas Acevichadas (6 piezas)', 16.00, event); cerrarModal('modal-alitas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 16.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">A la BBQ (6 piezas)</span><button onclick="agregarAlCarritoAnimado('Alitas BBQ (6 piezas)', 16.00, event); cerrarModal('modal-alitas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 16.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Acevichadas (6 piezas)</span><button onclick="agregarAlCarritoAnimado('Alitas Acevichadas (6 piezas)', 16.00, event); cerrarModal('modal-alitas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 16.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Combos El Shopa 2.0 (BBQ + Acevichadas + Inka Cola 1L)</span><button onclick="agregarAlCarritoAnimado('Combos El Shopa 2.0 (Alitas Mix + 1L)', 34.00, event); cerrarModal('modal-alitas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 34.00 +</button></div>
             </div>
         </div>
     </div>
@@ -746,12 +739,16 @@
             <h3 class="text-2xl font-black text-amber-500 mb-5 border-b border-slate-800 pb-3">⭐ Combos El Shopa</h3>
             <div class="space-y-4">
                 <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 flex justify-between items-center">
-                    <div><h4 class="font-bold text-white text-sm">Combo 1</h4><p class="text-xs text-slate-400">2 Piernas + Gordita/Pepsi</p></div>
+                    <div><h4 class="font-bold text-white text-sm">COMBO 1</h4><p class="text-xs text-slate-400">2 Piernas Broster + 1 Gordita ó Pepsi Yumbo</p></div>
                     <button onclick="agregarAlCarritoAnimado('Combo 1 El Shopa', 23.00, event); cerrarModal('modal-combos');" class="bg-amber-500 text-black text-xs px-3.5 py-2 rounded-xl font-bold">S/ 23.00 +</button>
                 </div>
                 <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 flex justify-between items-center">
-                    <div><h4 class="font-bold text-white text-sm">Combo 3 (Familiar)</h4><p class="text-xs text-slate-400">2 Piernas + 2 Pechos + 1 Alita + 1L</p></div>
-                    <button onclick="agregarAlCarritoAnimado('Combo 3 Familiar', 55.00, event); cerrarModal('modal-combos');" class="bg-amber-500 text-black text-xs px-3.5 py-2 rounded-xl font-bold">S/ 55.00 +</button>
+                    <div><h4 class="font-bold text-white text-sm">COMBO 2</h4><p class="text-xs text-slate-400">2 Encuentros Broster + 1 Gordita ó Pepsi Yumbo</p></div>
+                    <button onclick="agregarAlCarritoAnimado('Combo 2 El Shopa', 24.00, event); cerrarModal('modal-combos');" class="bg-amber-500 text-black text-xs px-3.5 py-2 rounded-xl font-bold">S/ 24.00 +</button>
+                </div>
+                <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 flex justify-between items-center">
+                    <div><h4 class="font-bold text-white text-sm">COMBO 3</h4><p class="text-xs text-slate-400">2 Piernas + 2 Pechos + 1 Alita + 1 Gaseosa de 1 Litro</p></div>
+                    <button onclick="agregarAlCarritoAnimado('Combo 3 Familiar El Shopa', 55.00, event); cerrarModal('modal-combos');" class="bg-amber-500 text-black text-xs px-3.5 py-2 rounded-xl font-bold">S/ 55.00 +</button>
                 </div>
             </div>
         </div>
@@ -816,14 +813,12 @@
         </div>
     </div>
 
-    <!-- SCRIPT CORREGIDO CON TODAS LAS FUNCIONES HABILITADAS -->
     <script>
         AOS.init({ duration: 750, once: true });
 
         let carrito = [];
         let temaActualIndex = 0;
 
-        // PROGRESS BAR
         window.addEventListener('scroll', () => {
             const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -831,7 +826,6 @@
             document.getElementById("reading-progress").style.width = scrolled + "%";
         });
 
-        // TILT 3D
         document.querySelectorAll('.tilt-card').forEach(card => {
             const glare = card.querySelector('.glare-effect');
             card.addEventListener('mousemove', (e) => {
@@ -856,7 +850,6 @@
             });
         });
 
-        // AGREGAR AL CARRITO + ANIMACIÓN
         function agregarAlCarritoAnimado(nombre, precio, event) {
             agregarAlCarrito(nombre, precio);
             mostrarToast("¡Añadido con éxito! 🛒", `${nombre} - S/ ${precio.toFixed(2)}`);
@@ -944,7 +937,6 @@
 
         function vaciarCarrito() { carrito = []; actualizarCarritoUI(); cerrarModal('modal-carrito-detalle'); }
 
-        // FILTRADO DE CATEGORÍAS CORREGIDO Y FUNCIONAL
         function filtrarCategoria(marca, categoria, btn) {
             limpiarBusqueda();
             const contenedor = document.getElementById(marca === 'tio-silva' ? 'menu-tio-silva' : 'menu-el-shopa');
@@ -964,7 +956,6 @@
             AOS.refresh();
         }
 
-        // BÚSQUEDA CORREGIDA
         function filtrarPorBusqueda() {
             const query = document.getElementById('input-buscador').value.toLowerCase().trim();
             const btnLimpiar = document.getElementById('btn-limpiar-busqueda');
@@ -988,7 +979,6 @@
             filtrarPorBusqueda();
         }
 
-        // CAMBIO DE SEDES CON EFECTO VISUAL
         function cambiarMenu(local) {
             const overlay = document.getElementById('flash-overlay');
             const body = document.body;
@@ -1067,10 +1057,12 @@
 
             setTimeout(() => {
                 const opciones = [
-                    { nombre: 'Pollo Broaster Pecho (El Shopa)', precio: 12.00 },
+                    { nombre: 'Pecho Broaster (El Shopa)', precio: 12.00 },
                     { nombre: 'Salchibroaster Pecho (El Shopa)', precio: 15.00 },
-                    { nombre: 'Lomo Saltado a lo Pobre (El Tío Silva)', precio: 19.00 },
-                    { nombre: 'Caldo de Gallina (El Tío Silva)', precio: 11.00 }
+                    { nombre: 'Lomo Saltado a lo pobre (El Tío Silva)', precio: 19.00 },
+                    { nombre: 'Caldo de Gallina (El Tío Silva)', precio: 11.00 },
+                    { nombre: 'Combo 1 El Shopa', precio: 23.00 },
+                    { nombre: 'Churrasco a lo pobre (El Tío Silva)', precio: 17.00 }
                 ];
                 const opcion = opciones[Math.floor(Math.random() * opciones.length)];
                 caja.innerHTML = `
