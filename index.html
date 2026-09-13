@@ -3,20 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brostería El Shopa & El Tío Silva | Experiencia Gastronómica Neón</title>
-
-    <!-- Meta Tags para PWA y Redes Sociales -->
-    <meta name="theme-color" content="#0b0f17">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="El Shopa & Silva">
-    <link rel="apple-touch-icon" href="logo-shopa.png">
-
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Brostería El Shopa & El Tío Silva | Sabor & Tradición">
-    <meta property="og:description" content="Pide online el mejor pollo broaster, alitas acevichadas, salteados criollos al wok y caldos reconfortantes. Delivery directo vía WhatsApp.">
-    <meta property="og:image" content="logo-silva.png">
-    <meta property="og:url" content="https://restaurante-web-livia.vercel.app">
+    <title>Brostería El Shopa & El Tío Silva | Carta Completa</title>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -45,7 +32,7 @@
         }
     </script>
 
-    <!-- Google Fonts & Libraries -->
+    <!-- Google Fonts & Librerías -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -54,11 +41,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <style>
-        /* CURSOR PERSONALIZADO (SARTÉN AL FUEGO) */
-        body {
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="%2300ff66" stroke="%23ff003c" stroke-width="1.5"><path d="M12 2C8 2 4 6 4 11c0 4 3 7 7 7v4h2v-4c4 0 7-3 7-7 0-5-4-9-8-9z"/><circle cx="12" cy="11" r="3" fill="%23f59e0b"/></svg>'), auto;
-        }
-
         /* BARRA DE PROGRESO SUPERIOR */
         #reading-progress {
             position: fixed;
@@ -105,7 +87,7 @@
         .steam-particle {
             width: 8px;
             height: 25px;
-            background: rgba(255, 255, 255, 0.35);
+            background: rgba(255, 255, 255, 0.4);
             border-radius: 50%;
             filter: blur(4px);
             animation: riseSteam 2.5s infinite ease-out;
@@ -179,7 +161,6 @@
             box-shadow: 0 0 15px rgba(0, 255, 102, 0.15) !important;
         }
 
-        /* LOGO TILT REBONTE */
         .logo-bounce-tilt {
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -187,30 +168,11 @@
             transform: scale(1.1) rotate(5deg);
         }
 
-        /* SKELETON LOADER ANIMATION */
-        .skeleton {
-            background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
-            background-size: 200% 100%;
-            animation: skeletonLoading 1.5s infinite;
-        }
-        @keyframes skeletonLoading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
         /* BOTONES E INTERFAZ EL TÍO SILVA (VERDE NEÓN) */
         .tio-silva-theme .btn-silva-main {
             background: linear-gradient(90deg, #00ff66 0%, #00cc52 100%) !important;
             color: #000000 !important;
             box-shadow: 0 0 20px rgba(0, 255, 102, 0.4) !important;
-        }
-        .tio-silva-theme .text-silva-neon {
-            color: #00ff66 !important;
-            text-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
-        }
-        .tio-silva-theme .border-silva-neon {
-            border-color: #00ff66 !important;
-            box-shadow: 0 0 15px rgba(0, 255, 102, 0.3);
         }
 
         .item-menu { transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
@@ -225,13 +187,10 @@
 </head>
 <body class="modo-oscuro bg-brand-darkBg text-slate-100 font-sans min-h-screen pb-32 selection:bg-brand-greenNeon selection:text-black transition-colors duration-500 overflow-x-hidden bg-pattern-shopa">
 
-    <!-- BARRA DE PROGRESO DE LECTURA SUPERIOR -->
     <div id="reading-progress"></div>
-
-    <!-- RESPLANDOR/FLASH AL CAMBIAR DE SEDE -->
     <div id="flash-overlay"></div>
 
-    <!-- NOTIFICACIÓN TOAST -->
+    <!-- TOAST NOTIFICATION -->
     <div id="toast-notification" class="fixed top-6 right-6 z-50 bg-slate-900/90 backdrop-blur-xl border border-emerald-500/50 text-white px-5 py-4 rounded-2xl shadow-2xl flex items-center gap-3.5 transform translate-x-80 opacity-0 pointer-events-none transition-all duration-500">
         <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-xl">🛒</div>
         <div>
@@ -240,18 +199,17 @@
         </div>
     </div>
 
-    <!-- CINTA SUPERIOR CON ESTILO GASTRO BAR -->
+    <!-- CINTA SUPERIOR -->
     <div class="bg-gradient-to-r from-red-950 via-slate-950 to-emerald-950 text-amber-300 text-[11px] font-bold py-2 overflow-hidden border-b border-slate-800 shadow-md">
         <div class="animate-marquee flex gap-10 items-center">
             <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-ping"></span> 🔥 +120 pedidos enviados hoy por WhatsApp</span>
             <span>👑 Los mejores Combos Broster y Alitas Acevichadas en Brostería El Shopa</span>
             <span class="text-emerald-400">🐔 Caldos reconfortantes y Salteados Criollos al wok en El Tío Silva</span>
             <span>🛵 Delivery rápido a solo S/ 2.00 adicional</span>
-            <span>📱 Síguenos en TikTok @brosteriaelshopa</span>
         </div>
     </div>
 
-    <!-- HEADER FLOTANTE GLASSMORPHISM -->
+    <!-- HEADER FLOTANTE -->
     <header class="bg-brand-darkBg/90 backdrop-blur-xl sticky top-0 z-40 border-b border-slate-800/80 shadow-2xl transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex flex-col md:flex-row justify-between items-center gap-4">
             
@@ -260,28 +218,22 @@
                     <div id="brand-logo-badge" class="w-9 h-9 rounded-xl bg-gradient-to-tr from-red-600 to-amber-500 flex items-center justify-center shadow-lg text-lg transition-all duration-500">🔥</div>
                     <div>
                         <h1 class="text-lg font-black tracking-tight text-white leading-none">Sabor & Tradición</h1>
-                        <span id="brand-subtitle" class="text-[10px] text-amber-400 font-semibold tracking-widest uppercase transition-colors duration-500">Experiencia Gastronómica</span>
+                        <span id="brand-subtitle" class="text-[10px] text-amber-400 font-semibold tracking-widest uppercase transition-colors duration-500">Brostería Artesanal & Combos</span>
                     </div>
                 </div>
 
                 <div id="badge-estado-local" class="px-3 py-1 rounded-full text-[11px] font-black shadow-inner flex items-center gap-1.5 transition-all"></div>
-                
-                <a href="https://www.tiktok.com/@brosteriaelshopa?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" class="bg-slate-900/90 hover:bg-slate-800 text-white font-bold px-3.5 py-1.5 rounded-full text-xs border border-pink-500/40 shadow-md flex items-center gap-1.5 transition transform hover:scale-105 active:scale-95">
-                    <svg class="w-3.5 h-3.5 fill-current text-pink-500" viewBox="0 0 24 24"><path d="M12.525 0h3.08c.12 1.05.65 2.482 1.88 3.288.892.585 1.98.815 3.035.79v3.17c-1.42-.03-2.81-.46-3.99-1.22v7.7c0 3.73-3.03 6.76-6.76 6.76S3 17.46 3 13.73 6.03 6.97 9.76 6.97c.5 0 1 .06 1.48.18v3.31c-.16-.05-.33-.08-.5-.08-1.89 0-3.42 1.53-3.42 3.42s1.53 3.42 3.42 3.42 3.42-1.53 3.42-3.42V0z"/></svg>
-                    <span>TikTok</span>
-                </a>
 
                 <button onclick="girarRuletaSorpresa()" class="bg-gradient-to-r from-red-600 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white font-black px-3.5 py-1.5 rounded-full text-xs shadow-lg flex items-center gap-1.5 transition transform hover:scale-105 active:scale-95">
                     🎲 ¿Qué comer hoy?
                 </button>
 
-                <!-- SWITCHER DE 3 TEMAS (CLARO, OSCURO, NOCHE CRIOLLA NEÓN) -->
                 <button onclick="rotarTema()" id="btn-tema" class="bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700/80 font-bold px-3 py-1.5 rounded-full text-xs transition flex items-center gap-1.5 shadow-md">
                     🌙 Noche Criolla
                 </button>
             </div>
             
-            <!-- SELECTOR DE SEDES/MENÚ CON CAMBIO DE COLORES RADICAL -->
+            <!-- SELECTOR DE SEDES -->
             <div class="flex flex-col items-center md:items-end gap-1.5">
                 <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-1">
                     <span>Selecciona la carta aquí</span> 👇
@@ -300,7 +252,7 @@
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 pt-8 relative">
 
-        <!-- BARRA DE BÚSQUEDA FLOTANTE -->
+        <!-- BÚSQUEDA -->
         <div data-aos="fade-down" class="mb-8 relative z-10">
             <div class="relative max-w-2xl mx-auto">
                 <input type="text" id="input-buscador" oninput="filtrarPorBusqueda()" placeholder="🔍 Busca un plato o ingrediente (ej. Broaster, Alitas, Chaufa, Lomo...)" class="input-busqueda w-full bg-slate-900/90 backdrop-blur-xl text-white placeholder-slate-400 px-6 py-4 pl-14 rounded-2xl border border-slate-700/80 focus:border-amber-500/80 outline-none shadow-2xl transition-all text-sm font-medium">
@@ -311,35 +263,21 @@
             </div>
         </div>
 
-        <!-- SECCIÓN: BROSTERÍA EL SHOPA (TEMA ROJO FUEGO) -->
+        <!-- SECCIÓN BROSTERÍA EL SHOPA -->
         <section id="menu-el-shopa" class="block space-y-8 relative z-10">
-            
-            <!-- HERO BANNER EL SHOPA -->
             <div data-aos="fade-down" class="banner-header bg-gradient-to-r from-red-950 via-slate-900 to-red-900 p-6 sm:p-8 md:p-10 rounded-3xl shadow-2xl border-2 border-red-500/40 text-white flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
                 <div class="flex flex-col md:flex-row items-center gap-8 relative z-10 text-center md:text-left w-full md:w-auto">
                     <div class="relative group shrink-0 bg-slate-950/40 backdrop-blur-md p-3.5 rounded-3xl border border-red-500/40 shadow-2xl flex items-center justify-center">
                         <img src="logo-shopa.png" alt="Brostería El Shopa Logo" loading="lazy" class="relative w-44 h-44 sm:w-52 sm:h-52 md:w-56 md:h-56 object-contain logo-bounce-tilt drop-shadow-[0_0_25px_rgba(239,68,68,0.8)]">
                     </div>
-
                     <div class="flex flex-col justify-center max-w-xl">
-                        <div class="flex flex-wrap justify-center md:justify-start items-center gap-2 mb-3">
-                            <span class="bg-red-600/30 text-red-400 text-xs font-black px-4 py-1.5 rounded-full border border-red-500/50 uppercase tracking-widest flex items-center gap-1.5 shadow-md">🔥 BROSTERÍA ARTESANAL & COMBOS</span>
-                        </div>
+                        <span class="bg-red-600/30 text-red-400 text-xs font-black px-4 py-1.5 rounded-full border border-red-500/50 uppercase tracking-widest inline-block mb-3">🔥 BROSTERÍA ARTESANAL & COMBOS</span>
                         <p class="text-slate-200 text-base sm:text-lg font-medium leading-relaxed">El crujiente perfecto en pollo broaster gigante, salchipapas abundantes, alitas acevichadas y hamburguesas artesanales.</p>
-                    </div>
-                </div>
-
-                <div class="flex flex-wrap md:flex-col justify-center items-center md:items-end gap-3 relative z-10 shrink-0 w-full md:w-auto border-t md:border-t-0 md:border-l border-red-500/20 pt-4 md:pt-0 md:pl-8">
-                    <span class="text-[11px] font-black text-red-400 uppercase tracking-widest block mb-1">Pagos Aceptados:</span>
-                    <div class="flex flex-wrap justify-center gap-2">
-                        <button onclick="mostrarInfoPago('Yape / Plin', 'Aceptamos transferencias por Yape o Plin al instante.', '📱')" class="bg-slate-900/90 hover:bg-red-600 hover:text-white px-4 py-2.5 rounded-2xl text-xs font-black border border-slate-700/80 text-slate-100 transition shadow-xl">📱 Yape / Plin</button>
-                        <button onclick="mostrarInfoPago('Interbank', 'Transferencias interbancarias directas.', '🏦')" class="bg-slate-900/90 hover:bg-red-600 hover:text-white px-4 py-2.5 rounded-2xl text-xs font-black border border-slate-700/80 text-slate-100 transition shadow-xl">🏦 Interbank</button>
-                        <button onclick="mostrarInfoPago('Agora Pay', 'Pagos rápidos vía Agora Pay.', '💳')" class="bg-slate-900/90 hover:bg-red-600 hover:text-white px-4 py-2.5 rounded-2xl text-xs font-black border border-slate-700/80 text-slate-100 transition shadow-xl">💳 Agora</button>
                     </div>
                 </div>
             </div>
 
-            <!-- FILTROS POR CATEGORÍA CON STICKY TABS -->
+            <!-- FILTROS SHOPA -->
             <div data-aos="fade-right" class="sticky top-20 z-30 bg-brand-darkBg/95 backdrop-blur-md py-3 flex flex-wrap gap-2.5 justify-center sm:justify-start border-b border-slate-800">
                 <button onclick="filtrarCategoria('el-shopa', 'todos', this)" class="btn-filtro-shopa px-4 py-2 rounded-xl text-xs font-black bg-red-600 text-white border border-red-500 shadow-lg">Todos</button>
                 <button onclick="filtrarCategoria('el-shopa', 'pollo-broaster', this)" class="btn-filtro-shopa bg-slate-900 text-slate-300 px-4 py-2 rounded-xl text-xs font-black border border-slate-800">🍗 Pollo Broaster</button>
@@ -350,117 +288,171 @@
                 <button onclick="filtrarCategoria('el-shopa', 'bebidas', this)" class="btn-filtro-shopa bg-slate-900 text-slate-300 px-4 py-2 rounded-xl text-xs font-black border border-slate-800">🥤 Bebidas</button>
             </div>
 
-            <!-- GRID DE PLATOS EL SHOPA -->
+            <!-- GRID SHOPA -->
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <!-- Tarjeta 1: Pollo Broaster (Con Sello Dorados & 3D Tilt) -->
-                <div data-aos="fade-up" class="item-menu cat-pollo-broaster tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border-2 border-red-500 shadow-[0_0_20px_rgba(239,68,68,0.3)] transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between relative">
+                <!-- Pollo Broaster -->
+                <div data-aos="fade-up" class="item-menu cat-pollo-broaster tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border-2 border-red-500 shadow-[0_0_20px_rgba(239,68,68,0.3)] transition-all duration-300 flex flex-col justify-between relative">
                     <div class="glare-effect"></div>
-                    <!-- SELLO DE LA CASA -->
-                    <div class="absolute top-3 left-3 z-20 sello-dorado text-black text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1 shadow-lg">
-                        🥇 Sello de la Casa
-                    </div>
+                    <div class="absolute top-3 left-3 z-20 sello-dorado text-black text-[10px] font-black px-3 py-1 rounded-full uppercase">🥇 Sello de la Casa</div>
                     <div class="overflow-hidden h-52 relative bg-slate-900">
-                        <img src="pollo broaster.jpg" alt="Pollo Broaster" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-brand-cardBg via-transparent to-transparent opacity-80"></div>
-                    </div>
-                    <div class="p-5 flex-1 flex flex-col justify-between -mt-4 relative z-10">
-                        <div>
-                            <div class="flex justify-between items-start gap-2">
-                                <h4 class="font-extrabold text-white text-xl group-hover:text-red-500 transition">Pollo Broaster</h4>
-                                <button onclick="darMeGusta('pollo_broaster', this, event)" class="text-xs bg-slate-900/80 border border-slate-700/80 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="pollo_broaster">790</span></button>
-                            </div>
-                            <!-- CONTADOR DISCRETO DE PERSONAS VIENDO -->
-                            <p class="text-[11px] text-amber-400 font-extrabold mt-1">🔥 14 personas están viendo este plato</p>
-                            <p class="text-xs text-slate-400 mt-1 leading-relaxed">Crujiente pollo broaster sazonado con nuestra receta secreta (Alita, Encuentro, Pierna, Pecho).</p>
-                        </div>
-                        <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
-                            <div>
-                                <span class="text-[10px] text-slate-400 uppercase font-bold block">Precio Mesa</span>
-                                <span class="text-red-500 font-black text-xl">Desde S/ 10.00</span>
-                            </div>
-                            <button onclick="abrirModal('modal-broaster')" class="bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-2xl text-xs font-black shadow-lg">Ver Opciones</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tarjeta 2: Salchibroaster -->
-                <div data-aos="fade-up" class="item-menu cat-pollo-broaster cat-salchipapas tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border border-slate-800 hover:border-red-500 transition-all duration-300 flex flex-col justify-between relative">
-                    <div class="glare-effect"></div>
-                    <div class="overflow-hidden h-52 relative bg-slate-900">
-                        <img src="salchibroaster.jpg" alt="Salchibroaster" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    </div>
-                    <div class="p-5 flex-1 flex flex-col justify-between -mt-4 relative z-10">
-                        <div>
-                            <div class="flex justify-between items-start gap-2">
-                                <h4 class="font-extrabold text-white text-xl group-hover:text-red-500 transition">Salchibroaster</h4>
-                                <button onclick="darMeGusta('salchibroaster', this, event)" class="text-xs bg-slate-900/80 border border-slate-700/80 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="salchibroaster">665</span></button>
-                            </div>
-                            <p class="text-[11px] text-amber-400 font-extrabold mt-1">👀 9 personas están viendo este plato</p>
-                            <p class="text-xs text-slate-400 mt-1 leading-relaxed">Abundante salchipapa artesanal + pieza de pollo broaster a elección.</p>
-                        </div>
-                        <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
-                            <div>
-                                <span class="text-[10px] text-slate-400 uppercase font-bold block">Precio Mesa</span>
-                                <span class="text-red-500 font-black text-xl">Desde S/ 13.00</span>
-                            </div>
-                            <button onclick="abrirModal('modal-salchibroaster')" class="bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-2xl text-xs font-black shadow-lg">Ver Opciones</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tarjeta 3: Combos El Shopa -->
-                <div data-aos="fade-up" class="item-menu cat-combos tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border-2 border-amber-500 shadow-[0_0_25px_rgba(245,158,11,0.3)] transition-all duration-300 flex flex-col justify-between relative">
-                    <div class="glare-effect"></div>
-                    <div class="absolute top-3 left-3 z-20 sello-dorado text-black text-[10px] font-black px-3 py-1 rounded-full uppercase">⭐ Recomendado del Chef</div>
-                    <div class="bg-gradient-to-br from-red-600 to-amber-600 h-52 flex flex-col justify-center items-center text-center p-6 relative">
-                        <span class="text-6xl mb-2 animate-bounce">⭐</span>
+                        <img src="pollo broaster.jpg" alt="Pollo Broaster" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition">
                     </div>
                     <div class="p-5 flex-1 flex flex-col justify-between">
                         <div>
-                            <div class="flex justify-between items-start gap-2">
-                                <h4 class="font-extrabold text-white text-xl group-hover:text-amber-400 transition">Combos El Shopa</h4>
-                                <button onclick="darMeGusta('combos_shopa', this, event)" class="text-xs bg-slate-900/80 border border-slate-700/80 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="combos_shopa">745</span></button>
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-extrabold text-white text-xl">Pollo Broaster</h4>
+                                <button onclick="darMeGusta('pollo_broaster', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="pollo_broaster">790</span></button>
                             </div>
-                            <p class="text-[11px] text-amber-400 font-extrabold mt-1">🔥 22 personas están viendo este combo</p>
-                            <p class="text-xs text-slate-400 mt-1 leading-relaxed">Combos familiares 1, 2, 3 y Combo Alitas Mix 2.0 con gaseosas incluidas.</p>
+                            <p class="text-[11px] text-amber-400 font-extrabold mt-1">🔥 14 personas están viendo este plato</p>
+                            <p class="text-xs text-slate-400 mt-1">Crujiente pollo broaster sazonado con nuestra receta secreta.</p>
                         </div>
                         <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
-                            <div>
-                                <span class="text-[10px] text-slate-400 uppercase font-bold block">Precio Mesa</span>
-                                <span class="text-amber-400 font-black text-xl">Desde S/ 23.00</span>
-                            </div>
-                            <button onclick="abrirModal('modal-combos')" class="bg-amber-500 hover:bg-amber-400 text-black px-5 py-2.5 rounded-2xl text-xs font-black shadow-lg">Ver Opciones</button>
+                            <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-red-500 font-black text-xl">Desde S/ 10.00</span></div>
+                            <button onclick="abrirModal('modal-broaster')" class="bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-2xl text-xs font-black">Ver Opciones</button>
                         </div>
                     </div>
                 </div>
 
+                <!-- Salchibroaster -->
+                <div data-aos="fade-up" class="item-menu cat-pollo-broaster cat-salchipapas tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border border-slate-800 hover:border-red-500 transition flex flex-col justify-between relative">
+                    <div class="glare-effect"></div>
+                    <div class="overflow-hidden h-52 relative bg-slate-900">
+                        <img src="salchibroaster.jpg" alt="Salchibroaster" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-extrabold text-white text-xl">Salchibroaster</h4>
+                                <button onclick="darMeGusta('salchibroaster', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="salchibroaster">665</span></button>
+                            </div>
+                            <p class="text-[11px] text-amber-400 font-extrabold mt-1">👀 9 personas están viendo este plato</p>
+                            <p class="text-xs text-slate-400 mt-1">Salchipapa artesanal + pieza de pollo broaster a elección.</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
+                            <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-red-500 font-black text-xl">Desde S/ 13.00</span></div>
+                            <button onclick="abrirModal('modal-salchibroaster')" class="bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-2xl text-xs font-black">Ver Opciones</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hamburguesas -->
+                <div data-aos="fade-up" class="item-menu cat-hamburguesas tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border border-slate-800 hover:border-red-500 transition flex flex-col justify-between relative">
+                    <div class="glare-effect"></div>
+                    <div class="overflow-hidden h-52 relative bg-slate-900">
+                        <img src="hamburguesa.jpg" alt="Hamburguesas" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-extrabold text-white text-xl">Hamburguesas</h4>
+                                <button onclick="darMeGusta('hamburguesas', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="hamburguesas">512</span></button>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-1">Hamburguesas artesanales de carne o pollo en pan brioche suave.</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
+                            <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-red-500 font-black text-xl">Desde S/ 7.00</span></div>
+                            <button onclick="abrirModal('modal-hamburguesas')" class="bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-2xl text-xs font-black">Ver Opciones</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Salchipapas -->
+                <div data-aos="fade-up" class="item-menu cat-salchipapas tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border border-slate-800 hover:border-red-500 transition flex flex-col justify-between relative">
+                    <div class="glare-effect"></div>
+                    <div class="overflow-hidden h-52 relative bg-slate-900">
+                        <img src="salchipapas.png" alt="Salchipapas" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-extrabold text-white text-xl">Salchipapas</h4>
+                                <button onclick="darMeGusta('salchipapas', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="salchipapas">430</span></button>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-1">Papas fritas crujientes con salchicha especial de la casa.</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
+                            <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-red-500 font-black text-xl">Desde S/ 9.00</span></div>
+                            <button onclick="abrirModal('modal-salchipapas')" class="bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-2xl text-xs font-black">Ver Opciones</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alitas BBQ / Acevichadas -->
+                <div data-aos="fade-up" class="item-menu cat-alitas tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border border-slate-800 hover:border-red-500 transition flex flex-col justify-between relative">
+                    <div class="glare-effect"></div>
+                    <div class="overflow-hidden h-52 relative bg-slate-900">
+                        <img src="combo de alitas.jpeg" alt="Alitas BBQ y Acevichadas" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-extrabold text-white text-xl">Alitas BBQ / Acevichadas</h4>
+                                <button onclick="darMeGusta('alitas', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="alitas">588</span></button>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-1">Jugosas alitas bañadas en salsa BBQ o crema acevichada.</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
+                            <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-red-500 font-black text-xl">Desde S/ 16.00</span></div>
+                            <button onclick="abrirModal('modal-alitas')" class="bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-2xl text-xs font-black">Ver Opciones</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Combos El Shopa -->
+                <div data-aos="fade-up" class="item-menu cat-combos tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border-2 border-amber-500 shadow-[0_0_25px_rgba(245,158,11,0.3)] transition flex flex-col justify-between relative">
+                    <div class="glare-effect"></div>
+                    <div class="bg-gradient-to-br from-red-600 to-amber-600 h-52 flex items-center justify-center text-6xl">⭐</div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-extrabold text-white text-xl">Combos El Shopa</h4>
+                                <button onclick="darMeGusta('combos_shopa', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="combos_shopa">745</span></button>
+                            </div>
+                            <p class="text-[11px] text-amber-400 font-extrabold mt-1">🔥 22 personas están viendo este combo</p>
+                            <p class="text-xs text-slate-400 mt-1">Combos familiares 1, 2, 3 y Combo Alitas Mix 2.0.</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
+                            <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-amber-400 font-black text-xl">Desde S/ 23.00</span></div>
+                            <button onclick="abrirModal('modal-combos')" class="bg-amber-500 hover:bg-amber-400 text-black px-5 py-2.5 rounded-2xl text-xs font-black">Ver Opciones</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BEBIDAS SHOPA -->
+            <div data-aos="fade-up" class="item-menu cat-bebidas pt-4">
+                <h3 class="text-2xl font-black text-red-500 mb-6 border-b border-red-500/20 pb-3">🥤 Bebidas & Refrescos</h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-brand-cardBg p-5 rounded-2xl border border-slate-800 flex justify-between items-center">
+                        <div><span class="text-white font-bold block text-sm">Gaseosa Personal Vidrio</span><span class="text-red-500 font-black text-base">S/ 2.50</span></div>
+                        <button onclick="agregarAlCarritoAnimado('Gaseosa Personal Vidrio (El Shopa)', 2.50, event)" class="bg-red-600 hover:bg-red-700 text-white px-3.5 py-1.5 rounded-xl text-xs font-bold">Agregar +</button>
+                    </div>
+                    <div class="bg-brand-cardBg p-5 rounded-2xl border border-slate-800 flex justify-between items-center">
+                        <div><span class="text-white font-bold block text-sm">Gordita</span><span class="text-red-500 font-black text-base">S/ 4.50</span></div>
+                        <button onclick="agregarAlCarritoAnimado('Gordita (El Shopa)', 4.50, event)" class="bg-red-600 hover:bg-red-700 text-white px-3.5 py-1.5 rounded-xl text-xs font-bold">Agregar +</button>
+                    </div>
+                    <div class="bg-brand-cardBg p-5 rounded-2xl border border-slate-800 flex justify-between items-center">
+                        <div><span class="text-white font-bold block text-sm">Gaseosa 1 Litro</span><span class="text-red-500 font-black text-base">S/ 6.00</span></div>
+                        <button onclick="agregarAlCarritoAnimado('Gaseosa 1L (El Shopa)', 6.00, event)" class="bg-red-600 hover:bg-red-700 text-white px-3.5 py-1.5 rounded-xl text-xs font-bold">Agregar +</button>
+                    </div>
+                    <div class="bg-brand-cardBg p-5 rounded-2xl border border-slate-800 flex justify-between items-center">
+                        <div><span class="text-white font-bold block text-sm">Café / Infusiones</span><span class="text-red-500 font-black text-base">S/ 3.00</span></div>
+                        <button onclick="agregarAlCarritoAnimado('Café o Infusión (El Shopa)', 3.00, event)" class="bg-red-600 hover:bg-red-700 text-white px-3.5 py-1.5 rounded-xl text-xs font-bold">Agregar +</button>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- SECCIÓN: EL TÍO SILVA (TEMA VERDE FOSFORESCENTE / VERDE NEÓN INTENSO) -->
+        <!-- SECCIÓN EL TÍO SILVA (VERDE NEÓN FOSFORESCENTE) -->
         <section id="menu-tio-silva" class="hidden space-y-8 relative z-10 tio-silva-theme">
-            
-            <!-- HERO BANNER EL TÍO SILVA (VERDE NEÓN FOSFORESCENTE EXTREMO) -->
             <div data-aos="fade-down" class="banner-header bg-gradient-to-r from-emerald-950 via-slate-950 to-green-950 p-6 sm:p-8 md:p-10 rounded-3xl shadow-[0_0_35px_rgba(0,255,102,0.3)] border-2 border-brand-greenNeon text-white flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
                 <div class="flex flex-col md:flex-row items-center gap-8 relative z-10 text-center md:text-left w-full md:w-auto">
                     <div class="relative group shrink-0 bg-slate-950/60 backdrop-blur-md p-3.5 rounded-3xl border border-brand-greenNeon shadow-2xl flex items-center justify-center">
                         <img src="logo-silva.png" alt="El Tío Silva Logo" loading="lazy" class="relative w-44 h-44 sm:w-52 sm:h-52 md:w-56 md:h-56 object-contain logo-bounce-tilt drop-shadow-[0_0_30px_rgba(0,255,102,0.9)]">
                     </div>
-
                     <div class="flex flex-col justify-center max-w-xl">
-                        <div class="flex flex-wrap justify-center md:justify-start items-center gap-2 mb-3">
-                            <span class="bg-emerald-500/20 text-brand-greenNeon text-xs font-black px-4 py-1.5 rounded-full border border-brand-greenNeon uppercase tracking-widest flex items-center gap-1.5 shadow-[0_0_15px_rgba(0,255,102,0.4)]">🍳 SAZÓN CRIOLLA AL WOK & CALDOS</span>
-                        </div>
+                        <span class="bg-emerald-500/20 text-brand-greenNeon text-xs font-black px-4 py-1.5 rounded-full border border-brand-greenNeon uppercase tracking-widest inline-block mb-3">🍳 SAZÓN CRIOLLA AL WOK & CALDOS</span>
                         <p class="text-slate-200 text-base sm:text-lg font-medium leading-relaxed">Platos criollos salteados a alto fuego de wok, caldos de gallina reconstituyentes y opciones abundantes a lo pobre.</p>
-                    </div>
-                </div>
-
-                <div class="flex flex-wrap md:flex-col justify-center items-center md:items-end gap-3 relative z-10 shrink-0 w-full md:w-auto border-t md:border-t-0 md:border-l border-brand-greenNeon/30 pt-4 md:pt-0 md:pl-8">
-                    <span class="text-[11px] font-black text-brand-greenNeon uppercase tracking-widest block mb-1">Pagos Aceptados:</span>
-                    <div class="flex flex-wrap justify-center gap-2">
-                        <button onclick="mostrarInfoPago('Yape / Plin', 'Aceptamos transferencias por Yape o Plin.', '📱')" class="bg-slate-900/90 hover:bg-brand-greenNeon hover:text-black px-4 py-2.5 rounded-2xl text-xs font-black border border-brand-greenNeon/60 text-slate-100 transition shadow-xl">📱 Yape / Plin</button>
-                        <button onclick="mostrarInfoPago('Efectivo', 'Aceptamos pago en efectivo contra entrega.', '💵')" class="bg-slate-900/90 hover:bg-brand-greenNeon hover:text-black px-4 py-2.5 rounded-2xl text-xs font-black border border-brand-greenNeon/60 text-slate-100 transition shadow-xl">💵 Efectivo</button>
                     </div>
                 </div>
             </div>
@@ -473,81 +465,190 @@
                 <button onclick="filtrarCategoria('tio-silva', 'bebidas', this)" class="btn-filtro-silva bg-slate-900 text-slate-300 px-4 py-2 rounded-xl text-xs font-black border border-slate-800">🥤 Bebidas</button>
             </div>
 
-            <!-- GRID DE PLATOS EL TÍO SILVA (VERDE NEÓN) -->
+            <!-- GRID TÍO SILVA -->
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <!-- Tarjeta 1: Lomo Saltado a lo Pobre (Con Animación de Vapor y 3D Tilt) -->
-                <div data-aos="fade-up" class="item-menu cat-principales tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border-2 border-brand-greenNeon shadow-[0_0_25px_rgba(0,255,102,0.3)] transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between relative">
+                <!-- Lomo Saltado a lo Pobre -->
+                <div data-aos="fade-up" class="item-menu cat-principales tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border-2 border-brand-greenNeon shadow-[0_0_25px_rgba(0,255,102,0.3)] transition flex flex-col justify-between relative">
                     <div class="glare-effect"></div>
                     <div class="absolute top-3 left-3 z-20 sello-dorado text-black text-[10px] font-black px-3 py-1 rounded-full uppercase">🥇 Plato Estrella del Día</div>
-                    
-                    <!-- EFECTO DE HUMO/VAPOR CSS -->
-                    <div class="steam-container">
-                        <div class="steam-particle"></div>
-                        <div class="steam-particle"></div>
-                        <div class="steam-particle"></div>
-                    </div>
-
+                    <div class="steam-container"><div class="steam-particle"></div><div class="steam-particle"></div><div class="steam-particle"></div></div>
                     <div class="overflow-hidden h-52 relative bg-slate-900">
-                        <img src="lomo-pobre.jpg" alt="Lomo Saltado a lo Pobre" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="lomo-pobre.jpg" alt="Lomo Saltado a lo Pobre" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition">
                     </div>
-                    <div class="p-5 flex-1 flex flex-col justify-between -mt-4 relative z-10">
+                    <div class="p-5 flex-1 flex flex-col justify-between">
                         <div>
-                            <div class="flex justify-between items-start gap-2">
-                                <h4 class="font-extrabold text-white text-xl group-hover:text-brand-greenNeon transition">Lomo Saltado a lo Pobre</h4>
-                                <button onclick="darMeGusta('lomo_pobre', this, event)" class="text-xs bg-slate-900/80 border border-slate-700/80 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="lomo_pobre">785</span></button>
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-extrabold text-white text-xl">Lomo Saltado a lo Pobre</h4>
+                                <button onclick="darMeGusta('lomo_pobre', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="lomo_pobre">785</span></button>
                             </div>
                             <p class="text-[11px] text-brand-greenNeon font-extrabold mt-1">🔥 18 personas están viendo este plato</p>
-                            <p class="text-xs text-slate-400 mt-1 leading-relaxed">Carne jugosa salteada al wok con papas crocantes, arroz blanco, huevo frito y plátano frito.</p>
+                            <p class="text-xs text-slate-400 mt-1">Carne jugosa salteada al wok con papas, arroz, huevo y plátano frito.</p>
                         </div>
                         <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
-                            <div>
-                                <span class="text-[10px] text-slate-400 uppercase font-bold block">Precio Mesa</span>
-                                <span class="text-brand-greenNeon font-black text-xl">S/ 19.00</span>
-                            </div>
-                            <button onclick="agregarAlCarritoAnimado('Lomo Saltado a lo Pobre (El Tío Silva)', 19.00, event)" class="btn-silva-main font-black px-5 py-2.5 rounded-2xl text-xs transition shadow-lg flex items-center gap-1.5">🛒 Agregar +</button>
+                            <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-brand-greenNeon font-black text-xl">S/ 19.00</span></div>
+                            <button onclick="agregarAlCarritoAnimado('Lomo Saltado a lo Pobre (El Tío Silva)', 19.00, event)" class="btn-silva-main font-black px-5 py-2.5 rounded-2xl text-xs flex items-center gap-1.5">🛒 Agregar +</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Tarjeta 2: Caldo de Gallina -->
-                <div data-aos="fade-up" class="item-menu cat-principales tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border border-slate-800 hover:border-brand-greenNeon transition-all duration-300 flex flex-col justify-between relative">
+                <!-- Lomo Saltado Carne -->
+                <div data-aos="fade-up" class="item-menu cat-principales tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border border-slate-800 hover:border-brand-greenNeon transition flex flex-col justify-between relative">
                     <div class="glare-effect"></div>
-                    
-                    <div class="steam-container">
-                        <div class="steam-particle"></div>
-                        <div class="steam-particle"></div>
-                        <div class="steam-particle"></div>
-                    </div>
-
+                    <div class="steam-container"><div class="steam-particle"></div><div class="steam-particle"></div></div>
                     <div class="overflow-hidden h-52 relative bg-slate-900">
-                        <img src="caldo-gallina.jpg" alt="Caldo de Gallina" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="lomo-saltado.jpg" alt="Lomo Saltado" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition">
                     </div>
-                    <div class="p-5 flex-1 flex flex-col justify-between -mt-4 relative z-10">
+                    <div class="p-5 flex-1 flex flex-col justify-between">
                         <div>
-                            <div class="flex justify-between items-start gap-2">
-                                <h4 class="font-extrabold text-white text-xl group-hover:text-brand-greenNeon transition">Caldo de Gallina</h4>
-                                <button onclick="darMeGusta('caldo_gallina', this, event)" class="text-xs bg-slate-900/80 border border-slate-700/80 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="caldo_gallina">710</span></button>
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-extrabold text-white text-xl">Lomo Saltado (Carne)</h4>
+                                <button onclick="darMeGusta('lomo_carne', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="lomo_carne">542</span></button>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-1">Jugosos trozos de carne salteados con cebolla roja, tomate y ají amarillo.</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
+                            <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-brand-greenNeon font-black text-xl">S/ 15.00</span></div>
+                            <button onclick="agregarAlCarritoAnimado('Lomo Saltado Carne (El Tío Silva)', 15.00, event)" class="btn-silva-main font-black px-5 py-2.5 rounded-2xl text-xs flex items-center gap-1.5">🛒 Agregar +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tallarín Saltado -->
+                <div data-aos="fade-up" class="item-menu cat-principales tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border border-slate-800 hover:border-brand-greenNeon transition flex flex-col justify-between relative">
+                    <div class="glare-effect"></div>
+                    <div class="steam-container"><div class="steam-particle"></div><div class="steam-particle"></div></div>
+                    <div class="overflow-hidden h-52 relative bg-slate-900">
+                        <img src="tallarin-saltado.jpg" alt="Tallarín Saltado" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-extrabold text-white text-xl">Tallarín Saltado (Carne)</h4>
+                                <button onclick="darMeGusta('tallarin_carne', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="tallarin_carne">480</span></button>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-1">Fideos salteados al wok a alto fuego con jugosa carne y verduras.</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
+                            <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-brand-greenNeon font-black text-xl">S/ 15.00</span></div>
+                            <button onclick="agregarAlCarritoAnimado('Tallarín Saltado Carne (El Tío Silva)', 15.00, event)" class="btn-silva-main font-black px-5 py-2.5 rounded-2xl text-xs flex items-center gap-1.5">🛒 Agregar +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chaufa -->
+                <div data-aos="fade-up" class="item-menu cat-principales tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border border-slate-800 hover:border-brand-greenNeon transition flex flex-col justify-between relative">
+                    <div class="glare-effect"></div>
+                    <div class="overflow-hidden h-52 relative bg-slate-900">
+                        <img src="chaufa.jpg" alt="Chaufa" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-extrabold text-white text-xl">Chaufa</h4>
+                                <button onclick="darMeGusta('chaufa', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="chaufa">620</span></button>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-1">Arroz chaufa ahumado al wok con trozos de pollo y huevo salteado.</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
+                            <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-brand-greenNeon font-black text-xl">S/ 13.00</span></div>
+                            <button onclick="agregarAlCarritoAnimado('Chaufa (El Tío Silva)', 13.00, event)" class="btn-silva-main font-black px-5 py-2.5 rounded-2xl text-xs flex items-center gap-1.5">🛒 Agregar +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Caldo de Gallina -->
+                <div data-aos="fade-up" class="item-menu cat-principales tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border border-slate-800 hover:border-brand-greenNeon transition flex flex-col justify-between relative">
+                    <div class="glare-effect"></div>
+                    <div class="steam-container"><div class="steam-particle"></div><div class="steam-particle"></div><div class="steam-particle"></div></div>
+                    <div class="overflow-hidden h-52 relative bg-slate-900">
+                        <img src="caldo-gallina.jpg" alt="Caldo de Gallina" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-extrabold text-white text-xl">Caldo de Gallina</h4>
+                                <button onclick="darMeGusta('caldo_gallina', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="caldo_gallina">710</span></button>
                             </div>
                             <p class="text-[11px] text-brand-greenNeon font-extrabold mt-1">👀 11 personas están viendo este caldo</p>
-                            <p class="text-xs text-slate-400 mt-1 leading-relaxed">Sustancioso caldo con fideos largos, abundante presa de gallina y huevo hervido.</p>
+                            <p class="text-xs text-slate-400 mt-1">Sustancioso caldo con fideos largos, presa abundante y huevo.</p>
                         </div>
                         <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
-                            <div>
-                                <span class="text-[10px] text-slate-400 uppercase font-bold block">Precio Mesa</span>
-                                <span class="text-brand-greenNeon font-black text-xl">S/ 11.00</span>
-                            </div>
-                            <button onclick="agregarAlCarritoAnimado('Caldo de Gallina (El Tío Silva)', 11.00, event)" class="btn-silva-main font-black px-5 py-2.5 rounded-2xl text-xs transition shadow-lg flex items-center gap-1.5">🛒 Agregar +</button>
+                            <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-brand-greenNeon font-black text-xl">S/ 11.00</span></div>
+                            <button onclick="agregarAlCarritoAnimado('Caldo de Gallina (El Tío Silva)', 11.00, event)" class="btn-silva-main font-black px-5 py-2.5 rounded-2xl text-xs flex items-center gap-1.5">🛒 Agregar +</button>
                         </div>
                     </div>
                 </div>
 
+                <!-- Bisteck a lo Pobre -->
+                <div data-aos="fade-up" class="item-menu cat-principales tilt-card group bg-brand-cardBg rounded-3xl overflow-hidden border border-slate-800 hover:border-brand-greenNeon transition flex flex-col justify-between relative">
+                    <div class="glare-effect"></div>
+                    <div class="overflow-hidden h-52 relative bg-slate-900">
+                        <img src="bisteck-pobre.jpg" alt="Bisteck a lo Pobre" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-extrabold text-white text-xl">Bisteck a lo Pobre</h4>
+                                <button onclick="darMeGusta('bisteck_pobre', this, event)" class="text-xs bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">❤️ <span class="like-count" data-plato="bisteck_pobre">395</span></button>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-1">Jugoso bisteck servido con papas fritas, arroz, huevo y plátano dulce.</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-5 pt-4 border-t border-slate-800">
+                            <div><span class="text-[10px] text-slate-400 block font-bold">Consumo Mesa</span><span class="text-brand-greenNeon font-black text-xl">S/ 17.00</span></div>
+                            <button onclick="agregarAlCarritoAnimado('Bisteck a lo Pobre (El Tío Silva)', 17.00, event)" class="btn-silva-main font-black px-5 py-2.5 rounded-2xl text-xs flex items-center gap-1.5">🛒 Agregar +</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXTRAS TÍO SILVA -->
+            <div data-aos="fade-up" class="item-menu cat-extras pt-4">
+                <h3 class="text-2xl font-black text-brand-greenNeon mb-6 border-b border-brand-greenNeon/20 pb-3">🔥 Platos Extras</h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="bg-brand-cardBg p-5 rounded-2xl border border-slate-800 flex justify-between items-center">
+                        <div><h4 class="font-bold text-white text-sm">Aeropuerto de Pollo</h4><span class="text-brand-greenNeon font-black text-base">S/ 14.00</span></div>
+                        <button onclick="agregarAlCarritoAnimado('Aeropuerto de Pollo (El Tío Silva)', 14.00, event)" class="btn-silva-main px-3.5 py-1.5 rounded-xl text-xs font-bold">Agregar +</button>
+                    </div>
+                    <div class="bg-brand-cardBg p-5 rounded-2xl border border-slate-800 flex justify-between items-center">
+                        <div><h4 class="font-bold text-white text-sm">Aeropuerto de Carne</h4><span class="text-brand-greenNeon font-black text-base">S/ 15.00</span></div>
+                        <button onclick="agregarAlCarritoAnimado('Aeropuerto de Carne (El Tío Silva)', 15.00, event)" class="btn-silva-main px-3.5 py-1.5 rounded-xl text-xs font-bold">Agregar +</button>
+                    </div>
+                    <div class="bg-brand-cardBg p-5 rounded-2xl border border-slate-800 flex justify-between items-center">
+                        <div><h4 class="font-bold text-white text-sm">Pollo Saltado</h4><span class="text-brand-greenNeon font-black text-base">S/ 14.00</span></div>
+                        <button onclick="agregarAlCarritoAnimado('Pollo Saltado (El Tío Silva)', 14.00, event)" class="btn-silva-main px-3.5 py-1.5 rounded-xl text-xs font-bold">Agregar +</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BEBIDAS TÍO SILVA -->
+            <div data-aos="fade-up" class="item-menu cat-bebidas pt-4">
+                <h3 class="text-2xl font-black text-brand-greenNeon mb-6 border-b border-brand-greenNeon/20 pb-3">🥤 Refrescos Artesanales</h3>
+                <div class="grid sm:grid-cols-3 gap-6">
+                    <div class="bg-brand-cardBg p-6 rounded-3xl border border-slate-800 text-center flex flex-col justify-between items-center">
+                        <span class="text-5xl mb-3">🥤</span>
+                        <h4 class="font-bold text-white">Chicha Morada (Vaso)</h4>
+                        <span class="text-brand-greenNeon font-black text-2xl my-2">S/ 2.50</span>
+                        <button onclick="agregarAlCarritoAnimado('Chicha Morada Vaso (El Tío Silva)', 2.50, event)" class="btn-silva-main w-full py-2.5 rounded-2xl text-xs font-bold">Agregar +</button>
+                    </div>
+                    <div class="bg-brand-cardBg p-6 rounded-3xl border border-slate-800 text-center flex flex-col justify-between items-center">
+                        <span class="text-5xl mb-3">🏺</span>
+                        <h4 class="font-bold text-white">Chicha Morada (1/2 Litro)</h4>
+                        <span class="text-brand-greenNeon font-black text-2xl my-2">S/ 7.00</span>
+                        <button onclick="agregarAlCarritoAnimado('Chicha Morada 1/2L (El Tío Silva)', 7.00, event)" class="btn-silva-main w-full py-2.5 rounded-2xl text-xs font-bold">Agregar +</button>
+                    </div>
+                    <div class="bg-brand-cardBg p-6 rounded-3xl border border-slate-800 text-center flex flex-col justify-between items-center">
+                        <span class="text-5xl mb-3">🍹</span>
+                        <h4 class="font-bold text-white">Chicha Morada (1 Litro)</h4>
+                        <span class="text-brand-greenNeon font-black text-2xl my-2">S/ 10.00</span>
+                        <button onclick="agregarAlCarritoAnimado('Chicha Morada 1L (El Tío Silva)', 10.00, event)" class="btn-silva-main w-full py-2.5 rounded-2xl text-xs font-bold">Agregar +</button>
+                    </div>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <!-- NAVEGACIÓN INFERIOR EXCLUSIVA PARA MÓVILES -->
+    <!-- BARRA INFERIOR MÓVIL -->
     <div class="md:hidden fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur-2xl border-t border-slate-800 z-40 px-6 py-2.5 flex justify-between items-center text-slate-400">
         <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="flex flex-col items-center gap-1 text-[10px] font-extrabold hover:text-white">
             <span class="text-lg">🏠</span> Inicio
@@ -564,34 +665,99 @@
         </button>
     </div>
 
-    <!-- MODALES / VENTANAS EMERGENTES -->
-    <div id="modal-info-pago" class="modal-backdrop fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
-        <div class="bg-brand-cardBg border border-red-500/50 rounded-3xl max-w-sm w-full p-6 text-center relative shadow-2xl">
-            <button onclick="cerrarModal('modal-info-pago')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
-            <span id="pago-icono" class="text-5xl block mb-3">📱</span>
-            <h3 id="pago-titulo" class="text-2xl font-black text-red-500">Método de Pago</h3>
-            <p id="pago-desc" class="text-xs text-slate-300 mt-2 mb-6 leading-relaxed">Información detallada sobre esta opción de pago.</p>
-            <button onclick="cerrarModal('modal-info-pago')" class="w-full bg-red-600 text-white font-black py-3 rounded-2xl text-xs shadow-lg">¡Entendido!</button>
+    <!-- BARRA CARRITO FLOTANTE DESKTOP -->
+    <div id="barra-carrito" class="fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-2xl border-t border-emerald-500/40 text-white p-4 shadow-2xl z-40 hidden">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-2">
+            <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-2xl animate-bounce">🛒</div>
+                <div>
+                    <p class="font-extrabold text-sm sm:text-base text-white"><span id="cant-items">0</span> plato(s) en tu carrito</p>
+                    <p class="text-xs text-slate-300">Total acumulado: <strong id="total-carrito" class="text-emerald-400 font-black text-sm">S/ 0.00</strong></p>
+                </div>
+            </div>
+            <button onclick="abrirModal('modal-carrito-detalle')" class="bg-emerald-500 hover:bg-emerald-600 text-black font-black px-5 py-3 rounded-2xl text-xs sm:text-sm transition shadow-lg active:scale-95 flex items-center gap-2"><span>Enviar Pedido</span> <span>📲</span></button>
         </div>
     </div>
 
-    <div id="modal-ruleta" class="modal-backdrop fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
-        <div class="bg-brand-cardBg border border-amber-500/50 rounded-3xl max-w-sm w-full p-6 text-center relative shadow-2xl">
-            <button onclick="cerrarModal('modal-ruleta')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
-            <span class="text-5xl block mb-3 animate-bounce">🎲</span>
-            <h3 class="text-2xl font-black text-amber-500">La Ruleta del Sabor</h3>
-            <p class="text-xs text-slate-400 mt-1 mb-5">¿Indeciso hoy? ¡Déjanos recomendarte una sugerencia al azar!</p>
-            <div id="caja-recomendacion" class="bg-slate-900/90 p-5 rounded-2xl border border-amber-500/30 min-h-[110px] flex flex-col justify-center items-center shadow-inner">
-                <span class="text-slate-400 text-xs">Mezclando platos sabrosos... 🎰</span>
-            </div>
-            <div id="acciones-ruleta" class="mt-5 hidden space-y-2.5">
-                <button id="btn-agregar-ruleta" class="w-full bg-red-600 hover:bg-red-700 text-white font-black py-3 rounded-2xl text-xs shadow-lg">🛒 ¡Me convención, agregar!</button>
-                <button onclick="girarRuletaSorpresa()" class="w-full bg-slate-800 text-slate-300 py-2.5 rounded-2xl text-xs font-bold">🔄 Probar otra sugerencia</button>
+    <!-- MODALES DE OPCIONES MULTIPLES -->
+    <div id="modal-broaster" class="modal-backdrop fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
+        <div class="bg-brand-cardBg border border-red-500/50 rounded-3xl max-w-md w-full p-6 relative shadow-2xl">
+            <button onclick="cerrarModal('modal-broaster')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
+            <h3 class="text-2xl font-black text-red-500 mb-5 border-b border-slate-800 pb-3">🍗 Pollo Broaster</h3>
+            <div class="space-y-3">
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Alita Broaster</span><button onclick="agregarAlCarritoAnimado('Alita Broaster', 10.00, event); cerrarModal('modal-broaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 10.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Encuentro Broaster</span><button onclick="agregarAlCarritoAnimado('Encuentro Broaster', 11.00, event); cerrarModal('modal-broaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 11.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Pierna Broaster</span><button onclick="agregarAlCarritoAnimado('Pierna Broaster', 11.00, event); cerrarModal('modal-broaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 11.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Pecho Broaster</span><button onclick="agregarAlCarritoAnimado('Pecho Broaster', 12.00, event); cerrarModal('modal-broaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 12.00 +</button></div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL DE CHECKOUT Y FORMULARIO COMPLETO PARA WHATSAPP -->
+    <div id="modal-salchibroaster" class="modal-backdrop fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
+        <div class="bg-brand-cardBg border border-red-500/50 rounded-3xl max-w-md w-full p-6 relative shadow-2xl">
+            <button onclick="cerrarModal('modal-salchibroaster')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
+            <h3 class="text-2xl font-black text-red-500 mb-5 border-b border-slate-800 pb-3">🍟 Salchibroaster</h3>
+            <div class="space-y-3">
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Salchibroaster Alita</span><button onclick="agregarAlCarritoAnimado('Salchibroaster Alita', 13.00, event); cerrarModal('modal-salchibroaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 13.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Salchibroaster Encuentro</span><button onclick="agregarAlCarritoAnimado('Salchibroaster Encuentro', 14.00, event); cerrarModal('modal-salchibroaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 14.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Salchibroaster Pierna</span><button onclick="agregarAlCarritoAnimado('Salchibroaster Pierna', 14.00, event); cerrarModal('modal-salchibroaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 14.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Salchibroaster Pecho</span><button onclick="agregarAlCarritoAnimado('Salchibroaster Pecho', 15.00, event); cerrarModal('modal-salchibroaster');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 15.00 +</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-hamburguesas" class="modal-backdrop fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
+        <div class="bg-brand-cardBg border border-red-500/50 rounded-3xl max-w-md w-full p-6 relative shadow-2xl max-h-[85vh] overflow-y-auto">
+            <button onclick="cerrarModal('modal-hamburguesas')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
+            <h3 class="text-2xl font-black text-red-500 mb-5 border-b border-slate-800 pb-3">🍔 Hamburguesas</h3>
+            <div class="space-y-3">
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Clásica (Carne/Pollo)</span><button onclick="agregarAlCarritoAnimado('Hamburguesa Clásica', 7.00, event); cerrarModal('modal-hamburguesas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 7.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Royal (Huevo + Queso)</span><button onclick="agregarAlCarritoAnimado('Hamburguesa Royal', 11.00, event); cerrarModal('modal-hamburguesas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 11.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">A lo Pobre</span><button onclick="agregarAlCarritoAnimado('Hamburguesa A lo Pobre', 13.00, event); cerrarModal('modal-hamburguesas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 13.00 +</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-salchipapas" class="modal-backdrop fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
+        <div class="bg-brand-cardBg border border-red-500/50 rounded-3xl max-w-md w-full p-6 relative shadow-2xl">
+            <button onclick="cerrarModal('modal-salchipapas')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
+            <h3 class="text-2xl font-black text-red-500 mb-5 border-b border-slate-800 pb-3">🍟 Salchipapas</h3>
+            <div class="space-y-3">
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Salchipapa Clásica</span><button onclick="agregarAlCarritoAnimado('Salchipapa Clásica', 9.00, event); cerrarModal('modal-salchipapas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 9.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Salchipapa Especial</span><button onclick="agregarAlCarritoAnimado('Salchipapa Especial', 14.00, event); cerrarModal('modal-salchipapas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 14.00 +</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-alitas" class="modal-backdrop fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
+        <div class="bg-brand-cardBg border border-red-500/50 rounded-3xl max-w-md w-full p-6 relative shadow-2xl">
+            <button onclick="cerrarModal('modal-alitas')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
+            <h3 class="text-2xl font-black text-red-500 mb-5 border-b border-slate-800 pb-3">🍗 Alitas</h3>
+            <div class="space-y-3">
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Alitas BBQ (6 piezas)</span><button onclick="agregarAlCarritoAnimado('Alitas BBQ (6 piezas)', 16.00, event); cerrarModal('modal-alitas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 16.00 +</button></div>
+                <div class="flex justify-between items-center bg-slate-900 p-3.5 rounded-2xl border border-slate-800"><span class="font-bold text-white text-sm">Alitas Acevichadas (6 piezas)</span><button onclick="agregarAlCarritoAnimado('Alitas Acevichadas (6 piezas)', 16.00, event); cerrarModal('modal-alitas');" class="bg-red-600 text-white text-xs px-3.5 py-2 rounded-xl font-bold">S/ 16.00 +</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-combos" class="modal-backdrop fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
+        <div class="bg-brand-cardBg border border-amber-500/50 rounded-3xl max-w-md w-full p-6 relative shadow-2xl max-h-[85vh] overflow-y-auto">
+            <button onclick="cerrarModal('modal-combos')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
+            <h3 class="text-2xl font-black text-amber-500 mb-5 border-b border-slate-800 pb-3">⭐ Combos El Shopa</h3>
+            <div class="space-y-4">
+                <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 flex justify-between items-center">
+                    <div><h4 class="font-bold text-white text-sm">Combo 1</h4><p class="text-xs text-slate-400">2 Piernas + Gordita/Pepsi</p></div>
+                    <button onclick="agregarAlCarritoAnimado('Combo 1 El Shopa', 23.00, event); cerrarModal('modal-combos');" class="bg-amber-500 text-black text-xs px-3.5 py-2 rounded-xl font-bold">S/ 23.00 +</button>
+                </div>
+                <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 flex justify-between items-center">
+                    <div><h4 class="font-bold text-white text-sm">Combo 3 (Familiar)</h4><p class="text-xs text-slate-400">2 Piernas + 2 Pechos + 1 Alita + 1L</p></div>
+                    <button onclick="agregarAlCarritoAnimado('Combo 3 Familiar', 55.00, event); cerrarModal('modal-combos');" class="bg-amber-500 text-black text-xs px-3.5 py-2 rounded-xl font-bold">S/ 55.00 +</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE CHECKOUT FORMULARIO WHATSAPP -->
     <div id="modal-carrito-detalle" class="modal-backdrop fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
         <div class="bg-brand-cardBg border border-emerald-500/50 rounded-3xl max-w-lg w-full p-6 relative shadow-2xl max-h-[90vh] overflow-y-auto flex flex-col justify-between">
             <div>
@@ -600,7 +766,6 @@
                 
                 <div id="lista-items-carrito" class="space-y-3 mb-6 max-h-48 overflow-y-auto pr-1"></div>
                 
-                <!-- FORMULARIO DE DATOS DE ENVÍO -->
                 <div class="bg-slate-900/90 p-4 rounded-2xl border border-slate-800 space-y-3 text-xs mb-4">
                     <h4 class="font-extrabold text-white text-sm">📍 Datos para la Entrega</h4>
                     <div>
@@ -634,15 +799,31 @@
         </div>
     </div>
 
-    <!-- SCRIPTS DINÁMICOS Y LÓGICA DE INTERACCIONES -->
+    <!-- MODAL RULETA -->
+    <div id="modal-ruleta" class="modal-backdrop fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
+        <div class="bg-brand-cardBg border border-amber-500/50 rounded-3xl max-w-sm w-full p-6 text-center relative shadow-2xl">
+            <button onclick="cerrarModal('modal-ruleta')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
+            <span class="text-5xl block mb-3 animate-bounce">🎲</span>
+            <h3 class="text-2xl font-black text-amber-500">La Ruleta del Sabor</h3>
+            <p class="text-xs text-slate-400 mt-1 mb-5">¿Indeciso hoy? ¡Déjanos recomendarte un plato!</p>
+            <div id="caja-recomendacion" class="bg-slate-900/90 p-5 rounded-2xl border border-amber-500/30 min-h-[110px] flex flex-col justify-center items-center shadow-inner">
+                <span class="text-slate-400 text-xs">Mezclando platos sabrosos... 🎰</span>
+            </div>
+            <div id="acciones-ruleta" class="mt-5 hidden space-y-2.5">
+                <button id="btn-agregar-ruleta" class="w-full bg-red-600 hover:bg-red-700 text-white font-black py-3 rounded-2xl text-xs shadow-lg">🛒 ¡Me convención, agregar!</button>
+                <button onclick="girarRuletaSorpresa()" class="w-full bg-slate-800 text-slate-300 py-2.5 rounded-2xl text-xs font-bold">🔄 Probar otra sugerencia</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT CORREGIDO CON TODAS LAS FUNCIONES HABILITADAS -->
     <script>
         AOS.init({ duration: 750, once: true });
 
         let carrito = [];
-        let estaAbiertoGlobal = true;
-        let temaActualIndex = 0; // 0: Oscuro, 1: Claro, 2: Noche Criolla Neón
+        let temaActualIndex = 0;
 
-        // BARRA DE PROGRESO DE LECTURA
+        // PROGRESS BAR
         window.addEventListener('scroll', () => {
             const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -650,7 +831,7 @@
             document.getElementById("reading-progress").style.width = scrolled + "%";
         });
 
-        // TILT 3D CARD EFFECT CON REFLEJO DE LUZ (GLARE)
+        // TILT 3D
         document.querySelectorAll('.tilt-card').forEach(card => {
             const glare = card.querySelector('.glare-effect');
             card.addEventListener('mousemove', (e) => {
@@ -675,33 +856,139 @@
             });
         });
 
-        // ANIMACIÓN FLY-TO-CART (VOLAR AL CARRITO)
+        // AGREGAR AL CARRITO + ANIMACIÓN
         function agregarAlCarritoAnimado(nombre, precio, event) {
-            agregarAlCarrito(nombre, precio, event);
-            
-            const btn = event.currentTarget;
-            const rect = btn.getBoundingClientRect();
-            const flyer = document.createElement('div');
-            flyer.className = 'flying-item';
-            flyer.innerText = '🍗';
-            flyer.style.left = `${rect.left}px`;
-            flyer.style.top = `${rect.top}px`;
-            document.body.appendChild(flyer);
+            agregarAlCarrito(nombre, precio);
+            mostrarToast("¡Añadido con éxito! 🛒", `${nombre} - S/ ${precio.toFixed(2)}`);
 
-            const cartBtn = document.getElementById('cant-items-badge-mobile') || document.getElementById('total-carrito');
-            const targetRect = cartBtn.getBoundingClientRect();
+            if (event && event.currentTarget) {
+                const btn = event.currentTarget;
+                const rect = btn.getBoundingClientRect();
+                const flyer = document.createElement('div');
+                flyer.className = 'flying-item';
+                flyer.innerText = '🍗';
+                flyer.style.left = `${rect.left}px`;
+                flyer.style.top = `${rect.top}px`;
+                document.body.appendChild(flyer);
 
-            setTimeout(() => {
-                flyer.style.left = `${targetRect.left}px`;
-                flyer.style.top = `${targetRect.top}px`;
-                flyer.style.scale = '0.3';
-                flyer.style.opacity = '0.5';
-            }, 50);
+                const cartBtn = document.getElementById('cant-items-badge-mobile') || document.getElementById('total-carrito');
+                const targetRect = cartBtn.getBoundingClientRect();
 
-            setTimeout(() => flyer.remove(), 850);
+                setTimeout(() => {
+                    flyer.style.left = `${targetRect.left}px`;
+                    flyer.style.top = `${targetRect.top}px`;
+                    flyer.style.scale = '0.3';
+                    flyer.style.opacity = '0.5';
+                }, 50);
+
+                setTimeout(() => flyer.remove(), 850);
+            }
         }
 
-        // TRANSICIÓN DE LUZ / CAMBIO RADICAL DE SEDES
+        function agregarAlCarrito(nombre, precio) {
+            const itemExistente = carrito.find(i => i.nombre === nombre);
+            if (itemExistente) itemExistente.cantidad += 1;
+            else carrito.push({ nombre, precio, cantidad: 1 });
+            actualizarCarritoUI();
+        }
+
+        function cambiarCantidadCarrito(nombre, cambio) {
+            const item = carrito.find(i => i.nombre === nombre);
+            if (item) {
+                item.cantidad += cambio;
+                if (item.cantidad <= 0) carrito = carrito.filter(i => i.nombre !== nombre);
+            }
+            actualizarCarritoUI();
+        }
+
+        function actualizarCarritoUI() {
+            const cantBadge = document.getElementById('cant-items-badge-mobile');
+            const cantItems = document.getElementById('cant-items');
+            const totalCarrito = document.getElementById('total-carrito');
+            const barra = document.getElementById('barra-carrito');
+
+            const totalCantidad = carrito.reduce((acc, i) => acc + i.cantidad, 0);
+            const totalMonto = carrito.reduce((acc, i) => acc + (i.precio * i.cantidad), 0);
+            
+            if (cantBadge) cantBadge.innerText = totalCantidad;
+            if (cantItems) cantItems.innerText = totalCantidad;
+            if (totalCarrito) totalCarrito.innerText = `S/ ${totalMonto.toFixed(2)}`;
+            document.getElementById('subtotal-modal').innerText = `S/ ${totalMonto.toFixed(2)}`;
+
+            if (totalCantidad > 0) barra.classList.remove('hidden');
+            else barra.classList.add('hidden');
+
+            const listaModal = document.getElementById('lista-items-carrito');
+            listaModal.innerHTML = '';
+
+            if (carrito.length === 0) {
+                listaModal.innerHTML = `<p class="text-slate-400 text-center text-xs py-5">Tu carrito está completamente vacío.</p>`;
+            } else {
+                carrito.forEach(item => {
+                    listaModal.innerHTML += `
+                        <div class="flex justify-between items-center bg-slate-900 p-3 rounded-xl border border-slate-800 text-xs">
+                            <div>
+                                <p class="font-bold text-white">${item.nombre}</p>
+                                <p class="text-slate-400">S/ ${(item.precio * item.cantidad).toFixed(2)}</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button onclick="cambiarCantidadCarrito('${item.nombre}', -1)" class="w-6 h-6 bg-red-600/30 text-red-300 rounded font-bold">-</button>
+                                <span class="font-bold text-white">${item.cantidad}</span>
+                                <button onclick="cambiarCantidadCarrito('${item.nombre}', 1)" class="w-6 h-6 bg-emerald-600/30 text-emerald-300 rounded font-bold">+</button>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function vaciarCarrito() { carrito = []; actualizarCarritoUI(); cerrarModal('modal-carrito-detalle'); }
+
+        // FILTRADO DE CATEGORÍAS CORREGIDO Y FUNCIONAL
+        function filtrarCategoria(marca, categoria, btn) {
+            limpiarBusqueda();
+            const contenedor = document.getElementById(marca === 'tio-silva' ? 'menu-tio-silva' : 'menu-el-shopa');
+            const items = contenedor.querySelectorAll('.item-menu');
+            const botones = contenedor.querySelectorAll(marca === 'tio-silva' ? '.btn-filtro-silva' : '.btn-filtro-shopa');
+
+            botones.forEach(b => b.className = `btn-ripple ${marca === 'tio-silva' ? 'btn-filtro-silva' : 'btn-filtro-shopa'} px-4 py-2 rounded-xl text-xs font-black border border-slate-800 bg-slate-900 text-slate-300`);
+            btn.className = `btn-ripple ${marca === 'tio-silva' ? 'btn-filtro-silva bg-brand-greenNeon text-black border-brand-greenNeon' : 'btn-filtro-shopa bg-red-600 text-white border-red-500'} px-4 py-2 rounded-xl text-xs font-black shadow-lg`;
+
+            items.forEach(item => {
+                if (categoria === 'todos' || item.classList.contains(`cat-${categoria}`)) {
+                    item.classList.remove('oculto');
+                } else {
+                    item.classList.add('oculto');
+                }
+            });
+            AOS.refresh();
+        }
+
+        // BÚSQUEDA CORREGIDA
+        function filtrarPorBusqueda() {
+            const query = document.getElementById('input-buscador').value.toLowerCase().trim();
+            const btnLimpiar = document.getElementById('btn-limpiar-busqueda');
+            const items = document.querySelectorAll('.item-menu');
+
+            if (query.length > 0) btnLimpiar.classList.remove('hidden');
+            else btnLimpiar.classList.add('hidden');
+
+            items.forEach(item => {
+                if (item.innerText.toLowerCase().includes(query)) {
+                    item.classList.remove('oculto');
+                } else {
+                    item.classList.add('oculto');
+                }
+            });
+            AOS.refresh();
+        }
+
+        function limpiarBusqueda() {
+            document.getElementById('input-buscador').value = '';
+            filtrarPorBusqueda();
+        }
+
+        // CAMBIO DE SEDES CON EFECTO VISUAL
         function cambiarMenu(local) {
             const overlay = document.getElementById('flash-overlay');
             const body = document.body;
@@ -712,18 +999,16 @@
                 body.classList.remove('bg-pattern-shopa');
                 body.classList.add('bg-pattern-silva');
                 document.getElementById('brand-logo-badge').innerText = '🐔';
-                document.getElementById('brand-logo-badge').className = "w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-green-400 flex items-center justify-center shadow-[0_0_15px_rgba(0,255,102,0.8)] text-lg transition-all duration-500";
                 document.getElementById('brand-subtitle').innerText = 'Sazón Criolla al Wok & Caldos';
-                document.getElementById('brand-subtitle').className = 'text-[10px] text-brand-greenNeon font-bold tracking-widest uppercase transition-colors duration-500';
+                document.getElementById('brand-subtitle').className = 'text-[10px] text-brand-greenNeon font-bold tracking-widest uppercase transition-colors';
             } else {
                 overlay.style.backgroundColor = '#ff003c';
                 overlay.style.opacity = '0.35';
                 body.classList.remove('bg-pattern-silva');
                 body.classList.add('bg-pattern-shopa');
                 document.getElementById('brand-logo-badge').innerText = '🔥';
-                document.getElementById('brand-logo-badge').className = "w-9 h-9 rounded-xl bg-gradient-to-tr from-red-600 to-amber-500 flex items-center justify-center shadow-lg text-lg transition-all duration-500";
                 document.getElementById('brand-subtitle').innerText = 'Brostería Artesanal & Combos';
-                document.getElementById('brand-subtitle').className = 'text-[10px] text-amber-400 font-bold tracking-widest uppercase transition-colors duration-500';
+                document.getElementById('brand-subtitle').className = 'text-[10px] text-amber-400 font-bold tracking-widest uppercase transition-colors';
             }
 
             setTimeout(() => overlay.style.opacity = '0', 400);
@@ -747,7 +1032,6 @@
             AOS.refresh();
         }
 
-        // ROTACIÓN DE 3 TEMAS
         function rotarTema() {
             temaActualIndex = (temaActualIndex + 1) % 3;
             const body = document.body;
@@ -767,69 +1051,75 @@
             }
         }
 
-        // ENVÍO DE FORMULARIO COMPLETO A WHATSAPP
+        function darMeGusta(platoId, btn, event) {
+            event.stopPropagation();
+            const countSpan = btn.querySelector('.like-count');
+            let count = parseInt(countSpan.innerText) + 1;
+            countSpan.innerText = count;
+        }
+
+        function girarRuletaSorpresa() {
+            abrirModal('modal-ruleta');
+            const caja = document.getElementById('caja-recomendacion');
+            const acciones = document.getElementById('acciones-ruleta');
+            caja.innerHTML = `<span class="text-amber-400 font-bold text-xs animate-pulse">🎲 Mezclando platos sabrosos...</span>`;
+            acciones.classList.add('hidden');
+
+            setTimeout(() => {
+                const opciones = [
+                    { nombre: 'Pollo Broaster Pecho (El Shopa)', precio: 12.00 },
+                    { nombre: 'Salchibroaster Pecho (El Shopa)', precio: 15.00 },
+                    { nombre: 'Lomo Saltado a lo Pobre (El Tío Silva)', precio: 19.00 },
+                    { nombre: 'Caldo de Gallina (El Tío Silva)', precio: 11.00 }
+                ];
+                const opcion = opciones[Math.floor(Math.random() * opciones.length)];
+                caja.innerHTML = `
+                    <h4 class="font-black text-white text-base text-amber-400">${opcion.nombre}</h4>
+                    <span class="text-emerald-400 font-black text-lg">S/ ${opcion.precio.toFixed(2)}</span>
+                `;
+                document.getElementById('btn-agregar-ruleta').onclick = (e) => {
+                    agregarAlCarritoAnimado(opcion.nombre, opcion.precio, e);
+                    cerrarModal('modal-ruleta');
+                };
+                acciones.classList.remove('hidden');
+            }, 800);
+        }
+
         function enviarPedidoWhatsAppConFormulario() {
             if (carrito.length === 0) return;
-
             const nombre = document.getElementById('cliente-nombre').value.trim() || 'Cliente';
-            const direccion = document.getElementById('cliente-direccion').value.trim() || 'Recojo en local / Por definir';
+            const direccion = document.getElementById('cliente-direccion').value.trim() || 'Por definir';
             const pago = document.getElementById('cliente-pago').value;
 
             const telefono = "51942539346";
             let mensaje = `¡Hola! Soy *${nombre}* y quisiera realizar el siguiente pedido:\n\n`;
-            
             carrito.forEach(item => {
                 mensaje += `• ${item.cantidad}x ${item.nombre} - S/ ${(item.precio * item.cantidad).toFixed(2)}\n`;
             });
 
             const totalMonto = carrito.reduce((acc, i) => acc + (i.precio * i.cantidad), 0);
-            mensaje += `\n📌 *Dirección de Entrega:* ${direccion}`;
-            mensaje += `\n💳 *Método de Pago Elegido:* ${pago}`;
-            mensaje += `\n💰 *Total Platos:* S/ ${totalMonto.toFixed(2)} (+ S/ 2.00 Delivery)`;
+            mensaje += `\n📌 *Dirección:* ${direccion}`;
+            mensaje += `\n💳 *Pago:* ${pago}`;
+            mensaje += `\n💰 *Total:* S/ ${totalMonto.toFixed(2)} (+ S/ 2.00 Delivery)`;
 
             window.open(`https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`, '_blank');
         }
 
-        // LÓGICA BASE DE CARRITO
-        function agregarAlCarrito(nombre, precio, event) {
-            const itemExistente = carrito.find(i => i.nombre === nombre);
-            if (itemExistente) itemExistente.cantidad += 1;
-            else carrito.push({ nombre, precio, cantidad: 1 });
-            actualizarCarritoUI();
+        function mostrarToast(titulo, desc) {
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-title').innerText = titulo;
+            document.getElementById('toast-desc').innerText = desc;
+            toast.classList.remove('translate-x-80', 'opacity-0', 'pointer-events-none');
+            toast.classList.add('translate-x-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-x-0', 'opacity-100');
+                toast.classList.add('translate-x-80', 'opacity-0', 'pointer-events-none');
+            }, 2000);
         }
 
-        function actualizarCarritoUI() {
-            const cantBadge = document.getElementById('cant-items-badge-mobile');
-            const totalCantidad = carrito.reduce((acc, i) => acc + i.cantidad, 0);
-            const totalMonto = carrito.reduce((acc, i) => acc + (i.precio * i.cantidad), 0);
-            
-            if (cantBadge) cantBadge.innerText = totalCantidad;
-            document.getElementById('subtotal-modal').innerText = `S/ ${totalMonto.toFixed(2)}`;
-
-            const listaModal = document.getElementById('lista-items-carrito');
-            listaModal.innerHTML = '';
-            carrito.forEach(item => {
-                listaModal.innerHTML += `
-                    <div class="flex justify-between items-center bg-slate-900/90 p-3 rounded-xl border border-slate-800 text-xs">
-                        <div>
-                            <p class="font-bold text-white">${item.nombre}</p>
-                            <p class="text-slate-400">S/ ${(item.precio * item.cantidad).toFixed(2)}</p>
-                        </div>
-                        <span class="font-black text-emerald-400">x${item.cantidad}</span>
-                    </div>
-                `;
-            });
-        }
-
-        function vaciarCarrito() { carrito = []; actualizarCarritoUI(); cerrarModal('modal-carrito-detalle'); }
         function abrirModal(id) { document.getElementById(id).classList.remove('hidden'); }
         function cerrarModal(id) { document.getElementById(id).classList.add('hidden'); }
-        function filtrarPorBusqueda() {}
-        function limpiarBusqueda() {}
-        function filtrarCategoria() {}
-        function darMeGusta() {}
-        function girarRuletaSorpresa() { abrirModal('modal-ruleta'); }
-        function mostrarInfoPago(t, d, i) { abrirModal('modal-info-pago'); }
     </script>
 </body>
 </html>
