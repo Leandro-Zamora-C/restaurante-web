@@ -197,7 +197,7 @@
                     </div>
                 </div>
 
-                <!-- INDICADOR EN TIEMPO REAL DE HORARIO (5:00 PM a 1:00 AM) -->
+                <!-- INDICADOR EN TIEMPO REAL DE HORARIO (5:00 PM a 1:00 AM) VISIBLE EN PC Y MÓVIL -->
                 <div id="status-atencion-badge" class="flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/80 px-2.5 py-1 rounded-full text-[10px] font-extrabold shadow-sm">
                     <span id="status-dot" class="w-2.5 h-2.5 rounded-full"></span>
                     <span id="status-text">Verificando...</span>
@@ -217,16 +217,18 @@
                 </button>
             </div>
             
-            <div class="flex items-center gap-2">
-                <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest hidden sm:inline">
-                    Selecciona la carta aquí 👇
-                </span>
-                <div class="flex bg-slate-900 p-1 rounded-xl border border-slate-800 shadow-md">
-                    <button onclick="cambiarMenu('el-shopa')" id="btn-shopa" class="px-3 py-1.5 rounded-lg text-[11px] font-black bg-gradient-to-r from-red-600 to-red-700 text-white shadow transition-all transform active:scale-95">
-                        👑 BROSTERÍA EL SHOPA
+            <!-- SELECTOR DE CARTA ULTRA VISIBLE CON INDICACIÓN CLARA -->
+            <div class="flex flex-col items-center sm:items-end gap-1">
+                <div class="flex items-center gap-1.5 bg-amber-500/15 border border-amber-500/40 px-2.5 py-0.5 rounded-lg">
+                    <span class="text-xs">🔄</span>
+                    <span class="text-[10px] font-black text-amber-400 uppercase tracking-wider">Toca para cambiar de Restaurante:</span>
+                </div>
+                <div class="flex bg-slate-900 p-1.5 rounded-2xl border-2 border-slate-700 shadow-xl gap-1">
+                    <button onclick="cambiarMenu('el-shopa')" id="btn-shopa" class="px-4 py-2 rounded-xl text-xs font-black bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg transition-all transform active:scale-95 flex items-center gap-1.5 border border-red-400/50">
+                        <span>👑</span> BROSTERÍA EL SHOPA
                     </button>
-                    <button onclick="cambiarMenu('tio-silva')" id="btn-silva" class="px-3 py-1.5 rounded-lg text-[11px] font-black text-slate-400 hover:text-white transition-all transform active:scale-95">
-                        🐔 EL TÍO SILVA
+                    <button onclick="cambiarMenu('tio-silva')" id="btn-silva" class="px-4 py-2 rounded-xl text-xs font-black text-slate-300 hover:text-white transition-all transform active:scale-95 flex items-center gap-1.5 border border-transparent">
+                        <span>🐔</span> EL TÍO SILVA
                     </button>
                 </div>
             </div>
@@ -237,7 +239,7 @@
 
         <div data-aos="fade-down" class="mb-5 relative z-10">
             <div class="relative max-w-xl mx-auto">
-                <input type="text" id="input-buscador" oninput="filtrarPorBusqueda()" placeholder="Busca un plato o ingrediente (ej. Broaster, Alitas, Chaufa...)" class="input-busqueda w-full bg-slate-900/90 backdrop-blur-xl text-white placeholder-slate-400 px-4 py-3 pl-10 rounded-2xl border border-slate-700/80 focus:border-amber-500/80 outline-none shadow-xl transition-all text-xs sm:text-sm font-medium">
+                <input type="text" id="input-buscador" oninput="filtrarPorBusqueda()" placeholder="Busca un plato o ingrediente (ej. Broaster, Alitas, Chaufa...)" class="input-busqueda w-full bg-slate-900/95 backdrop-blur-xl text-white placeholder-slate-400 px-4 py-3 pl-10 rounded-2xl border border-slate-700/80 focus:border-amber-500/80 outline-none shadow-xl transition-all text-xs sm:text-sm font-medium">
                 <button id="btn-limpiar-busqueda" onclick="limpiarBusqueda()" class="hidden absolute right-3 top-2.5 text-slate-400 hover:text-white text-[11px] font-bold bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-700 transition">
                     ✕
                 </button>
@@ -254,8 +256,9 @@
                     <div class="flex flex-col justify-center max-w-xl space-y-2">
                         <span class="bg-red-600/30 text-red-400 text-[11px] font-black px-3.5 py-1 rounded-full border border-red-500/50 uppercase tracking-widest inline-block w-fit">🔥 BROSTERÍA ARTESANAL & COMBOS</span>
                         <p class="text-slate-200 text-xs sm:text-sm font-medium leading-relaxed">El crujiente perfecto en pollo broaster gigante, salchipapas abundantes, alitas acevichadas y hamburguesas artesanales.</p>
+                        <!-- MODIFICADO: Se cambió "100% Aceite Limpio" por "100% Sabor Crujiente" -->
                         <div class="grid grid-cols-3 gap-2.5 pt-2 border-t border-red-500/20 text-center">
-                            <div class="bg-slate-950/50 p-2 rounded-xl border border-red-500/20"><span class="block text-red-400 font-black text-xs">100%</span><span class="text-[9px] text-slate-300">Aceite Limpio</span></div>
+                            <div class="bg-slate-950/50 p-2 rounded-xl border border-red-500/20"><span class="block text-red-400 font-black text-xs">100%</span><span class="text-[9px] text-slate-300">Sabor Crujiente</span></div>
                             <div class="bg-slate-950/50 p-2 rounded-xl border border-red-500/20"><span class="block text-amber-500 font-black text-xs">20 Min</span><span class="text-[9px] text-slate-300">Delivery Rápido</span></div>
                             <div class="bg-slate-950/50 p-2 rounded-xl border border-red-500/20"><span class="block text-emerald-400 font-black text-xs">★★★★★</span><span class="text-[9px] text-slate-300">Sabor Criollo</span></div>
                         </div>
@@ -263,6 +266,7 @@
                 </div>
             </div>
 
+            <!-- FILTROS SHOPA -->
             <div data-aos="fade-right" class="sticky top-14 z-30 bg-brand-darkBg/95 backdrop-blur-md py-2.5 flex flex-wrap gap-2 justify-center sm:justify-start border-b border-slate-800">
                 <button onclick="filtrarCategoria('el-shopa', 'todos', this)" class="btn-filtro-shopa px-3.5 py-1.5 rounded-xl text-[11px] font-black bg-red-600 text-white border border-red-500 shadow-md">Todos</button>
                 <button onclick="filtrarCategoria('el-shopa', 'pollo-broaster', this)" class="btn-filtro-shopa bg-slate-900 text-slate-300 px-3.5 py-1.5 rounded-xl text-[11px] font-black border border-slate-800">🍗 Pollo Broaster</button>
@@ -697,6 +701,7 @@
         </div>
     </div>
 
+    <!-- MODAL HAMBURGUESAS -->
     <div id="modal-hamburguesas" class="modal-backdrop fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
         <div class="bg-brand-cardBg border border-red-500/50 rounded-3xl max-w-md w-full p-6 relative shadow-2xl max-h-[85vh] overflow-y-auto">
             <button onclick="cerrarModal('modal-hamburguesas')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
@@ -724,6 +729,7 @@
         </div>
     </div>
 
+    <!-- MODAL ALITAS -->
     <div id="modal-alitas" class="modal-backdrop fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
         <div class="bg-brand-cardBg border border-red-500/50 rounded-3xl max-w-md w-full p-6 relative shadow-2xl">
             <button onclick="cerrarModal('modal-alitas')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
@@ -735,6 +741,7 @@
         </div>
     </div>
 
+    <!-- MODAL COMBOS -->
     <div id="modal-combos" class="modal-backdrop fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex justify-center items-center p-4">
         <div class="bg-brand-cardBg border border-amber-500/50 rounded-3xl max-w-md w-full p-6 relative shadow-2xl max-h-[85vh] overflow-y-auto">
             <button onclick="cerrarModal('modal-combos')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">✕</button>
@@ -843,7 +850,7 @@
         }
 
         actualizarEstadoHorario();
-        setInterval(actualizarEstadoHorario, 60000); // Se actualiza cada minuto
+        setInterval(actualizarEstadoHorario, 60000);
 
         let carrito = [];
         let temaActualIndex = 0;
@@ -1060,13 +1067,13 @@
             if (local === 'el-shopa') {
                 menuShopa.classList.remove('hidden');
                 menuSilva.classList.add('hidden');
-                btnShopa.className = "px-3 py-1.5 rounded-lg text-[11px] font-black bg-gradient-to-r from-red-600 to-red-700 text-white shadow transition-all";
-                btnSilva.className = "px-3 py-1.5 rounded-lg text-[11px] font-black text-slate-400 transition-all";
+                btnShopa.className = "px-4 py-2 rounded-xl text-xs font-black bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg transition-all transform active:scale-95 flex items-center gap-1.5 border border-red-400/50";
+                btnSilva.className = "px-4 py-2 rounded-xl text-xs font-black text-slate-300 hover:text-white transition-all transform active:scale-95 flex items-center gap-1.5 border border-transparent";
             } else {
                 menuSilva.classList.remove('hidden');
                 menuShopa.classList.add('hidden');
-                btnSilva.className = "px-3 py-1.5 rounded-lg text-[11px] font-black bg-gradient-to-r from-emerald-400 to-brand-greenNeon text-black shadow-[0_0_12px_rgba(0,255,102,0.6)] transition-all";
-                btnShopa.className = "px-3 py-1.5 rounded-lg text-[11px] font-black text-slate-400 transition-all";
+                btnSilva.className = "px-4 py-2 rounded-xl text-xs font-black bg-gradient-to-r from-emerald-400 to-brand-greenNeon text-black shadow-[0_0_12px_rgba(0,255,102,0.6)] transition-all transform active:scale-95 flex items-center gap-1.5 border border-emerald-300";
+                btnShopa.className = "px-4 py-2 rounded-xl text-xs font-black text-slate-300 hover:text-white transition-all transform active:scale-95 flex items-center gap-1.5 border border-transparent";
             }
             AOS.refresh();
         }
