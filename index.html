@@ -76,7 +76,7 @@
         .flying-item {
             position: fixed; z-index: 9999; width: 45px; height: 45px; border-radius: 50%; background: #00ff66;
             box-shadow: 0 0 20px #00ff66; pointer-events: none; transition: all 0.8s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-            display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+            display: flex; items-center: center; justify-content: center; font-size: 1.2rem;
         }
 
         .bg-pattern-fusion { background-image: radial-gradient(rgba(245, 158, 11, 0.12) 1px, transparent 1px); background-size: 24px 24px; }
@@ -401,7 +401,7 @@
                     <div>
                         <div class="flex justify-between items-start">
                             <h4 class="font-extrabold text-white text-base">Tallarín Saltado (Carne)</h4>
-                            <button onclick="darMeGusta('tallarin_carne', this, event)" class="text-[11px] bg-slate-900 border border-slate-700 px-2 py-0.5 rounded-full text-slate-300 hover:text-emerald-400 transition">❤️ <span class="like-count">480</span></button>
+                            <button onclick="darMeGusta('tallarin_carne', this, event)" class="text-[11px] bg-slate-900 border border-slate-700 px-2 py-0.5 rounded-full text-slate-300 hover:text-emerald-400 transition">❤️️ <span class="like-count">480</span></button>
                         </div>
                         <p class="text-xs text-slate-400 mt-1">Fideos criollos salteados a alto fuego.</p>
                     </div>
@@ -532,6 +532,26 @@
                 <div class="bg-brand-cardBg p-4 rounded-2xl border border-slate-800 flex justify-between items-center"><div><span class="text-white font-bold block text-xs">Inka/Coca Vidrio</span><span class="text-red-500 font-black text-xs">S/ 2.50</span></div><button onclick="agregarAlCarritoAnimado('Inka/Coca Vidrio', 2.50, event)" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 rounded-xl text-xs font-bold shadow transition active:scale-95">Agregar +</button></div>
                 <div class="bg-brand-cardBg p-4 rounded-2xl border border-slate-800 flex justify-between items-center"><div><span class="text-white font-bold block text-xs">Gordita</span><span class="text-red-500 font-black text-xs">S/ 4.50</span></div><button onclick="agregarAlCarritoAnimado('Gordita', 4.50, event)" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 rounded-xl text-xs font-bold shadow transition active:scale-95">Agregar +</button></div>
                 <div class="bg-brand-cardBg p-4 rounded-2xl border border-slate-800 flex justify-between items-center"><div><span class="text-white font-bold block text-xs">Gaseosa 1 Litro</span><span class="text-red-500 font-black text-xs">S/ 6.00</span></div><button onclick="agregarAlCarritoAnimado('Gaseosa 1 Litro', 6.00, event)" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 rounded-xl text-xs font-bold shadow transition active:scale-95">Agregar +</button></div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN: EXPERIENCIA VISUAL PRÓXIMAMENTE -->
+        <div data-aos="fade-up" class="mt-16 mb-8 max-w-4xl mx-auto bg-gradient-to-r from-slate-900 via-amber-950/30 to-slate-900 border border-amber-500/30 p-8 rounded-3xl text-center relative overflow-hidden shadow-2xl">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl"></div>
+            <div class="relative z-10 space-y-3">
+                <span class="bg-amber-500/20 text-amber-400 text-[10px] font-black px-3.5 py-1 rounded-full border border-amber-500/30 uppercase tracking-widest inline-block">✨ Innovación en Camino</span>
+                <h3 class="text-2xl sm:text-3xl font-black text-white">Experiencia Visual Próximamente</h3>
+                <p class="text-slate-400 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
+                    Estamos preparando fotos hiperrealistas en alta definición y recorridos interactivos de cada uno de nuestros platos para que elijas con los ojos antes de probar el primer bocado.
+                </p>
+                <div class="pt-2 flex justify-center gap-2">
+                    <span class="inline-flex items-center gap-1.5 bg-slate-950 border border-slate-800 text-amber-300 text-xs font-bold px-4 py-2 rounded-xl">
+                        📸 Fotografía 4K
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 bg-slate-950 border border-slate-800 text-emerald-400 text-xs font-bold px-4 py-2 rounded-xl">
+                        🔥 Vista 3D Interactiva
+                    </span>
+                </div>
             </div>
         </div>
 
